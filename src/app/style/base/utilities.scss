@@ -1,0 +1,7 @@
+.absolute-y-centered {
+  @apply top-1/2 -translate-y-1/2;
+}
+
+.flex-centered {
+  @apply flex justify-center items-center;
+}

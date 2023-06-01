@@ -24,6 +24,12 @@ module.exports = {
         "gray-300": "#5B5B5B",
         "gray-400": "#494949",
       },
+      spacing: {
+        23: "5.625rem", // 90px
+      },
+      fontSize: {
+        "6.25xl": "4rem", // 64px
+      },
       boxShadow: {
         default: "2px 2px 25px rgba(0, 0, 0, 0.1)",
       },
