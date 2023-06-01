@@ -1,13 +1,13 @@
 type Props = {
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
 };
 
 const Logo = (props: Props) => {
   return (
     <svg
-      width={(props.width || 141).toString()}
-      height={(props.height || 59).toString()}
+      width={props.width.toString()}
+      height={props.height.toString()}
       viewBox="0 0 141 59"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

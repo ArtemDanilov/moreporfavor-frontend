@@ -30,10 +30,11 @@ const navLinks = [
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 w-full py-4 px-5 flex items-center justify-between">
+    <header className="max-w-8xl fixed absolute-x-centered top-0 z-50 w-full py-4 px-5 bg-white flex items-center justify-between xl:px-20">
       <h1>
         <Link href="/">
-          <Logo />
+          <span className="sr-only">Moreporfavor Logo</span>
+          <Logo width={140} height={58} />
         </Link>
       </h1>
 

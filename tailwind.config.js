@@ -30,8 +30,12 @@ module.exports = {
       fontSize: {
         "6.25xl": "4rem", // 64px
       },
+      maxWidth: {
+        "8xl": "90rem", // 1440px
+      },
       boxShadow: {
         default: "2px 2px 25px rgba(0, 0, 0, 0.1)",
+        overlay: "inset 0 0 0 2000px rgba(0, 0, 0, 0.5)",
       },
     },
   },

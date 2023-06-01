@@ -1,0 +1,12 @@
+.swiper-pagination {
+  @apply absolute bottom-8 z-10 flex space-x-2;
+  @extend .absolute-x-centered;
+
+  &-bullet {
+    @apply block w-9 h-1.5 bg-white rounded-md cursor-pointer;
+
+    &-active {
+      @apply bg-orange;
+    }
+  }
+}
