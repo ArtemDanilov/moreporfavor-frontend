@@ -9,6 +9,13 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1.25rem",
+        md: "2rem",
+      },
+    },
     fontFamily: {
       sans: ["var(--font-Nunito)", ...defaultTheme.fontFamily.sans],
       display: ["var(--font-Abril_Fatface)", "display"],
