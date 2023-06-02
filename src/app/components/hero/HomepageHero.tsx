@@ -17,7 +17,7 @@ type Entries = {
 const HomepageHero = ({ entries }: { entries: Entries }) => {
   return (
     <Swiper
-      className="h-[calc(100vh-5.625rem)] max-h-[52.5rem] overflow-hidden"
+      className="h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden"
       modules={[Pagination, Parallax, Autoplay]}
       slidesPerView={1}
       parallax={true}
