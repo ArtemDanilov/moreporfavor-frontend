@@ -2,6 +2,8 @@
 
 import "./style.scss";
 
+import { Links } from "../../ts/types";
+
 import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -9,11 +11,6 @@ import Link from "next/link";
 import { MenuButton } from "../icons/Icons";
 import SocialMedia from "../SocialMedia";
 import CloseBtn from "../CloseBtn";
-
-type Links = {
-  title: string;
-  url: string;
-}[];
 
 const Nav = ({ links }: { links: Links }) => {
   const [menu, setMenu] = useState<boolean>(false);
@@ -55,13 +52,13 @@ const Nav = ({ links }: { links: Links }) => {
         <CloseBtn onClick={closeMenu} />
 
         <ul className="absolute absolute-y-centered right-0 w-full p-5 space-y-4">
-          {links.map(({ title, url }) => {
+          {links.map(({ id, title, url }) => {
             const isActive = pathname.startsWith(url);
             const activeLink = isActive ? "text-green" : "text-black";
 
             return (
               <li
-                key={title}
+                key={id}
                 className={`${activeLink} font-sans font-bold text-5xl text-right`}
               >
                 <Link href={url} onClick={closeMenu}>
