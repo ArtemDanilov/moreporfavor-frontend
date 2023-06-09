@@ -1,25 +1,16 @@
-import HomepageHero from "./components/hero/HomepageHero";
+import Hero from "./components/hero/homepage/Hero";
 import About from "./components/sections/About";
 
 import Section from "./components/Section";
+import { fetchTravelBlogs } from "./api/travels";
 
-const entries = [
-  {
-    title: "Kazachstan praktyczne informacje",
-    url: "/azja",
-    image: "/assets/tenerife.jpg",
-  },
-  {
-    title: "Grecja i jej plaże",
-    url: "/azja",
-    image: "/assets/Kaja.jpg",
-  },
-];
+const Home = async () => {
+  const travelBlogs = await fetchTravelBlogs();
+  console.log(travelBlogs);
 
-export default function Home() {
   return (
     <main className="">
-      <HomepageHero entries={entries} />
+      <Hero entries={travelBlogs} />
 
       <Section heading="Krótko o mnie">
         <About
@@ -30,4 +21,6 @@ export default function Home() {
       </Section>
     </main>
   );
-}
+};
+
+export default Home;
