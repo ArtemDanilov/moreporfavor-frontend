@@ -3,3 +3,43 @@ export type Links = {
   title: string;
   url: string;
 }[];
+
+export type ImageFromat = {
+  name: string;
+  hash: string;
+  mime: string;
+  path: string | null;
+  width: number;
+  height: number;
+  size: number;
+  url: string;
+};
+
+export type BlogEntries = {
+  id: number;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  content: string | null;
+  short_description: string;
+  image: {
+    id: number;
+    name: string;
+    url: string;
+    alternativeText: string | null;
+    caption: string | null;
+    width: number;
+    height: number;
+    size: number;
+    formats: {
+      thumbnail: ImageFromat;
+      small: ImageFromat;
+      medium: ImageFromat;
+      large: ImageFromat;
+    };
+  };
+  travel_category: {
+    category_name: string;
+  };
+};
