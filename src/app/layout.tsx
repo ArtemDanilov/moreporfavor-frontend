@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${abril.variable} ${nunito.variable}`}>
       <body>
-        {/* @ts-expect-error */}
+        {/* Typescript error with handling async server components */}
         <Header />
 
         <main className="mt-23">{children}</main>
