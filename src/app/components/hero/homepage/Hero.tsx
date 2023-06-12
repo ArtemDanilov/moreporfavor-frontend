@@ -24,10 +24,14 @@ const Hero = ({ entries }: { entries: BlogEntries[] }) => {
       loop={true}
       pagination={{ clickable: true }}
     >
-      {entries.map(({ id, title, image }) => {
+      {entries.map(({ id, title, slug, image, travel_category }) => {
         return (
           <SwiperSlide key={id}>
-            <Slide title={title} image={image.url} url={"#"} />
+            <Slide
+              title={title}
+              image={image.url}
+              url={`${travel_category.slug}/${slug}`}
+            />
           </SwiperSlide>
         );
       })}
