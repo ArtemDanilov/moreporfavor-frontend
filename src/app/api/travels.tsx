@@ -32,11 +32,16 @@ export const fetchTravelBlogs: () => Promise<BlogEntries[]> = async () => {
       return {
         id: post.id,
         title: attributes.title,
+        slug: attributes.slug,
         createdAt: attributes.createdAt,
         updatedAt: attributes.updatedAt,
         publishedAt: attributes.publishedAt,
         content: attributes.content,
         short_description: attributes.short_description,
+        travel_category: {
+          title: category.attributes.name,
+          slug: category.attributes.slug,
+        },
         image: {
           id: image.id,
           name: imageAttributes.name,
@@ -52,10 +57,6 @@ export const fetchTravelBlogs: () => Promise<BlogEntries[]> = async () => {
             medium: imageFormat("medium"),
             large: imageFormat("large"),
           },
-        },
-        travel_category: {
-          id: category.id,
-          category_name: category.attributes.category_name,
         },
       };
     });

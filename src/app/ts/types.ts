@@ -18,11 +18,16 @@ export type ImageFromat = {
 export type BlogEntries = {
   id: number;
   title: string;
+  slug: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   content: string | null;
   short_description: string;
+  travel_category: {
+    title: string;
+    slug: string;
+  };
   image: {
     id: number;
     name: string;
@@ -38,8 +43,5 @@ export type BlogEntries = {
       medium: ImageFromat;
       large: ImageFromat;
     };
-  };
-  travel_category: {
-    category_name: string;
   };
 };
