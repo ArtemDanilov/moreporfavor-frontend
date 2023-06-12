@@ -39,7 +39,7 @@ export const fetchTravelBlogs: () => Promise<BlogEntries[]> = async () => {
         content: attributes.content,
         short_description: attributes.short_description,
         travel_category: {
-          title: category.attributes.name,
+          title: category.attributes.title,
           slug: category.attributes.slug,
         },
         image: {

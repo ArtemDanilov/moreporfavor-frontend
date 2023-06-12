@@ -2,11 +2,11 @@ import Hero from "./components/hero/homepage/Hero";
 import About from "./components/sections/About";
 
 import Section from "./components/Section";
+import List from "./components/Blog-posts/List";
 import { fetchTravelBlogs } from "./api/travels";
 
 const Home = async () => {
   const travelBlogs = await fetchTravelBlogs();
-  console.log(travelBlogs);
 
   return (
     <main className="">
@@ -18,6 +18,10 @@ const Home = async () => {
           text="Lorem ipsum dolor sit amet consectetur. Blandit euismod cras orci enim gravida tellus ultricies tincidunt. Sit felis in vitae eu augue pretium nunc. Aliquam elit vitae congue aenean. Proin arcu vulputate sem purus morbi urna. Pulvinar suspendisse eget amet in id in aliquet."
           className="sm:flex sm:items-center sm:space-x-5 sm:max-w-[37.75rem] sm:text-left"
         />
+      </Section>
+
+      <Section heading="Najnowsze artykuły">
+        <List posts={travelBlogs} />
       </Section>
     </main>
   );
