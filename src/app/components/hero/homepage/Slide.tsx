@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { BlogEntries } from "../../../ts/types";
 import { Arrow } from "../../icons/Icons";
 
 const Slide = ({
