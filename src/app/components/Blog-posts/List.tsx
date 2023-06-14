@@ -15,9 +15,8 @@ const List = ({ posts }: { posts: BlogEntries[] }) => {
           slug,
           travel_category,
         }) => (
-          <li>
+          <li key={id}>
             <BlogPost
-              key={id}
               title={title}
               image={image}
               link={`${travel_category.slug}/${slug}`}

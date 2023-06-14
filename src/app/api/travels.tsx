@@ -1,9 +1,22 @@
 import { BlogEntries, ImageFromat } from "../ts/types";
 
-export const fetchTravelBlogs: () => Promise<BlogEntries[]> = async () => {
+export enum Category {
+  asia = "Azja",
+  europe = "Europa",
+  poland = "Polska",
+  inspirations = "Inspiracje",
+}
+
+const categoryFilter = "&filters[travel_category][title][$eq]=";
+
+export const fetchTravelBlogs: (
+  filter?: Category
+) => Promise<BlogEntries[]> = async (filter) => {
   try {
+    const filterValue = filter ? categoryFilter + filter : "";
+
     const req = await fetch(
-      `${process.env.NEXT_PUBLIC_APP_URL}/api/travels?populate=*`
+      `${process.env.NEXT_PUBLIC_APP_URL}/api/travels?populate=*${filterValue}`
     );
     const res = await req.json();
 
