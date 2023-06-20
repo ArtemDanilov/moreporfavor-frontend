@@ -15,6 +15,23 @@ export type ImageFromat = {
   url: string;
 };
 
+export type typeImage = {
+  id: number;
+  name: string;
+  url: string;
+  alternativeText: string | null;
+  caption: string | null;
+  width: number;
+  height: number;
+  size: number;
+  formats: {
+    thumbnail: ImageFromat;
+    small: ImageFromat;
+    medium: ImageFromat;
+    large: ImageFromat;
+  };
+};
+
 export type BlogEntries = {
   id: number;
   title: string;
@@ -28,20 +45,5 @@ export type BlogEntries = {
     title: string;
     slug: string;
   };
-  image: {
-    id: number;
-    name: string;
-    url: string;
-    alternativeText: string | null;
-    caption: string | null;
-    width: number;
-    height: number;
-    size: number;
-    formats: {
-      thumbnail: ImageFromat;
-      small: ImageFromat;
-      medium: ImageFromat;
-      large: ImageFromat;
-    };
-  };
+  image: typeImage;
 };
