@@ -32,6 +32,13 @@ export type typeImage = {
   };
 };
 
+export type Block = {
+  id: number;
+  __component: string;
+  title?: string;
+  content?: string;
+};
+
 export type BlogEntries = {
   id: number;
   title: string;
@@ -39,7 +46,7 @@ export type BlogEntries = {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  content: string | null;
+  content_builder: Block[];
   short_description: string;
   travel_category: {
     title: string;

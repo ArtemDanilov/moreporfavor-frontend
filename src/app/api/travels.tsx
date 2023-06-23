@@ -49,7 +49,7 @@ export const fetchTravelBlogs: (
         createdAt: attributes.createdAt,
         updatedAt: attributes.updatedAt,
         publishedAt: attributes.publishedAt,
-        content: attributes.content,
+        content_builder: attributes.content_builder,
         short_description: attributes.short_description,
         travel_category: {
           title: category.attributes.title,
