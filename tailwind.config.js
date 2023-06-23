@@ -32,12 +32,14 @@ module.exports = {
         "gray-400": "#494949",
       },
       spacing: {
+        15: "3.75rem", // 60px
         23: "5.625rem", // 90px
       },
       fontSize: {
         "6.25xl": "4rem", // 64px
       },
       maxWidth: {
+        "xs-2": "22.5rem", // 360px
         "8xl": "90rem", // 1440px
       },
       boxShadow: {
