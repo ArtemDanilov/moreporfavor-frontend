@@ -1,8 +1,8 @@
 import { BlogEntries } from "@/app/ts/types";
 
-import BlogPost from "./Item";
+import BlogPost from "./BlogPost";
 
-const List = ({ posts }: { posts: BlogEntries[] }) => {
+const BlogPosts = ({ posts }: { posts: BlogEntries[] }) => {
   return (
     <ul className="flex justify-center flex-wrap gap-6">
       {posts.map(
@@ -31,4 +31,4 @@ const List = ({ posts }: { posts: BlogEntries[] }) => {
   );
 };
 
-export default List;
+export default BlogPosts;

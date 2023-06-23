@@ -1,5 +1,5 @@
 import { Category, fetchTravelBlogs } from "@/app/api/travels";
-import Article from "@/app/components/Blog-posts/Article";
+import Article from "@/app/components/blog-posts/Article";
 
 export const generateStaticParams = async () => {
   const posts = await fetchTravelBlogs(Category.asia);
