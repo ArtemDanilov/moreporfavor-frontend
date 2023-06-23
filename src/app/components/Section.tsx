@@ -4,7 +4,7 @@ type Props = {
   className?: string;
 };
 
-const Section = ({ children, heading, className }: Props) => {
+const Section = ({ children, heading, className = "" }: Props) => {
   return (
     <section className={`container mb-8 last:mb-0 ${className}`}>
       {heading && (
