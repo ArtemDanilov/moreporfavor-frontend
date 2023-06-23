@@ -1,13 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require("tailwindcss/defaultTheme");
-
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  presets: [require("./tailwind.typography.js")],
   theme: {
     container: {
       center: true,
@@ -17,8 +16,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ["var(--font-Nunito)", ...defaultTheme.fontFamily.sans],
-      display: ["var(--font-Abril_Fatface)", "display"],
+      sans: "var(--font-Nunito), sans-serif",
+      display: "var(--font-Abril_Fatface), display",
     },
     extend: {
       colors: {

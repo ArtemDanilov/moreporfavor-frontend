@@ -11,7 +11,7 @@ const Content = ({ title, content }: ContentBlock) => {
   const parseContent = parse(content || "");
 
   return (
-    <article id={slug}>
+    <article id={slug} className="prose mb-5 last:mb-0 md:prose-md">
       <h2>{title}</h2>
 
       {parseContent}

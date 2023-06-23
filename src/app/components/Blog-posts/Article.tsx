@@ -28,10 +28,10 @@ const Article = async ({ slug, category }: ArticleProps) => {
       <Hero image={image} title={title} />
 
       <Section className="lg:flex flex-row-reverse gap-x-8">
-        <div className="relative flex-[30%] max-w-xs-2">
+        <div className="relative lg:flex-[30%] lg:max-w-xs-2">
           <ArticleNavigation titles={sectionTitles} />
         </div>
-        <article className="flex-[70%] max-w-3xl">
+        <article className="max-w-2xl lg:flex-[70%] lg:max-w-3xl">
           {content_builder.map(Blocks)}
         </article>
       </Section>
