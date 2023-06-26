@@ -5,11 +5,10 @@ import "swiper/css";
 import { Pagination, Parallax, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { BlogEntries } from "../../../ts/types";
-
 import Slide from "./Slide";
+import { typeGeneralData } from "@/app/ts/types";
 
-const Hero = ({ entries }: { entries: BlogEntries[] }) => {
+const Hero = ({ entries }: { entries: typeGeneralData[] }) => {
   return (
     <Swiper
       className="h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden"
@@ -24,13 +23,18 @@ const Hero = ({ entries }: { entries: BlogEntries[] }) => {
       loop={true}
       pagination={{ clickable: true }}
     >
-      {entries.map(({ id, title, slug, image, travel_category }) => {
+      {entries.map(({ id, attributes }) => {
+        const { title, image, slug, travel_category } = attributes;
+
+        const imageUrl = image.data.attributes.url;
+        const categorySlug = travel_category.data.attributes.slug;
+
         return (
           <SwiperSlide key={id}>
             <Slide
               title={title}
-              image={image.url}
-              url={`${travel_category.slug}/${slug}`}
+              image={imageUrl}
+              url={`${categorySlug}/${slug}`}
             />
           </SwiperSlide>
         );

@@ -2,15 +2,15 @@ import Hero from "./components/hero/homepage/Hero";
 import About from "./components/sections/About";
 
 import Section from "./components/Section";
-import List from "./components/blog-posts/BlogPosts";
-import { fetchTravelBlogs } from "./api/travels";
+import BlogPosts from "./components/blog-posts/BlogPosts";
+import { fetchAllPosts } from "./api/travels";
 
 const Home = async () => {
-  const travelBlogs = await fetchTravelBlogs();
+  const allPosts = await fetchAllPosts();
 
   return (
     <main className="">
-      <Hero entries={travelBlogs} />
+      <Hero entries={allPosts} />
 
       <Section heading="Krótko o mnie">
         <About
@@ -21,7 +21,7 @@ const Home = async () => {
       </Section>
 
       <Section heading="Najnowsze artykuły">
-        <List posts={travelBlogs} />
+        <BlogPosts posts={allPosts} />
       </Section>
     </main>
   );

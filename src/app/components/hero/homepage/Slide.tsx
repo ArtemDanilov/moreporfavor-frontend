@@ -2,15 +2,13 @@ import Link from "next/link";
 
 import { Arrow } from "../../icons/Icons";
 
-const Slide = ({
-  title,
-  image,
-  url,
-}: {
+type typeSlide = {
   title: string;
   image: string;
   url: string;
-}) => {
+};
+
+const Slide = ({ title, image, url }: typeSlide) => {
   return (
     <div
       className="w-full h-full bg-cover bg-center shadow-overlay flex flex-col justify-center p-4"

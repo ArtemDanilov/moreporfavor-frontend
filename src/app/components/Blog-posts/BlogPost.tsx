@@ -30,16 +30,17 @@ const BlogPost = ({
   };
   const convertedDate: string = date.toLocaleDateString("pl-PL", options);
 
-  const getImage = image.formats.small;
+  const img = image.data.attributes;
 
   return (
     <div className="max-w-[21.25rem] rounded-md overflow-hidden shadow-default lg:max-w-[25rem]">
       <Link href={link} className="block w-full h-56 overflow-hidden">
         <Image
-          src={`${process.env.NEXT_PUBLIC_APP_URL}${getImage.url}`}
-          width={getImage.width}
-          height={getImage.height}
-          alt={getImage.alternativeText || "Post image"}
+          src={`${process.env.NEXT_PUBLIC_APP_URL}${img.url}`}
+          width={400}
+          height={224}
+          loading="lazy"
+          alt={img.alternativeText || "Post image"}
           className="h-full object-cover object-center"
         />
       </Link>
