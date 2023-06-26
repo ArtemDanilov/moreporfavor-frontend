@@ -1,12 +1,15 @@
-export type Links = {
+export type typeLink = {
   id: number;
-  title: string;
-  url: string;
-}[];
+  attributes: {
+    link_name: string;
+    link_url: string;
+  };
+};
 
-export type ImageFromat = {
+export type ImageFormat = {
   name: string;
   hash: string;
+  ext: string;
   mime: string;
   path: string | null;
   width: number;
@@ -16,19 +19,28 @@ export type ImageFromat = {
 };
 
 export type typeImage = {
-  id: number;
-  name: string;
-  url: string;
-  alternativeText: string | null;
-  caption: string | null;
-  width: number;
-  height: number;
-  size: number;
-  formats: {
-    thumbnail: ImageFromat;
-    small: ImageFromat;
-    medium: ImageFromat;
-    large: ImageFromat;
+  data: {
+    id: number;
+    attributes: {
+      name: string;
+      alternativeText: string | null;
+      caption: string | null;
+      width: number;
+      height: number;
+      formats: {
+        thumbnail: ImageFormat;
+      };
+      hash: string;
+      ext: string;
+      mime: string;
+      size: number;
+      url: string;
+      previewUrl: string | null;
+      provider: string;
+      provider_metadata: string | null;
+      createdAt: string;
+      updatedAt: string;
+    };
   };
 };
 
@@ -37,20 +49,43 @@ export type Block = {
   __component: string;
   title?: string;
   content?: string;
+  images?: typeImage;
 };
 
-export type BlogEntries = {
-  id: number;
+type BlogPostAttr = {
   title: string;
   slug: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  content_builder: Block[];
   short_description: string;
-  travel_category: {
-    title: string;
-    slug: string;
-  };
   image: typeImage;
+};
+
+export type typeContentBuilder = {
+  id: number;
+  attributes: BlogPostAttr & {
+    content_builder: {
+      id: number;
+      __component: string;
+      title?: string;
+      content?: string;
+      images?: typeImage;
+    }[];
+  };
+};
+
+export type typeGeneralData = {
+  id: number;
+  attributes: BlogPostAttr & {
+    travel_category: {
+      data: {
+        id: number;
+        attributes: {
+          slug: string;
+          title: string;
+        };
+      };
+    };
+  };
 };

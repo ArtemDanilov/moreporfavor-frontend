@@ -1,28 +1,10 @@
-import { Links } from "../ts/types";
+import fetchData from "./api";
 
-export const fetchLinks: () => Promise<Links> = async () => {
-  try {
-    const req = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/links`);
-    const res = await req.json();
+import { typeLink } from "../ts/types";
 
-    const links: Links = res.data.map(
-      ({
-        id,
-        attributes,
-      }: {
-        id: number;
-        attributes: { link_name: string; link_url: string };
-      }) => {
-        return {
-          id: id,
-          title: attributes.link_name,
-          url: attributes.link_url,
-        };
-      }
-    );
+const COLLECTION = "links";
 
-    return links;
-  } catch (err) {
-    throw err;
-  }
-};
+export const fetchLinks: () => Promise<typeLink[]> = async () =>
+  fetchData(COLLECTION, {
+    fields: ["link_name", "link_url"],
+  });
