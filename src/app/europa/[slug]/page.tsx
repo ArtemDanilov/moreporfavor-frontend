@@ -1,11 +1,13 @@
-import { Category, fetchTravelBlogs } from "@/app/api/travels";
+import { fetchPostsByCategory } from "@/app/api/travels";
+import { Category } from "@/app/ts/enums";
+
 import Article from "@/app/components/blog-posts/Article";
 
 export const generateStaticParams = async () => {
-  const posts = await fetchTravelBlogs(Category.europe);
+  const posts = await fetchPostsByCategory(Category.europe);
 
-  return posts.map((post) => ({
-    slug: post.slug,
+  return posts.map(({ attributes }) => ({
+    slug: attributes.slug,
   }));
 };
 
@@ -13,7 +15,7 @@ const ArticleDetails = ({ params }: { params: { slug: string } }) => {
   return (
     <>
       {/* Typescript error with handling async server components */}
-      <Article slug={params.slug} category={Category.europe} />
+      <Article slug={params.slug} />
     </>
   );
 };

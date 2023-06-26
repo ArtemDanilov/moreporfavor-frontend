@@ -14,6 +14,8 @@ const imageStyle = {
 };
 
 const Hero = ({ image, title }: typeHero) => {
+  const img = image.data.attributes;
+
   return (
     <div className="relative h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden">
       <h1 className="absolute absolute-centered z-30 font-display font-normal text-5xl leading-tight text-white text-center">
@@ -21,8 +23,8 @@ const Hero = ({ image, title }: typeHero) => {
       </h1>
       <Image
         fill
-        src={`${process.env.NEXT_PUBLIC_APP_URL}${image.url}`}
-        alt={image.alternativeText || "image"}
+        src={`${process.env.NEXT_PUBLIC_APP_URL}${img.url}`}
+        alt={img.alternativeText || "image"}
         priority={true}
         style={imageStyle}
         className="object-cover object-center brightness-[.6]"
