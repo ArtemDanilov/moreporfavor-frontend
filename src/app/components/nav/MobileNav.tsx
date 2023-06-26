@@ -2,7 +2,7 @@
 
 import "./style.scss";
 
-import { Links } from "../../ts/types";
+import { typeLink } from "../../ts/types";
 
 import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -12,7 +12,7 @@ import { MenuButton } from "../icons/Icons";
 import SocialMedia from "../SocialMedia";
 import CloseBtn from "../CloseBtn";
 
-const Nav = ({ links }: { links: Links }) => {
+const Nav = ({ links }: { links: typeLink[] }) => {
   const [menu, setMenu] = useState<boolean>(false);
   const overlay = useRef<HTMLDivElement>(null!);
   const pathname = usePathname();
@@ -52,8 +52,10 @@ const Nav = ({ links }: { links: Links }) => {
         <CloseBtn onClick={closeMenu} />
 
         <ul className="absolute absolute-y-centered right-0 w-full p-5 space-y-4">
-          {links.map(({ id, title, url }) => {
-            const isActive = pathname.startsWith(url);
+          {links.map(({ id, attributes }) => {
+            const { link_name, link_url } = attributes;
+
+            const isActive = pathname.startsWith(link_url);
             const activeLink = isActive ? "text-green" : "text-black";
 
             return (
@@ -61,8 +63,8 @@ const Nav = ({ links }: { links: Links }) => {
                 key={id}
                 className={`${activeLink} font-sans font-bold text-5xl text-right`}
               >
-                <Link href={url} onClick={closeMenu}>
-                  {title}
+                <Link href={link_url} onClick={closeMenu}>
+                  {link_name}
                 </Link>
               </li>
             );
