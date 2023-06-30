@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import { typeImage } from "@/app/ts/types";
+import { singleImage } from "@/app/ts/types";
 import Decoration1 from "../../decorations/Decoration1";
 
 type typeHero = {
-  image: typeImage;
+  image: singleImage;
   title: string;
 };
 
@@ -14,7 +14,7 @@ const imageStyle = {
 };
 
 const Hero = ({ image, title }: typeHero) => {
-  const img = image.data.attributes;
+  const { url, alternativeText } = image.data.attributes;
 
   return (
     <div className="relative h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden">
@@ -23,8 +23,8 @@ const Hero = ({ image, title }: typeHero) => {
       </h1>
       <Image
         fill
-        src={`${process.env.NEXT_PUBLIC_APP_URL}${img.url}`}
-        alt={img.alternativeText || "image"}
+        src={`${process.env.NEXT_PUBLIC_APP_URL}${url}`}
+        alt={alternativeText || "image"}
         priority={true}
         style={imageStyle}
         className="object-cover object-center brightness-[.6]"
