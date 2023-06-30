@@ -19,20 +19,23 @@ module.exports = {
       sans: "var(--font-Nunito), sans-serif",
       display: "var(--font-Abril_Fatface), display",
     },
-    extend: {
-      colors: {
-        green: "#006C61",
-        orange: "#FF8B5C",
-        mocha: "#B4AA99",
+    colors: {
+      white: "#ffffff",
+      black: "#000000",
+      green: "#006C61",
+      orange: "#FF8B5C",
+      mocha: "#B4AA99",
 
-        "gray-100": "#F8F8F8",
-        "gray-200": "#D7D7D7",
-        "gray-300": "#5B5B5B",
-        "gray-400": "#494949",
-      },
+      "gray-100": "#F8F8F8",
+      "gray-200": "#D7D7D7",
+      "gray-300": "#5B5B5B",
+      "gray-400": "#494949",
+    },
+    extend: {
       spacing: {
         15: "3.75rem", // 60px
         23: "5.625rem", // 90px
+        55: "13.75rem", // 220px
       },
       fontSize: {
         "6.25xl": "4rem", // 64px

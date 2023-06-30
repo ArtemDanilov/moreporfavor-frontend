@@ -1,12 +1,15 @@
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
-
-import Blocks from "../Blocks";
 
 import { fetchPostContentBuilder } from "@/app/api/travels";
 import Hero from "../hero/article/Hero";
 import ArticleNavigation from "./ArticleNavigation";
 import Section from "../Section";
-import { Block } from "@/app/ts/types";
+import Blocks from "../Blocks";
+
+import { typeBlock } from "@/app/ts/types";
+
+const Lightbox = dynamic(() => import("../lightbox/Lightbox"), { ssr: false });
 
 const Article = async ({ slug }: { slug: string }) => {
   const [post] = await fetchPostContentBuilder(slug);
@@ -19,7 +22,7 @@ const Article = async ({ slug }: { slug: string }) => {
 
   const content = attributes.content_builder;
   const sectionTitles: string[] = content
-    .map((el: Block) => el.title || "")
+    .map((el: typeBlock) => el.title || "")
     .filter((title: string) => title !== "");
 
   return (
@@ -34,6 +37,8 @@ const Article = async ({ slug }: { slug: string }) => {
           {content.map(Blocks)}
         </article>
       </Section>
+
+      <Lightbox />
     </>
   );
 };

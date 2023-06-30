@@ -1,5 +1,11 @@
+import path from "path";
+import withPlaiceholder from "@plaiceholder/next";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /** @type {import('next').NextConfig} */
-const path = require("path");
 
 const nextConfig = {
   sassOptions: {
@@ -16,4 +22,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default withPlaiceholder(nextConfig);

@@ -18,38 +18,44 @@ export type ImageFormat = {
   url: string;
 };
 
-export type typeImage = {
-  data: {
-    id: number;
-    attributes: {
-      name: string;
-      alternativeText: string | null;
-      caption: string | null;
-      width: number;
-      height: number;
-      formats: {
-        thumbnail: ImageFormat;
-      };
-      hash: string;
-      ext: string;
-      mime: string;
-      size: number;
-      url: string;
-      previewUrl: string | null;
-      provider: string;
-      provider_metadata: string | null;
-      createdAt: string;
-      updatedAt: string;
+export interface ImageData {
+  id: number;
+  attributes: {
+    name: string;
+    alternativeText: string | null;
+    caption: string | null;
+    width: number;
+    height: number;
+    formats: {
+      thumbnail: ImageFormat;
     };
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: string | null;
+    provider: string;
+    provider_metadata: string | null;
+    createdAt: string;
+    updatedAt: string;
   };
+}
+
+export type singleImage = {
+  data: ImageData;
 };
 
-export type Block = {
+export type multipleImages = {
+  data: ImageData[];
+};
+
+export type typeBlock = {
   id: number;
   __component: string;
   title?: string;
   content?: string;
-  images?: typeImage;
+  images?: singleImage;
 };
 
 type BlogPostAttr = {
@@ -59,7 +65,7 @@ type BlogPostAttr = {
   updatedAt: string;
   publishedAt: string;
   short_description: string;
-  image: typeImage;
+  image: singleImage;
 };
 
 export type typeContentBuilder = {
@@ -70,7 +76,7 @@ export type typeContentBuilder = {
       __component: string;
       title?: string;
       content?: string;
-      images?: typeImage;
+      images?: singleImage;
     }[];
   };
 };
