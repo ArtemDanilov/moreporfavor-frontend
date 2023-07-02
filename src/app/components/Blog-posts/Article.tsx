@@ -9,6 +9,8 @@ import Blocks from "../Blocks";
 
 import { typeBlock } from "@/app/ts/types";
 
+import "./style.scss";
+
 const Lightbox = dynamic(() => import("../lightbox/Lightbox"), { ssr: false });
 
 const Article = async ({ slug }: { slug: string }) => {

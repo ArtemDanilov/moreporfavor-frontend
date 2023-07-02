@@ -1,0 +1,5 @@
+.article-anchors {
+  .active {
+    @apply text-green underline underline-offset-2;
+  }
+}
