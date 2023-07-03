@@ -2,9 +2,20 @@ import { typeGeneralData } from "@/app/ts/types";
 
 import BlogPost from "./BlogPost";
 
-const BlogPosts = ({ posts }: { posts: typeGeneralData[] }) => {
+type Posts = {
+  posts: typeGeneralData[];
+  direction?: "vertical" | "horizontal";
+};
+
+const BlogPosts = ({ posts, direction = "vertical" }: Posts) => {
+  const horizontal = direction === "horizontal";
+
   return (
-    <ul className="flex justify-center flex-wrap gap-6">
+    <ul
+      className={`flex flex-wrap gap-6 ${
+        horizontal ? "md:flex-nowrap md:flex-col" : "justify-center"
+      }`}
+    >
       {posts.map(({ id, attributes }) => {
         const {
           title,
@@ -26,6 +37,7 @@ const BlogPosts = ({ posts }: { posts: typeGeneralData[] }) => {
               category={category}
               publishDate={publishedAt}
               description={short_description}
+              direction={direction}
             />
           </li>
         );

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { fetchPostContentBuilder } from "@/app/api/travels";
 import Hero from "../hero/article/Hero";
 import ArticleNavigation from "./ArticleNavigation";
+import OtherPosts from "./OtherPosts";
 import Section from "../Section";
 import Blocks from "../Blocks";
 
@@ -20,7 +21,7 @@ const Article = async ({ slug }: { slug: string }) => {
     return notFound();
   }
 
-  const { attributes } = post;
+  const { id, attributes } = post;
 
   const content = attributes.content_builder;
   const sectionTitles: string[] = content
@@ -35,9 +36,16 @@ const Article = async ({ slug }: { slug: string }) => {
         <div className="relative lg:flex-[30%] lg:max-w-xs-2">
           <ArticleNavigation titles={sectionTitles} />
         </div>
-        <article className="max-w-2xl mb-8 md:mb-12 lg:flex-[70%] lg:max-w-3xl">
-          {content.map(Blocks)}
-        </article>
+        <div className="max-w-2xl mb-8 md:mb-12 lg:flex-[70%] lg:max-w-3xl">
+          <article className="mb-8 md:mb-12">{content.map(Blocks)}</article>
+
+          <section className="">
+            <h2 className="fonst-sans text-2xl font-bold text-green mb-5 md:text-4xl">
+              Zobacz inne artykuły
+            </h2>
+            <OtherPosts id={id} />
+          </section>
+        </div>
       </Section>
 
       <Lightbox />

@@ -50,6 +50,18 @@ export type multipleImages = {
   data: ImageData[];
 };
 
+export type TravelCategory = {
+  travel_category: {
+    data: {
+      id: number;
+      attributes: {
+        slug: string;
+        title: string;
+      };
+    };
+  };
+};
+
 export type typeBlock = {
   id: number;
   __component: string;
@@ -83,15 +95,14 @@ export type typeContentBuilder = {
 
 export type typeGeneralData = {
   id: number;
+  attributes: BlogPostAttr & TravelCategory;
+};
+
+export type OtherPosts = {
+  id: number;
   attributes: BlogPostAttr & {
-    travel_category: {
-      data: {
-        id: number;
-        attributes: {
-          slug: string;
-          title: string;
-        };
-      };
+    other_articles: {
+      data: typeGeneralData[];
     };
   };
 };

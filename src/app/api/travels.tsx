@@ -1,6 +1,6 @@
 import fetchData from "./api";
 
-import { typeContentBuilder, typeGeneralData } from "../ts/types";
+import { OtherPosts, typeContentBuilder, typeGeneralData } from "../ts/types";
 import { Category } from "../ts/enums";
 
 const COLLECTION = "travels";
@@ -33,6 +33,25 @@ export const fetchPostsByCategory: (
       },
     },
   });
+
+export const fetchOtherPosts: (id: number) => Promise<OtherPosts> = async (
+  id
+) => {
+  const POST = `${COLLECTION}/${id}`;
+
+  return fetchData(POST, {
+    populate: {
+      other_articles: {
+        populate: {
+          travel_category: {
+            fields: ["title", "slug"],
+          },
+          image: "*",
+        },
+      },
+    },
+  });
+};
 
 export const fetchPostContentBuilder: (
   slug: string

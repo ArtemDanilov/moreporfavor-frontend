@@ -11,6 +11,7 @@ type Post = {
     title: string;
     slug: string;
   };
+  direction?: "vertical" | "horizontal";
 };
 
 const BlogPost = ({
@@ -20,6 +21,7 @@ const BlogPost = ({
   image,
   link,
   category,
+  direction = "vertical",
 }: Post) => {
   const date: Date = new Date(publishDate);
   const options: Intl.DateTimeFormatOptions = {
@@ -32,9 +34,25 @@ const BlogPost = ({
 
   const img = image.data.attributes;
 
+  let postClasses: string = "";
+
+  const vertical = direction === "vertical";
+  const horizontal = direction === "horizontal";
+
+  if (vertical) {
+    postClasses = `max-w-[21.25rem] rounded-md overflow-hidden shadow-default lg:max-w-[25rem]`;
+  } else if (horizontal) {
+    postClasses = `max-w-[25rem] rounded-md overflow-hidden shadow-default md:flex md:block md:max-w-none md:w-full`;
+  }
+
   return (
-    <div className="max-w-[21.25rem] rounded-md overflow-hidden shadow-default lg:max-w-[25rem]">
-      <Link href={link} className="block w-full h-56 overflow-hidden">
+    <div className={postClasses}>
+      <Link
+        href={link}
+        className={`block w-full overflow-hidden h-56 ${
+          horizontal ? "md:h-auto md:max-h-72 md:flex-[40%] xl:h-56" : ""
+        }`}
+      >
         <Image
           src={`${process.env.NEXT_PUBLIC_APP_URL}${img.url}`}
           width={400}
@@ -45,7 +63,11 @@ const BlogPost = ({
         />
       </Link>
 
-      <div className="p-4 text-center">
+      <div
+        className={`p-4 text-center ${
+          horizontal ? "md:flex-[60%] md:text-left" : ""
+        }`}
+      >
         <p className="font-sans text-xs font-bold text-green mb-1">
           {convertedDate}
         </p>
