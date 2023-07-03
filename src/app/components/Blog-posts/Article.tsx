@@ -35,7 +35,7 @@ const Article = async ({ slug }: { slug: string }) => {
         <div className="relative lg:flex-[30%] lg:max-w-xs-2">
           <ArticleNavigation titles={sectionTitles} />
         </div>
-        <article className="max-w-2xl lg:flex-[70%] lg:max-w-3xl">
+        <article className="max-w-2xl mb-8 md:mb-12 lg:flex-[70%] lg:max-w-3xl">
           {content.map(Blocks)}
         </article>
       </Section>
