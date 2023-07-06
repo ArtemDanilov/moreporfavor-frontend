@@ -2,6 +2,7 @@ import { abril, nunito } from "./fonts";
 import "./style/globals.scss";
 
 import Header from "./layout/header";
+import Footer from "./layout/footer";
 
 export const metadata = {
   title: "Moreporfavor",
@@ -16,10 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${abril.variable} ${nunito.variable}`}>
       <body>
-        {/* Typescript error with handling async server components */}
         <Header />
-
         <main className="mt-23">{children}</main>
+        <Footer />
       </body>
     </html>
   );

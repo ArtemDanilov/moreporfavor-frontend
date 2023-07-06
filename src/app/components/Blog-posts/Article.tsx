@@ -39,7 +39,7 @@ const Article = async ({ slug }: { slug: string }) => {
         <div className="max-w-2xl mb-8 md:mb-12 lg:flex-[70%] lg:max-w-3xl">
           <article className="mb-8 md:mb-12">{content.map(Blocks)}</article>
 
-          <section className="">
+          <section>
             <h2 className="fonst-sans text-2xl font-bold text-green mb-5 md:text-4xl">
               Zobacz inne artykuły
             </h2>
