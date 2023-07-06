@@ -1,16 +1,10 @@
-type Props = {
-  width: number;
-  height: number;
-};
-
-const Logo = (props: Props) => {
+const Logo = ({ className = "" }: { className: string }) => {
   return (
     <svg
-      width={props.width.toString()}
-      height={props.height.toString()}
       viewBox="0 0 141 59"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <path
         d="M47.1178 6.32134C52.9034 12.5848 57.2457 14.3201 58.6155 24.7875C59.9852 35.255 59.6882 38.0306 50.8767 46.1698C38.4503 57.6482 20.5955 64.5483 7.4859 50.3559C0.0435742 38.6644 -6.10889 7.21555 10.931 2.92473C27.9709 -1.36608 32.7968 -1.49175 47.1178 6.32134Z"

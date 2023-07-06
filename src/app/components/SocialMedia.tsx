@@ -1,21 +1,21 @@
 import { Tiktok, Instagram } from "./icons/Icons";
 
-const SocialMedia = ({ classes }: { classes?: string }): JSX.Element => {
+const SocialMedia = ({ className }: { className?: string }): JSX.Element => {
   return (
-    <div className={`flex justify-end space-x-6 ${classes}`}>
+    <div className={className}>
       <a
         href="https://www.tiktok.com/@more.porfavor"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Tiktok width={32} height={36} />
+        <Tiktok className="w-[2em] h-[2.25em]" />
       </a>
       <a
         href="https://www.instagram.com/more.porfavor/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Instagram width={36} height={36} />
+        <Instagram className="w-[2em] h-[2em]" />
       </a>
     </div>
   );

@@ -1,72 +1,44 @@
-"use client";
+import Link from "next/link";
 
-import { useEffect } from "react";
-import Shape1 from "./shapes/Shape-1";
-import Shape2 from "./shapes/Shape-2";
-import Shape3 from "./shapes/Shape-3";
-import Shape4 from "./shapes/Shape-4";
-import Sunset from "./shapes/Sunset";
+import Background from "./Background";
+import { fetchLinks } from "@/app/api/links";
+import SocialMedia from "@/app/components/SocialMedia";
+import Section from "@/app/components/Section";
+import Logo from "@/app/components/Logo";
 
-const Footer = () => {
-  const parallax = (containers: NodeListOf<HTMLElement>) => {
-    containers.forEach((container) => {
-      const items = container.querySelectorAll("[data-item]");
-      const elementPosition = container.offsetTop - window.innerHeight;
-      const distanceFromTop = -elementPosition + window.scrollY;
-      const containerHeight = container.offsetHeight;
-
-      items.forEach((item) => {
-        const prlxItem = item as HTMLElement;
-        const SPEED: number = Number(prlxItem.dataset.speed);
-
-        let Y = Math.round(((-distanceFromTop + containerHeight) / 10) * SPEED);
-
-        if (distanceFromTop >= 0) {
-          prlxItem.style.transform = `translateY(${Y}px)`;
-        }
-      });
-    });
-  };
-
-  useEffect(() => {
-    const elements = document.querySelectorAll(
-      ".prlx-container"
-    ) as NodeListOf<HTMLElement>;
-
-    window.addEventListener("scroll", () => parallax(elements));
-  }, [parallax]);
+const Footer = async () => {
+  const links = await fetchLinks();
 
   return (
-    <footer className="prlx-container relative h-[100vw] overflow-hidden xl:h-[90vw] 2xl:h-[80vw]">
-      <div
-        data-item
-        data-speed="3"
-        className="w-full transition duration-[10ms] ease-linear absolute z-10 bottom-[67vw] md:bottom-[63vw]"
-      >
-        <Sunset className="w-full h-auto" />
-      </div>
-      <div
-        data-item
-        data-speed="2.6"
-        className="w-full transition duration-[10ms] ease-linear absolute z-20 bottom-[32vw] md:bottom-[28vw]"
-      >
-        <Shape4 className="w-full h-auto" />
-      </div>
-      <div
-        data-item
-        data-speed="2"
-        className="w-full transition duration-[10ms] ease-linear absolute z-30 bottom-[44vw] md:bottom-[40vw]"
-      >
-        <Shape3 className="w-full h-auto" />
-      </div>
-      <div
-        data-item
-        data-speed="1.6"
-        className="w-full transition duration-[10ms] ease-linear absolute z-40 bottom-[19vw] md:bottom-[15vw]"
-      >
-        <Shape2 className="w-full h-auto" />
-      </div>
-      <Shape1 className="w-[170vw] h-auto absolute z-50 bottom-0 -right-[13rem]" />
+    <footer className="prlx-container relative">
+      <Background />
+
+      <Section className="absolute absolute-x-centered bottom-0 z-[60] pb-3 md:pb-4">
+        <Logo className="w-[7.25rem] h-12 mb-4 md:w-[8.75rem] md:h-[3.625rem] md:mb-6 md:mx-auto" />
+
+        <div className="flex items-end justify-between mb-9 md:flex-col md:justify-center">
+          <ul className="md:space-x-4 md:mx-auto md:mb-8">
+            {links.map(({ id, attributes }) => {
+              const { link_name, link_url } = attributes;
+
+              return (
+                <li
+                  key={id}
+                  className="font-sans font-bold text-base text-white text-left md:text-xl md:inline"
+                >
+                  <Link href={link_url}>{link_name}</Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <SocialMedia className="flex justify-end space-x-4 text-xs text-white md:mx-auto" />
+        </div>
+
+        <p className="font-sans font-normal text-xs text-white text-center">
+          © 2023 Moreporfavor. All rights reserved.
+        </p>
+      </Section>
     </footer>
   );
 };
