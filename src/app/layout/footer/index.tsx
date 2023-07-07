@@ -10,14 +10,14 @@ const Footer = async () => {
   const links = await fetchLinks();
 
   return (
-    <footer className="prlx-container relative">
+    <footer className="prlx-container relative max-w-8xl mx-auto overflow-hidden 2xl:mb-8 2xl:rounded-xl">
       <Background />
 
       <Section className="absolute absolute-x-centered bottom-0 z-[60] pb-3 md:pb-4">
-        <Logo className="w-[7.25rem] h-12 mb-4 md:w-[8.75rem] md:h-[3.625rem] md:mb-6 md:mx-auto" />
+        <Logo className="w-[7.25rem] h-12 mb-4 md:w-[8.75rem] md:h-[3.625rem] md:mx-auto lg:mb-6" />
 
         <div className="flex items-end justify-between mb-9 md:flex-col md:justify-center">
-          <ul className="md:space-x-4 md:mx-auto md:mb-8">
+          <ul className="md:space-x-4 md:mx-auto md:mb-4 lg:mb-8">
             {links.map(({ id, attributes }) => {
               const { link_name, link_url } = attributes;
 
