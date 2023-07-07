@@ -10,10 +10,10 @@ const Footer = async () => {
   const links = await fetchLinks();
 
   return (
-    <footer className="prlx-container relative max-w-8xl mx-auto overflow-hidden 2xl:mb-8 2xl:rounded-xl">
+    <footer className="prlx-container relative max-w-8xl mx-auto overflow-hidden">
       <Background />
 
-      <Section className="absolute absolute-x-centered bottom-0 z-[60] pb-3 md:pb-4">
+      <div className="container absolute absolute-x-centered bottom-0 z-[60] pb-3 md:pb-8">
         <Logo className="w-[7.25rem] h-12 mb-4 md:w-[8.75rem] md:h-[3.625rem] md:mx-auto lg:mb-6" />
 
         <div className="flex items-end justify-between mb-9 md:flex-col md:justify-center">
@@ -35,10 +35,14 @@ const Footer = async () => {
           <SocialMedia className="flex justify-end space-x-4 text-xs text-white md:mx-auto" />
         </div>
 
-        <p className="font-sans font-normal text-xs text-white text-center">
+        <p className="font-sans font-normal text-xs text-white text-center md:hidden">
           © 2023 Moreporfavor. All rights reserved.
         </p>
-      </Section>
+      </div>
+
+      <p className="hidden font-sans font-normal text-xs text-black text-center py-4 md:block">
+        © 2023 Moreporfavor. All rights reserved.
+      </p>
     </footer>
   );
 };

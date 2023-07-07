@@ -39,7 +39,7 @@ const Background = () => {
   }, [parallax]);
 
   return (
-    <div className="relative h-[100vw] overflow-hidden md:h-[90vw] xl:h-[80vw] 2xl:h-[60rem]">
+    <div className="relative h-[100vw] overflow-hidden md:h-[90vw] md:rounded-xl xl:h-[80vw] 2xl:h-[60rem]">
       <div
         data-item
         data-speed="3"
