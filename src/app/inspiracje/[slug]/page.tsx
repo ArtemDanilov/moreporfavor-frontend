@@ -1,7 +1,7 @@
 import { fetchPostsByCategory } from "@/app/api/travels";
 import { Category } from "@/app/ts/enums";
 
-import Article from "@/app/components/blog-posts/Article";
+import Article from "@/app/components/blog_posts/Article";
 
 export const generateStaticParams = async () => {
   const posts = await fetchPostsByCategory(Category.inspirations);

@@ -2,7 +2,7 @@ import Hero from "./components/hero/homepage/Hero";
 import About from "./components/sections/About";
 
 import Section from "./components/Section";
-import BlogPosts from "./components/blog-posts/BlogPosts";
+import BlogPosts from "./components/blog_posts/BlogPosts";
 import { fetchAllPosts } from "./api/travels";
 
 const Home = async () => {
