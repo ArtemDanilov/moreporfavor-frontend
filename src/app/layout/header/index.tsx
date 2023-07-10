@@ -16,15 +16,15 @@ const Header = async () => {
         <h1>
           <Link href="/">
             <span className="sr-only">Moreporfavor Logo</span>
-            <Logo width={140} height={58} />
+            <Logo className="w-[7.25rem] h-12 md:w-[8.75rem] md:h-[3.625rem]" />
           </Link>
         </h1>
 
         <DesktopNav links={links} />
 
         <div className="flex items-center space-x-4">
-          <Magnifier width={24} height={24} />
-          <Sun width={24} height={24} />
+          <Magnifier className="w-6 h-6" />
+          <Sun className="w-6 h-6" />
           <MobileNav links={links} />
         </div>
       </div>

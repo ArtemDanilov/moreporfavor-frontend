@@ -30,7 +30,7 @@ const Slide = ({ title, image, url }: typeSlide) => {
         <span className="inline-block w-14 h-0.5 bg-white mr-3"></span>
         czytaj dalej
         <span className="inline-block ml-3">
-          <Arrow width={56} height={16} />
+          <Arrow className="w-14 h-4" />
         </span>
       </Link>
     </div>

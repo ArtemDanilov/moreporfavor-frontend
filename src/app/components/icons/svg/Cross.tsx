@@ -1,16 +1,10 @@
-type Props = {
-  width: number;
-  height: number;
-};
-
-const Cross = (props: Props): JSX.Element => {
+const Cross = ({ className = "" }: { className: string }) => {
   return (
     <svg
-      width={props.width.toString()}
-      height={props.height.toString()}
       viewBox="0 0 26 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <rect
         x="1.34662"

@@ -43,7 +43,7 @@ const Nav = ({ links }: { links: typeLink[] }) => {
 
       <button className="w-9 h-9" onClick={openMenu}>
         <span className="sr-only">Menu button</span>
-        <MenuButton width={36} height={18} />
+        <MenuButton className="w-9 h-[1.125rem]" />
       </button>
 
       <nav
@@ -72,7 +72,7 @@ const Nav = ({ links }: { links: typeLink[] }) => {
         </ul>
 
         <div className="absolute left-0 bottom-0 w-full bg-green py-4 px-5">
-          <SocialMedia classes="text-white" />
+          <SocialMedia className="flex justify-end space-x-6 text-white" />
         </div>
       </nav>
     </div>
