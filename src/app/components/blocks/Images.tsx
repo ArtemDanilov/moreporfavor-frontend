@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getPlaiceholder } from "plaiceholder";
+import getFullImagePath from "@/app/utils/image-url";
 
 import { multipleImages } from "@/app/ts/types";
 
@@ -7,7 +8,7 @@ const getImagesWithBase64 = async (images: multipleImages) =>
   Promise.all(
     images.data.map(async ({ attributes }) => {
       const { url } = attributes;
-      const src = `${process.env.NEXT_PUBLIC_APP_URL}${url}`;
+      const src = getFullImagePath(url);
 
       const buffer = await fetch(src).then(async (res) =>
         Buffer.from(await res.arrayBuffer())
@@ -32,7 +33,7 @@ const Images = async ({ images }: { images: multipleImages }) => {
       {allImages.map(
         ({ name, url, alternativeText, width, height, caption, base64 }) => {
           const imgCaption = caption ? `description: ${caption}` : "";
-          const path = `${process.env.NEXT_PUBLIC_APP_URL}${url}`;
+          const path = getFullImagePath(url);
 
           return (
             <a

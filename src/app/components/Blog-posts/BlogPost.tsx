@@ -1,3 +1,4 @@
+import getFullImagePath from "@/app/utils/image-url";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,6 +34,7 @@ const BlogPost = ({
   const convertedDate: string = date.toLocaleDateString("pl-PL", options);
 
   const img = image.data.attributes;
+  const imgPath = getFullImagePath(img.url);
 
   let postClasses: string = "";
 
@@ -54,7 +56,7 @@ const BlogPost = ({
         }`}
       >
         <Image
-          src={`${process.env.NEXT_PUBLIC_APP_URL}${img.url}`}
+          src={imgPath}
           width={400}
           height={224}
           loading="lazy"

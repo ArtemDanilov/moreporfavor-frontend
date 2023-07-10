@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Arrow } from "../../icons/Icons";
+import getFullImagePath from "@/app/utils/image-url";
 
 type typeSlide = {
   title: string;
@@ -9,11 +10,13 @@ type typeSlide = {
 };
 
 const Slide = ({ title, image, url }: typeSlide) => {
+  const imgPath = getFullImagePath(image);
+
   return (
     <div
       className="w-full h-full bg-cover bg-center shadow-overlay flex flex-col justify-center p-4"
       style={{
-        backgroundImage: `url('${process.env.NEXT_PUBLIC_APP_URL}${image}')`,
+        backgroundImage: `url('${imgPath}')`,
       }}
     >
       <h2
