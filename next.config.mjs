@@ -16,7 +16,12 @@ const nextConfig = {
       {
         protocol: "http",
         hostname: "127.0.0.1",
-        pathname: "/uploads/**",
+        pathname: "/upload/**",
+      },
+      {
+        protocol: "https",
+        hostname: "moreporfavor-images.s3.eu-central-1.amazonaws.com",
+        pathname: "/**",
       },
     ],
   },
