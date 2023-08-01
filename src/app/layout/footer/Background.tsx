@@ -36,7 +36,7 @@ const Background = () => {
     ) as NodeListOf<HTMLElement>;
 
     window.addEventListener("scroll", () => parallax(elements));
-  }, [parallax]);
+  }, []);
 
   return (
     <div className="relative h-[100vw] overflow-hidden md:h-[90vw] md:rounded-xl xl:h-[80vw] 2xl:h-[60rem]">
