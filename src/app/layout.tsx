@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en" className={`${abril.variable} ${nunito.variable}`}>
       <body>
         <Header />
-        <main className="mt-23">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
