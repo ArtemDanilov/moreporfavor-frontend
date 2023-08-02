@@ -19,7 +19,7 @@ const Hero = ({ image, title }: typeHero) => {
   const imgPath = getFullImagePath(url);
 
   return (
-    <div className="relative h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden">
+    <div className="relative h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden md:mb-12 xl:mb-24">
       <h1 className="absolute absolute-centered z-30 font-display font-normal text-5xl leading-tight text-white text-center">
         {title}
       </h1>
