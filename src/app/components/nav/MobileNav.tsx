@@ -19,6 +19,8 @@ const Nav = ({ links }: { links: typeLink[] }) => {
 
   const openMenu = () => {
     setMenu(true);
+
+    document.body.classList.add("overflow-hidden");
     overlay.current.classList.remove("hidden", "overlay-hidden");
     overlay.current.classList.add("overlay-active");
   };
@@ -26,6 +28,7 @@ const Nav = ({ links }: { links: typeLink[] }) => {
   const closeMenu = () => {
     setMenu(false);
 
+    document.body.classList.remove("overflow-hidden");
     overlay.current.classList.add("overlay-hidden");
     overlay.current.classList.remove("overlay-active");
     setTimeout(() => overlay.current.classList.add("hidden"), 300);
