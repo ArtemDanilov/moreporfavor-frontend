@@ -14,8 +14,8 @@ const Home = async () => {
     <>
       <Hero entries={allPosts} />
 
-      <div className="xl:flex xl:flex-row-reverse xl:justify-center xl:gap-x-4">
-        <aside className="space-y-8 mb-8 md:mb-12 xl:flex-[30%] xl:mb-0 xl:max-w-xs-2">
+      <div className="xl:container xl:flex xl:flex-row-reverse xl:justify-center xl:gap-x-4">
+        <aside className="sidebar space-y-8 mb-8 md:mb-12 xl:flex-[30%] xl:mb-0 xl:max-w-xs-2">
           <Section heading="Krótko o mnie">
             <About
               img="/assets/me.jpg"
@@ -25,7 +25,7 @@ const Home = async () => {
           </Section>
         </aside>
 
-        <div className="xl:flex-[70%] max-w-5xl">
+        <div className="main-content xl:flex-[70%]">
           <Section heading="Najnowsze artykuły">
             <BlogPosts posts={allPosts} />
           </Section>
