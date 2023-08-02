@@ -9,7 +9,7 @@ const Home = async () => {
   const allPosts = await fetchAllPosts();
 
   return (
-    <main className="">
+    <>
       <Hero entries={allPosts} />
 
       <Section heading="Krótko o mnie">
@@ -23,7 +23,7 @@ const Home = async () => {
       <Section heading="Najnowsze artykuły">
         <BlogPosts posts={allPosts} />
       </Section>
-    </main>
+    </>
   );
 };
 
