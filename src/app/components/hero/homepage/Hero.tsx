@@ -11,7 +11,7 @@ import { typeGeneralData } from "@/app/ts/types";
 const Hero = ({ entries }: { entries: typeGeneralData[] }) => {
   return (
     <Swiper
-      className="h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden"
+      className="h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden md:mb-12 xl:mb-24"
       modules={[Pagination, Parallax, Autoplay]}
       slidesPerView={1}
       parallax={true}
