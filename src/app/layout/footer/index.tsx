@@ -3,7 +3,6 @@ import Link from "next/link";
 import Background from "./Background";
 import { fetchLinks } from "@/app/api/links";
 import SocialMedia from "@/app/components/SocialMedia";
-import Section from "@/app/components/Section";
 import Logo from "@/app/components/Logo";
 
 const Footer = async () => {

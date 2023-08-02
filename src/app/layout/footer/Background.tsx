@@ -25,7 +25,6 @@ const Background = () => {
         if (distanceFromTop >= 0) {
           prlxItem.style.transform = `translateY(${Y}px)`;
         }
-        console.log(container.offsetTop);
       });
     });
   };
@@ -39,32 +38,32 @@ const Background = () => {
   }, []);
 
   return (
-    <div className="relative h-[100vw] overflow-hidden md:h-[90vw] md:rounded-xl xl:h-[80vw] 2xl:h-[60rem]">
+    <div className="relative h-[100vw] pt-8 overflow-hidden md:h-[90vw] md:pt-0 md:rounded-xl xl:h-[80vw] 2xl:h-[60rem]">
       <div
         data-item
         data-speed="3"
-        className="w-full transition duration-[10ms] ease-linear absolute z-10 bottom-[67vw] md:bottom-[42vw] xl:bottom-[36vw] 2xl:bottom-[24rem]"
+        className="w-full transition duration-[50ms] ease-linear absolute z-10 bottom-[67vw] md:bottom-[42vw] xl:bottom-[36vw] 2xl:bottom-[24rem]"
       >
         <Sunset className="w-full h-auto" />
       </div>
       <div
         data-item
         data-speed="2.6"
-        className="w-full transition duration-[10ms] ease-linear absolute z-20 bottom-[32vw] md:bottom-[10vw] xl:bottom-[6vw] 2xl:bottom-[-7rem]"
+        className="w-full transition duration-[50ms] ease-linear absolute z-20 bottom-[32vw] md:bottom-[10vw] xl:bottom-[6vw] 2xl:bottom-[-7rem]"
       >
         <Shape4 className="w-full h-auto" />
       </div>
       <div
         data-item
         data-speed="1.8"
-        className="w-full transition duration-[10ms] ease-linear absolute z-30 bottom-[44vw] md:bottom-[20vw] xl:bottom-[13vw] 2xl:bottom-[6rem]"
+        className="w-full transition duration-[50ms] ease-linear absolute z-30 bottom-[44vw] md:bottom-[20vw] xl:bottom-[13vw] 2xl:bottom-[6rem]"
       >
         <Shape3 className="w-full h-auto" />
       </div>
       <div
         data-item
         data-speed="1.2"
-        className="w-full transition duration-[10ms] ease-linear absolute z-40 bottom-[19vw] md:bottom-[-2vw] xl:bottom-[-8vw] 2xl:bottom-[-16rem]"
+        className="w-full transition duration-[50ms] ease-linear absolute z-40 bottom-[19vw] md:bottom-[-2vw] xl:bottom-[-8vw] 2xl:bottom-[-16rem]"
       >
         <Shape2 className="w-full h-auto" />
       </div>
