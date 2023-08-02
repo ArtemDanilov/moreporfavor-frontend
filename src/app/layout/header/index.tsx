@@ -11,7 +11,7 @@ const Header = async () => {
   const links = await fetchLinks();
 
   return (
-    <header className="fixed absolute-x-centered top-0 z-50 w-full bg-white">
+    <header className="fixed absolute-x-centered top-0 z-[9999] w-full bg-white">
       <div className="max-w-8xl mx-auto py-4 px-5 flex items-center justify-between xl:px-20">
         <h1>
           <Link href="/">
