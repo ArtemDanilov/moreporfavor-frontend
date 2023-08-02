@@ -1,0 +1,10 @@
+aside {
+  section,
+  .container {
+    @apply mb-0 xl:px-5 xl:py-6 xl:bg-gray-100 xl:rounded-lg;
+
+    h2 {
+      @apply xl:text-2xl xl:text-mocha xl:mb-4;
+    }
+  }
+}
