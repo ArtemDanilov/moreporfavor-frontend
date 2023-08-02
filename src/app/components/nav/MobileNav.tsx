@@ -40,7 +40,7 @@ const Nav = ({ links }: { links: typeLink[] }) => {
     <div className="lg:hidden">
       <div
         ref={overlay}
-        className="fixed inset-0 w-screen h-screen bg-black bg-opacity-70 transition duration-300 ease-out hidden"
+        className="fixed inset-0 w-screen h-screen transition duration-300 ease-out hidden md:bg-black md:bg-opacity-70"
         onClick={closeMenu}
       ></div>
 
