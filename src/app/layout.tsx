@@ -1,5 +1,6 @@
 import { abril, nunito } from "./fonts";
 import "./style/globals.scss";
+import "./helpers/preventTransition";
 
 import Header from "./layout/header";
 import Footer from "./layout/footer";
