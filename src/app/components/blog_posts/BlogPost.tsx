@@ -51,7 +51,7 @@ const BlogPost = ({
     <div className={postClasses}>
       <Link
         href={link}
-        className={`block w-full overflow-hidden h-56 ${
+        className={`block w-full overflow-hidden h-56 bg-gray-100 ${
           horizontal ? "md:h-auto md:max-h-72 md:flex-[40%] xl:h-56" : ""
         }`}
       >
