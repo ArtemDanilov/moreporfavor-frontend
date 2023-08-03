@@ -26,8 +26,11 @@ export interface ImageData {
     caption: string | null;
     width: number;
     height: number;
-    formats: {
+    formats?: {
       thumbnail: ImageFormat;
+      small: ImageFormat;
+      medium: ImageFormat;
+      large: ImageFormat;
     };
     hash: string;
     ext: string;
