@@ -1,17 +1,20 @@
+import { singleImage } from "@/app/ts/types";
 import Image from "next/image";
 
 type Props = {
-  img: string;
+  image: singleImage;
   text: string;
   className?: string;
 };
 
-const About = ({ img, text, className }: Props) => {
+const About = ({ image, text, className }: Props) => {
+  const img = image.data.attributes;
+
   return (
     <figure className={`max-w-sm mx-auto text-center ${className}`}>
       <div className="w-60 min-w-[15rem] h-60 rounded-full mx-auto mb-4 overflow-hidden">
         <Image
-          src={img}
+          src={img.url}
           alt="ja"
           width={240}
           height={240}

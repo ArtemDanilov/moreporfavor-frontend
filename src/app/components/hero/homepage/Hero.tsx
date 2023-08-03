@@ -6,9 +6,9 @@ import { Pagination, Parallax, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Slide from "./Slide";
-import { typeGeneralData } from "@/app/ts/types";
+import { typePromoTravel } from "@/app/ts/types";
 
-const Hero = ({ entries }: { entries: typeGeneralData[] }) => {
+const Hero = ({ entries }: { entries: typePromoTravel[] }) => {
   return (
     <Swiper
       className="h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden md:mb-12 xl:mb-24"
@@ -31,7 +31,7 @@ const Hero = ({ entries }: { entries: typeGeneralData[] }) => {
           <SwiperSlide key={id}>
             <Slide
               title={title}
-              image={image.data}
+              image={image}
               url={`${categorySlug}/${slug}`}
             />
           </SwiperSlide>

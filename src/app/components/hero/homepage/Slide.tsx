@@ -3,16 +3,16 @@ import Image from "next/image";
 
 import { Arrow } from "../../icons/Icons";
 
-import { ImageData } from "@/app/ts/types";
+import { singleImage } from "@/app/ts/types";
 
 type typeSlide = {
   title: string;
-  image: ImageData;
+  image: singleImage;
   url: string;
 };
 
 const Slide = ({ title, image, url }: typeSlide) => {
-  const img = image.attributes;
+  const img = image.data.attributes;
 
   return (
     <div className="relative w-full h-full bg-cover bg-center shadow-overlay flex flex-col justify-center p-4">
