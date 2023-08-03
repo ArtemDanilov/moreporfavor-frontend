@@ -15,6 +15,13 @@ const Home = async () => {
   const homepageData = homepage.attributes;
   const heroEntries = homepageData.promo_travels.data;
 
+  const sortedPosts = allPosts.sort(
+    (a, b) =>
+      Number(new Date(b.attributes.createdAt)) -
+      Number(new Date(a.attributes.createdAt))
+  );
+  const newestPosts = sortedPosts.slice(0, 2);
+
   return (
     <>
       <Hero entries={heroEntries} />
@@ -32,6 +39,9 @@ const Home = async () => {
 
         <div className="main-content xl:flex-[70%]">
           <Section heading="Najnowsze artykuły">
+            <BlogPosts posts={newestPosts} />
+          </Section>
+          <Section heading="Wszystkie artykuły">
             <BlogPosts posts={allPosts} />
           </Section>
         </div>
