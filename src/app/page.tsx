@@ -17,8 +17,8 @@ const Home = async () => {
 
   const sortedPosts = allPosts.sort(
     (a, b) =>
-      Number(new Date(b.attributes.createdAt)) -
-      Number(new Date(a.attributes.createdAt))
+      Number(new Date(b.attributes.post_created)) -
+      Number(new Date(a.attributes.post_created))
   );
   const newestPosts = sortedPosts.slice(0, 2);
 
