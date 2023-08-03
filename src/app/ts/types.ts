@@ -54,13 +54,11 @@ export type multipleImages = {
 };
 
 export type TravelCategory = {
-  travel_category: {
-    data: {
-      id: number;
-      attributes: {
-        slug: string;
-        title: string;
-      };
+  data: {
+    id: number;
+    attributes: {
+      slug: string;
+      title: string;
     };
   };
 };
@@ -98,7 +96,9 @@ export type typeContentBuilder = {
 
 export type typeGeneralData = {
   id: number;
-  attributes: BlogPostAttr & TravelCategory;
+  attributes: BlogPostAttr & {
+    travel_category: TravelCategory;
+  };
 };
 
 export type OtherPosts = {
@@ -106,6 +106,31 @@ export type OtherPosts = {
   attributes: BlogPostAttr & {
     other_articles: {
       data: typeGeneralData[];
+    };
+  };
+};
+
+export type typePromoTravel = {
+  id: number;
+  attributes: {
+    title: string;
+    slug: string;
+    image: singleImage;
+    travel_category: TravelCategory;
+  };
+};
+
+export type typeHomepage = {
+  id: number;
+  attributes: {
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    author_title: string;
+    author_image: singleImage;
+    bio: string;
+    promo_travels: {
+      data: typePromoTravel[];
     };
   };
 };
