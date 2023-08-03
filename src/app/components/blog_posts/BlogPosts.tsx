@@ -21,12 +21,14 @@ const BlogPosts = ({ posts, direction = "vertical" }: Posts) => {
           title,
           image,
           publishedAt,
+          post_created,
           short_description,
           slug,
           travel_category,
         } = attributes;
 
         const category = travel_category.data.attributes;
+        const published = post_created ?? publishedAt;
 
         return (
           <li key={id}>
@@ -35,7 +37,7 @@ const BlogPosts = ({ posts, direction = "vertical" }: Posts) => {
               image={image}
               link={`${category.slug}/${slug}`}
               category={category}
-              publishDate={publishedAt}
+              publishDate={published}
               description={short_description}
               direction={direction}
             />

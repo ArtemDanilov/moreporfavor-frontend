@@ -79,6 +79,7 @@ type BlogPostAttr = {
   publishedAt: string;
   short_description: string;
   image: singleImage;
+  post_created: string;
 };
 
 export type typeContentBuilder = {
