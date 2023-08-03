@@ -1,33 +1,40 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { Arrow } from "../../icons/Icons";
-import getFullImagePath from "@/app/utils/image-url";
+
+import { ImageData } from "@/app/ts/types";
 
 type typeSlide = {
   title: string;
-  image: string;
+  image: ImageData;
   url: string;
 };
 
 const Slide = ({ title, image, url }: typeSlide) => {
-  const imgPath = getFullImagePath(image);
+  const img = image.attributes;
 
   return (
-    <div
-      className="w-full h-full bg-cover bg-center shadow-overlay flex flex-col justify-center p-4"
-      style={{
-        backgroundImage: `url('${imgPath}')`,
-      }}
-    >
+    <div className="relative w-full h-full bg-cover bg-center shadow-overlay flex flex-col justify-center p-4">
+      <div className="absolute top-0 left-0 w-full h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden md:mb-12 xl:mb-24">
+        <Image
+          fill
+          src={img.url}
+          alt={img.alternativeText || "image"}
+          priority={true}
+          className="object-cover object-center brightness-[.6]"
+        ></Image>
+      </div>
+
       <h2
         data-swiper-parallax="-300"
-        className="font-display text-5xl leading-tight text-center text-white mb-6"
+        className="font-display text-5xl leading-tight text-center text-white mb-6 z-10"
       >
         {title}
       </h2>
       <Link
         href={url}
-        className="font-sans text-base font-normal text-center text-white flex items-center justify-center"
+        className="font-sans text-base font-normal text-center text-white flex items-center justify-center z-10"
         data-swiper-parallax="-400"
       >
         <span className="inline-block w-14 h-0.5 bg-white mr-3"></span>

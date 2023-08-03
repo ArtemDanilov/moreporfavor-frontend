@@ -25,15 +25,13 @@ const Hero = ({ entries }: { entries: typeGeneralData[] }) => {
     >
       {entries.map(({ id, attributes }) => {
         const { title, image, slug, travel_category } = attributes;
-
-        const imageUrl = image.data.attributes.url;
         const categorySlug = travel_category.data.attributes.slug;
 
         return (
           <SwiperSlide key={id}>
             <Slide
               title={title}
-              image={imageUrl}
+              image={image.data}
               url={`${categorySlug}/${slug}`}
             />
           </SwiperSlide>
