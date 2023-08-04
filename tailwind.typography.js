@@ -24,7 +24,7 @@ module.exports = {
             },
 
             h3: {
-              fontSize: "1.375rem",
+              fontSize: "1.25rem",
               marginBottom: theme("margin.3"),
               color: theme("colors.black"),
             },
@@ -74,11 +74,11 @@ module.exports = {
             },
 
             h3: {
-              fontSize: "1.875rem",
+              fontSize: "1.5rem",
             },
 
             h4: {
-              fontSize: "1.5rem",
+              fontSize: "1.25rem",
             },
 
             p: {
