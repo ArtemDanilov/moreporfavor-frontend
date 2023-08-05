@@ -31,7 +31,7 @@ const Article = async ({ slug }: { slug: string }) => {
     <>
       <Hero image={attributes.image} title={attributes.title} />
 
-      {content.length && (
+      {content.length !== 0 && (
         <Section className="lg:flex flex-row-reverse gap-x-8">
           <div className="relative lg:flex-[30%] lg:max-w-xs-2">
             <ArticleNavigation titles={titles} />

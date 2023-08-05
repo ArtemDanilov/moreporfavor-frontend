@@ -18,7 +18,7 @@ const OtherPosts = async ({ id, title, className }: Props) => {
 
   return (
     <>
-      {otherPosts && (
+      {otherPosts.length !== 0 && (
         <Section>
           <div className={className}>
             {title && (
