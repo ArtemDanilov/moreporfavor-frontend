@@ -3,43 +3,49 @@
 import { useEffect } from "react";
 import slugify from "slugify";
 
-const ArticleNavigation = ({ titles }: { titles: string[] }) => {
+type Props = {
+  tag: string;
+  text: string;
+};
+
+const slugifyOptions = { lower: true };
+const scrollMargin = 200;
+
+const ArticleNavigation = ({ titles }: { titles: Props[] }) => {
   useEffect(() => {
-    const articleSegments = document.querySelectorAll("article[id]");
+    const headings = document.querySelectorAll("article h2, article h3");
     const listOfAnchors = document.querySelectorAll(".article-anchors li");
-    const scrollMargin = 200;
     let current: Element | null;
 
-    const clickHandler = () => {
-      listOfAnchors.forEach((anchor) => {
-        const link = anchor.lastChild as HTMLElement;
+    const clickHandler = (e: Event) => {
+      e.preventDefault();
+      const target = e.target as HTMLElement;
 
-        link?.addEventListener("click", (e) => {
-          e.preventDefault();
+      if (target.tagName === "A") {
+        const targetId = target.getAttribute("href")?.slice(1);
+        if (targetId) {
+          const targetElement = [...headings].find(
+            (el) => slugify(el.textContent || "", slugifyOptions) === targetId
+          );
 
-          const targetId = link.getAttribute("href")?.slice(1);
+          if (targetElement) {
+            const targetRect = targetElement.getBoundingClientRect();
+            const scrollOffset = targetRect.top + window.scrollY;
+            const scrollToPosition = scrollOffset - scrollMargin;
 
-          if (targetId) {
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-              const targetRect = targetElement.getBoundingClientRect();
-              const scrollOffset = targetRect.top + window.scrollY;
-              const scrollToPosition = scrollOffset - scrollMargin;
-
-              window.scrollTo({ top: scrollToPosition, behavior: "smooth" });
-            }
+            window.scrollTo({ top: scrollToPosition, behavior: "smooth" });
           }
-        });
-      });
+        }
+      }
     };
 
     const observerHandler = (entries: Array<IntersectionObserverEntry>) => {
       entries.forEach((entry) => {
         const { isIntersecting, target } = entry;
-        const id = target.getAttribute("id");
+        const slug = slugify(target.textContent || "", slugifyOptions);
+
         const anchorItem = document.querySelector(
-          `.article-anchors li > a[href='#${id}']`
+          `.article-anchors li > a[href='#${slug}']`
         );
 
         listOfAnchors.forEach((anchor) => anchor.classList.remove("active"));
@@ -56,12 +62,17 @@ const ArticleNavigation = ({ titles }: { titles: string[] }) => {
     };
 
     const observer = new IntersectionObserver(observerHandler, {
-      rootMargin: "-30% 0px -70% 0px",
+      rootMargin: "-22% 0px -70% 0px",
       threshold: 0,
     });
 
-    articleSegments.forEach((el) => observer.observe(el));
-    clickHandler();
+    headings.forEach((el) => observer.observe(el));
+    document.addEventListener("click", clickHandler);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("click", clickHandler);
+    };
   }, []);
 
   return (
@@ -70,16 +81,20 @@ const ArticleNavigation = ({ titles }: { titles: string[] }) => {
         Spis treści
       </h2>
 
-      <ul className="article-anchors list-disc pl-5">
-        {titles.map((title, index) => {
-          const slug = slugify(title, { lower: true });
+      <ul className="article-anchors pl-5">
+        {titles.map(({ tag, text }, index) => {
+          const slug = slugify(text, slugifyOptions);
 
           return (
             <li
               key={index}
-              className="font-sans text-base font-normal text-black md:text-lg"
+              className={`relative font-sans text-base font-normal text-black ${
+                tag === "h3"
+                  ? "pl-3 md:pl-4 before:content-['-'] before:absolute before:-left-0.5"
+                  : "md:text-lg before:content-['•'] before:absolute before:-top-px before:-left-4"
+              }`}
             >
-              <a href={`#${slug}`}>{title}</a>
+              <a href={`#${slug}`}>{text}</a>
             </li>
           );
         })}
