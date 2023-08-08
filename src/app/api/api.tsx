@@ -16,7 +16,9 @@ const fetchData = async (collection: string, queries: {}): Promise<any> => {
       headers: {
         Authorization: `Bearer ${TOKEN}`,
       },
-      cache: "no-store",
+      next: {
+        revalidate: 1,
+      },
     });
 
     const res = await req.json();

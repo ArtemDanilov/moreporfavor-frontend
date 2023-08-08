@@ -1,4 +1,4 @@
-import { Cross } from "./icons/Icons";
+import { Cross } from "./svg/Icons";
 
 const CloseBtn = ({ onClick }: { onClick: () => void }): JSX.Element => {
   return (

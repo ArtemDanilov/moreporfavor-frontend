@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { MenuButton } from "../icons/Icons";
+import { MenuButton } from "../svg/Icons";
 import SocialMedia from "../SocialMedia";
 import CloseBtn from "../CloseBtn";
 

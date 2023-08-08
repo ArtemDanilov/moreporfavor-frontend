@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { fetchLinks } from "../../api/links";
 
-import { Magnifier, Sun } from "@/app/components/icons/Icons";
+import { Magnifier, Sun } from "@/app/components/svg/Icons";
 import Logo from "@/app/components/Logo";
 import MobileNav from "@/app/components/nav/MobileNav";
 import DesktopNav from "@/app/components/nav/DesktopNav";

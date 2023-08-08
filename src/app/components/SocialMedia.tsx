@@ -1,4 +1,4 @@
-import { Tiktok, Instagram } from "./icons/Icons";
+import { Tiktok, Instagram } from "./svg/Icons";
 
 const SocialMedia = ({ className }: { className?: string }): JSX.Element => {
   return (

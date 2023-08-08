@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Arrow } from "../../icons/Icons";
+import { Arrow } from "../../svg/Icons";
 
 import { singleImage } from "@/app/ts/types";
 
