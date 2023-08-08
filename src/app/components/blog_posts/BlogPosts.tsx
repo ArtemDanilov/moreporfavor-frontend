@@ -35,7 +35,7 @@ const BlogPosts = ({ posts, direction = "vertical" }: Posts) => {
             <BlogPost
               title={title}
               image={image}
-              link={`${category.slug}/${slug}`}
+              link={`/${category.slug}/${slug}`}
               category={category}
               publishDate={published}
               description={short_description}
