@@ -3,7 +3,11 @@ const qs = require("qs");
 const HOST = process.env.NEXT_PUBLIC_API_URL;
 const TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
-const fetchData = async (collection: string, queries: {}): Promise<any> => {
+const fetchData: (
+  collection: string,
+  queries: object,
+  fullData?: boolean
+) => Promise<any> = async (collection, queries = {}, fullData = false) => {
   try {
     const query = qs.stringify(queries, {
       encodeValuesOnly: true,
@@ -23,7 +27,7 @@ const fetchData = async (collection: string, queries: {}): Promise<any> => {
 
     const res = await req.json();
 
-    return res.data;
+    return fullData ? res : res.data;
   } catch (err) {
     throw err;
   }
