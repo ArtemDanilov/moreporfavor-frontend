@@ -1,21 +1,18 @@
-import { fetchPostsByCategory } from "../api/travels";
-import { Category } from "@/app/ts/enums";
+import CategoryPage from "../components/CategoryPage";
+import { Category } from "../ts/enums";
 
-import Section from "../components/Section";
-import Hero from "../components/hero/category/Hero";
-import BlogPosts from "../components/blog_posts/BlogPosts";
-
-const Azja = async () => {
-  const posts = await fetchPostsByCategory(Category.asia);
-
+const Azja = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
   return (
-    <>
-      <Hero title="Azja" frame="oriental" />
-
-      <Section>
-        <BlogPosts posts={posts} />
-      </Section>
-    </>
+    <CategoryPage
+      title="Azja"
+      category={Category.asia}
+      currentPage={searchParams.page}
+      titleFrame="oriental"
+    />
   );
 };
 

@@ -1,3 +1,14 @@
+export type typeFrame = "oriental" | "vintage" | "polish-folklor" | "branches";
+
+export type Pagination = {
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
+};
+
 export type typeLink = {
   id: number;
   attributes: {

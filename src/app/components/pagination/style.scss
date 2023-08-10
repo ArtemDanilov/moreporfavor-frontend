@@ -1,0 +1,14 @@
+.pagination {
+  .next,
+  .prev {
+    @apply px-2 py-1 text-green;
+
+    &.disabled {
+      @apply text-gray-200 pointer-events-none;
+    }
+  }
+
+  .arrow {
+    @apply w-8 h-4;
+  }
+}

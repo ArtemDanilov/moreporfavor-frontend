@@ -1,9 +1,10 @@
 import Section from "../../Section";
 import { Vintage, Oriental, PolishFolklor, Branches } from "../../svg/Frames";
+import { typeFrame } from "@/app/ts/types";
 
 type Props = {
   title: string;
-  frame?: "oriental" | "vintage" | "polish-folklor" | "branches";
+  frame?: typeFrame;
 };
 
 const getFrame = (frame: Props["frame"]) => {
