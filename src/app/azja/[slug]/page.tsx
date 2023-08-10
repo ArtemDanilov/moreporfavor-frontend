@@ -6,7 +6,7 @@ import Article from "@/app/components/blog_posts/Article";
 export const generateStaticParams = async () => {
   const posts = await fetchPostsByCategory(Category.asia);
 
-  return posts.map(({ attributes }) => ({
+  return posts.data.map(({ attributes }) => ({
     slug: attributes.slug,
   }));
 };

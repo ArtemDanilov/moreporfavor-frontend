@@ -95,18 +95,23 @@ export type typeContentBuilder = {
   };
 };
 
-export type typeGeneralData = {
+export type typePost = {
   id: number;
   attributes: BlogPostAttr & {
     travel_category: TravelCategory;
   };
 };
 
+export type typePosts = {
+  data: typePost[];
+  meta: Pagination;
+};
+
 export type OtherPosts = {
   id: number;
   attributes: BlogPostAttr & {
     other_articles: {
-      data: typeGeneralData[];
+      data: typePost[];
     };
   };
 };

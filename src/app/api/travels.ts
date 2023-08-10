@@ -1,11 +1,16 @@
 import fetchData from "./api";
 
-import { OtherPosts, typeContentBuilder, typeGeneralData } from "../ts/types";
+import {
+  OtherPosts,
+  typeContentBuilder,
+  typePosts,
+  typePost,
+} from "../ts/types";
 import { Category } from "../ts/enums";
 
 const COLLECTION = "travels";
 
-export const fetchAllPosts: () => Promise<typeGeneralData[]> = async () =>
+export const fetchAllPosts: () => Promise<typePost[]> = async () =>
   fetchData(COLLECTION, {
     populate: {
       travel_category: {
@@ -16,23 +21,37 @@ export const fetchAllPosts: () => Promise<typeGeneralData[]> = async () =>
   });
 
 export const fetchPostsByCategory: (
-  category: Category
-) => Promise<typeGeneralData[]> = async (category) =>
-  fetchData(COLLECTION, {
-    populate: {
-      travel_category: {
-        fields: ["title", "slug"],
+  category: Category,
+  paginationPage?: number,
+  paginationSize?: number
+) => Promise<typePosts> = async (
+  category,
+  paginationPage = 1,
+  paginationSize = 25
+) =>
+  fetchData(
+    COLLECTION,
+    {
+      populate: {
+        travel_category: {
+          fields: ["title", "slug"],
+        },
+        image: "*",
       },
-      image: "*",
-    },
-    filters: {
-      travel_category: {
-        slug: {
-          $eq: category,
+      filters: {
+        travel_category: {
+          slug: {
+            $eq: category,
+          },
         },
       },
+      pagination: {
+        page: paginationPage,
+        pageSize: paginationSize,
+      },
     },
-  });
+    true
+  );
 
 export const fetchOtherPosts: (id: number) => Promise<OtherPosts> = async (
   id

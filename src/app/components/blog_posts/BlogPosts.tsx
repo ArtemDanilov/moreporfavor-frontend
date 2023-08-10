@@ -1,9 +1,9 @@
-import { typeGeneralData } from "@/app/ts/types";
+import { typePost } from "@/app/ts/types";
 
 import BlogPost from "./BlogPost";
 
 type Posts = {
-  posts: typeGeneralData[];
+  posts: typePost[];
   direction?: "vertical" | "horizontal";
 };
 
