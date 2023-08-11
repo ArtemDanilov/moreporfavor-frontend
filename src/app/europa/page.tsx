@@ -11,7 +11,7 @@ const Europa = async ({
       title="Europa"
       category={Category.europe}
       currentPage={searchParams.page}
-      titleFrame="oriental"
+      titleFrame="vintage"
     />
   );
 };
