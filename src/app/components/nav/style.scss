@@ -5,3 +5,7 @@
 .overlay-hidden {
   animation: fade-out 300ms forwards;
 }
+
+.transition-prevent {
+  @apply transition-none #{!important};
+}

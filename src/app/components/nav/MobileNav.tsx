@@ -4,7 +4,7 @@ import "./style.scss";
 
 import { typeLink } from "../../ts/types";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -15,6 +15,7 @@ import CloseBtn from "../CloseBtn";
 const Nav = ({ links }: { links: typeLink[] }) => {
   const [menu, setMenu] = useState<boolean>(false);
   const overlay = useRef<HTMLDivElement>(null!);
+  const navigation = useRef<HTMLDivElement>(null!);
   const pathname = usePathname();
 
   const openMenu = () => {
@@ -36,6 +37,10 @@ const Nav = ({ links }: { links: typeLink[] }) => {
 
   const menuClass: string = menu ? "translate-x-0" : "translate-x-full";
 
+  useEffect(() => {
+    navigation.current.classList.remove("transition-prevent");
+  }, [navigation, menu]);
+
   return (
     <div className="lg:hidden">
       <div
@@ -50,7 +55,8 @@ const Nav = ({ links }: { links: typeLink[] }) => {
       </button>
 
       <nav
-        className={`fixed top-0 right-0 w-screen h-screen bg-white transition duration-300 ease-out md:w-1/2 ${menuClass}`}
+        ref={navigation}
+        className={`fixed top-0 right-0 w-screen h-screen bg-white transition transition-prevent duration-300 ease-out md:w-1/2 ${menuClass}`}
       >
         <CloseBtn onClick={closeMenu} />
 
