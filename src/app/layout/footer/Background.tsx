@@ -38,7 +38,7 @@ const Background = () => {
   }, []);
 
   return (
-    <div className="relative h-[100vw] pt-8 overflow-hidden md:h-[90vw] md:pt-0 md:rounded-xl xl:h-[80vw] 2xl:h-[60rem]">
+    <div className="relative h-[100vw] overflow-hidden md:h-[90vw] md:pt-0 md:rounded-xl xl:h-[80vw] 2xl:h-[60rem]">
       <div
         data-item
         data-speed="3"
