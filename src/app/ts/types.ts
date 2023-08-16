@@ -9,12 +9,10 @@ export type Pagination = {
   };
 };
 
-export type typeLink = {
-  id: number;
-  attributes: {
-    link_name: string;
-    link_url: string;
-  };
+export type TLink = {
+  id: string;
+  title: string;
+  slug: string;
 };
 
 export type ImageFormat = {

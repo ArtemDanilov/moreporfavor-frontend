@@ -1,14 +1,15 @@
 import Link from "next/link";
 
-import { fetchLinks } from "../../api/links";
+import readFile from "@/app/helpers/readFile";
 
 import { Magnifier, Sun } from "@/app/components/svg/Icons";
 import Logo from "@/app/components/Logo";
 import MobileNav from "@/app/components/nav/MobileNav";
 import DesktopNav from "@/app/components/nav/DesktopNav";
 
-const Header = async () => {
-  const links = await fetchLinks();
+const Header = () => {
+  const navigation = readFile("navigation");
+  console.log(navigation);
 
   return (
     <header className="fixed left-0 top-0 z-[9999] w-full bg-white">
@@ -20,12 +21,12 @@ const Header = async () => {
           </Link>
         </h1>
 
-        <DesktopNav links={links} />
+        <DesktopNav links={navigation} />
 
         <div className="flex items-center space-x-4">
           <Magnifier className="w-6 h-6" />
           <Sun className="w-6 h-6" />
-          <MobileNav links={links} />
+          <MobileNav links={navigation} />
         </div>
       </div>
     </header>

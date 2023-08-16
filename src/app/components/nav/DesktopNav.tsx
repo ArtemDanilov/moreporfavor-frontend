@@ -1,22 +1,19 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-
-import { typeLink } from "../../ts/types";
-
 import Link from "next/link";
 
-const Nav = ({ links }: { links: typeLink[] }) => {
+import { TLink } from "../../ts/types";
+
+const Nav = ({ links }: { links: TLink[] }) => {
   const pathname = usePathname();
 
   return (
     <div className="hidden lg:block">
       <nav>
         <ul className="flex">
-          {links.map(({ id, attributes }) => {
-            const { link_name, link_url } = attributes;
-
-            const isActive = pathname.startsWith(link_url);
+          {links.map(({ id, title, slug }) => {
+            const isActive = pathname.startsWith(slug);
             const activeLink = isActive ? "text-green" : "text-black";
 
             return (
@@ -24,7 +21,7 @@ const Nav = ({ links }: { links: typeLink[] }) => {
                 key={id}
                 className={`${activeLink} font-sans text-base font-normal py-1 px-2`}
               >
-                <Link href={link_url}>{link_name}</Link>
+                <Link href={`/${slug}`}>{title}</Link>
               </li>
             );
           })}
