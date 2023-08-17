@@ -1,15 +1,18 @@
 import Link from "next/link";
 
-import readFile from "@/app/helpers/readFile";
+import { getAllEntries } from "@/app/helpers/getEntries";
 
 import { Magnifier, Sun } from "@/app/components/svg/Icons";
 import Logo from "@/app/components/Logo";
 import MobileNav from "@/app/components/nav/MobileNav";
 import DesktopNav from "@/app/components/nav/DesktopNav";
 
-const Header = () => {
-  const navigation = readFile("navigation");
-  console.log(navigation);
+const Header = async () => {
+  const navigation = await getAllEntries("navigation");
+
+  if (!navigation) {
+    return;
+  }
 
   return (
     <header className="fixed left-0 top-0 z-[9999] w-full bg-white">

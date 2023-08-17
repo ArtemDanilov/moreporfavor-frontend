@@ -1,13 +1,17 @@
 import Link from "next/link";
 
-import readFile from "@/app/helpers/readFile";
+import { getAllEntries } from "@/app/helpers/getEntries";
 
 import Background from "./Background";
 import SocialMedia from "@/app/components/SocialMedia";
 import Logo from "@/app/components/Logo";
 
-const Footer = () => {
-  const navigation = readFile("navigation");
+const Footer = async () => {
+  const navigation = await getAllEntries("navigation");
+
+  if (!navigation) {
+    return;
+  }
 
   return (
     <footer className="prlx-container relative max-w-8xl mx-auto overflow-hidden">
