@@ -7,9 +7,11 @@ import type { MDXComponents } from "mdx/types";
 
 // This file is required to use MDX in `app` directory
 import Link from "next/link";
+import ImagesWithLighbox from "@/app/components/blocks/ImagesWithLighbox";
 
 const components = {
   Link,
+  ImagesWithLighbox,
 };
 
 export const useMDXComponents = (components: MDXComponents): MDXComponents => {

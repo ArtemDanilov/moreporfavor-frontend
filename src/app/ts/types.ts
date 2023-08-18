@@ -25,6 +25,12 @@ export type Entry = {
   content: Content[];
 };
 
+export type SingleImage = {
+  url: string;
+  alt?: string | null | undefined;
+  caption?: string | null | undefined;
+};
+
 export type Pagination = {
   pagination: {
     page: number;
@@ -79,14 +85,6 @@ export interface ImageData {
   };
 }
 
-export type singleImage = {
-  data: ImageData;
-};
-
-export type multipleImages = {
-  data: ImageData[];
-};
-
 export type TravelCategory = {
   data: {
     id: number;
@@ -102,7 +100,7 @@ export type typeBlock = {
   __component: string;
   title?: string;
   content?: string;
-  images?: singleImage;
+  // images?: singleImage;
 };
 
 type BlogPostAttr = {
@@ -112,7 +110,7 @@ type BlogPostAttr = {
   updatedAt: string;
   publishedAt: string;
   short_description: string;
-  image: singleImage;
+  // image: singleImage;
   post_created: string;
 };
 
@@ -124,7 +122,7 @@ export type typeContentBuilder = {
       __component: string;
       title?: string;
       content?: string;
-      images?: singleImage;
+      // images?: singleImage;
     }[];
   };
 };
@@ -155,7 +153,7 @@ export type typePromoTravel = {
   attributes: {
     title: string;
     slug: string;
-    image: singleImage;
+    // image: singleImage;
     travel_category: TravelCategory;
   };
 };
@@ -167,7 +165,7 @@ export type typeHomepage = {
     updatedAt: string;
     publishedAt: string;
     author_title: string;
-    author_image: singleImage;
+    // author_image: singleImage;
     bio: string;
     promo_travels: {
       data: typePromoTravel[];
