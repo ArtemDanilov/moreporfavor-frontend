@@ -1,5 +1,4 @@
 import CategoryPage from "../../components/CategoryPage";
-import { Category } from "../../ts/enums";
 
 const Inspiracje = async ({
   searchParams,
@@ -9,7 +8,8 @@ const Inspiracje = async ({
   return (
     <CategoryPage
       title="Inspiracje"
-      category={Category.inspirations}
+      tagsCategory="category"
+      tagName="inspiracje"
       currentPage={searchParams.page}
       titleFrame="branches"
     />

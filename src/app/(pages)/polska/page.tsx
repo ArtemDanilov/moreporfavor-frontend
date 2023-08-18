@@ -1,5 +1,4 @@
 import CategoryPage from "../../components/CategoryPage";
-import { Category } from "../../ts/enums";
 
 const Polska = async ({
   searchParams,
@@ -9,7 +8,8 @@ const Polska = async ({
   return (
     <CategoryPage
       title="Polska"
-      category={Category.poland}
+      tagsCategory="category"
+      tagName="polska"
       currentPage={searchParams.page}
       titleFrame="polish-folklor"
     />
