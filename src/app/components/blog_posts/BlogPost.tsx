@@ -1,18 +1,18 @@
-import getFullImagePath from "@/app/utils/image-url";
+import { SingleImage } from "@/app/ts/types";
 import Image from "next/image";
 import Link from "next/link";
 
 type Post = {
   title: string;
+  image: SingleImage;
   publishDate: string;
   description: string;
-  image: any;
   link: string;
+  direction: "vertical" | "horizontal";
   category: {
     title: string;
     slug: string;
   };
-  direction?: "vertical" | "horizontal";
 };
 
 const BlogPost = ({
@@ -33,9 +33,6 @@ const BlogPost = ({
   };
   const convertedDate: string = date.toLocaleDateString("pl-PL", options);
 
-  const img = image.data.attributes;
-  const imgPath = getFullImagePath(img.url);
-
   let postClasses: string = "";
 
   const vertical = direction === "vertical";
@@ -55,14 +52,14 @@ const BlogPost = ({
           horizontal ? "md:h-auto md:max-h-72 md:flex-[40%] xl:h-56" : ""
         }`}
       >
-        {/* <Image
-          src={imgPath}
+        <Image
+          src={image.url}
           width={400}
           height={224}
           loading="lazy"
-          alt={img.alternativeText || "Post image"}
+          alt={image.alt || "Post image"}
           className="h-full object-cover object-center"
-        /> */}
+        />
       </Link>
 
       <div

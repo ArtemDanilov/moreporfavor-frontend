@@ -17,12 +17,22 @@ export type Meta = {
   id: string;
   title: string;
   slug: string;
+  publishedAt: string; // Later should be change on Date type
   [key: string]: any;
 };
 
 export type Entry = {
   meta: Meta;
   content: Content[];
+};
+
+export type Article = Meta & {
+  image: SingleImage;
+  short_description: string;
+  category: {
+    title: string;
+    slug: string;
+  };
 };
 
 export type SingleImage = {

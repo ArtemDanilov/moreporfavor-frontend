@@ -1,14 +1,18 @@
-import { typePost } from "@/app/ts/types";
+import { Article } from "@/app/ts/types";
 
 import BlogPost from "./BlogPost";
 
-type Posts = {
-  posts: typePost[];
-  direction?: "vertical" | "horizontal";
-};
+type Direction = "vertical" | "horizontal";
 
-const BlogPosts = ({ posts, direction = "vertical" }: Posts) => {
+const BlogPosts = ({
+  posts,
+  direction = "vertical",
+}: {
+  posts: Article[];
+  direction?: Direction;
+}) => {
   const horizontal = direction === "horizontal";
+  console.log(posts);
 
   return (
     <ul
@@ -16,19 +20,16 @@ const BlogPosts = ({ posts, direction = "vertical" }: Posts) => {
         horizontal ? "md:flex-nowrap md:flex-col" : "justify-center"
       }`}
     >
-      {posts.map(({ id, attributes }) => {
+      {posts.map((post) => {
         const {
+          id,
           title,
           image,
           publishedAt,
-          post_created,
           short_description,
           slug,
-          travel_category,
-        } = attributes;
-
-        const category = travel_category.data.attributes;
-        const published = post_created ?? publishedAt;
+          category,
+        } = post;
 
         return (
           <li key={id}>
@@ -37,7 +38,7 @@ const BlogPosts = ({ posts, direction = "vertical" }: Posts) => {
               image={image}
               link={`/${category.slug}/${slug}`}
               category={category}
-              publishDate={published}
+              publishDate={publishedAt}
               description={short_description}
               direction={direction}
             />
