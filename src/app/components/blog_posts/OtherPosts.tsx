@@ -1,6 +1,3 @@
-import React from "react";
-import { fetchOtherPosts } from "@/app/api/travels";
-
 import BlogPosts from "./BlogPosts";
 import Section from "../Section";
 
@@ -10,12 +7,7 @@ type Props = {
   className?: string;
 };
 
-const OtherPosts = async ({ id, title, className }: Props) => {
-  const fetchPosts = await fetchOtherPosts(id);
-  const { attributes } = fetchPosts;
-
-  const otherPosts = attributes.other_articles.data;
-
+const OtherPosts = ({ id, title, className }: Props) => {
   return (
     <>
       {otherPosts.length !== 0 && (

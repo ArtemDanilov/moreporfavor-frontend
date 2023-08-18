@@ -1,23 +1,29 @@
-import { fetchPostsByCategory } from "@/app/api/travels";
-import { Category } from "@/app/ts/enums";
+import notFound from "@/app/not-found";
+
+import { getAllEntries, getEntry } from "@/app/helpers/getEntries";
 
 import Article from "@/app/components/blog_posts/Article";
 
 export const generateStaticParams = async () => {
-  const posts = await fetchPostsByCategory(Category.europe);
+  const entries = await getAllEntries("collections/articles");
 
-  return posts.data.map(({ attributes }) => ({
-    slug: attributes.slug,
+  if (!entries) {
+    return;
+  }
+
+  return entries.map((entry) => ({
+    slug: entry.slug,
   }));
 };
 
-const ArticleDetails = ({ params }: { params: { slug: string } }) => {
-  return (
-    <>
-      {/* Typescript error with handling async server components */}
-      <Article slug={params.slug} />
-    </>
-  );
+const ArticleDetails = async ({ params }: { params: { slug: string } }) => {
+  const entry = await getEntry("collections/articles", params.slug);
+
+  if (!entry) {
+    return notFound();
+  }
+
+  return <Article post={entry} />;
 };
 
 export default ArticleDetails;

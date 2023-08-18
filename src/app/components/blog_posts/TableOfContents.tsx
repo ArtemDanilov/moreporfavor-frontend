@@ -1,20 +1,35 @@
 "use client";
 
+import { Content } from "@/app/ts/types";
 import { useEffect } from "react";
 import slugify from "slugify";
-
-type Props = {
-  tag: string;
-  text: string;
-};
 
 const slugifyOptions = { lower: true };
 const scrollMargin = 200;
 
-const ArticleNavigation = ({ titles }: { titles: Props[] }) => {
+type Title = {
+  tag: string;
+  text: string;
+};
+
+const TableOfContents = ({ content }: { content: Content[] }) => {
+  const titles: Title[] = content
+    .map((el) => {
+      if (el.type === "h2" || el.type === "h3") {
+        return {
+          tag: el.type,
+          text: el.props.children,
+        };
+      } else {
+        return null;
+      }
+    })
+    .filter((el): el is Title => el !== null);
+
   useEffect(() => {
+    const nav = document.getElementById("tableOfContents") as HTMLElement;
     const headings = document.querySelectorAll("article h2, article h3");
-    const listOfAnchors = document.querySelectorAll(".article-anchors li");
+    const listOfAnchors = nav.querySelectorAll(".article-anchors li");
     let current: Element | null;
 
     const clickHandler = (e: Event) => {
@@ -67,16 +82,19 @@ const ArticleNavigation = ({ titles }: { titles: Props[] }) => {
     });
 
     headings.forEach((el) => observer.observe(el));
-    document.addEventListener("click", clickHandler);
+    nav.addEventListener("click", clickHandler);
 
     return () => {
       observer.disconnect();
-      document.removeEventListener("click", clickHandler);
+      nav.removeEventListener("click", clickHandler);
     };
   }, []);
 
   return (
-    <nav className="mb-15 lg:px-5 lg:py-6 lg:bg-gray-100 lg:rounded-lg lg:sticky lg:top-24 lg:mb-0">
+    <nav
+      id="tableOfContents"
+      className="mb-15 lg:px-5 lg:py-6 lg:bg-gray-100 lg:rounded-lg lg:sticky lg:top-24 lg:mb-0"
+    >
       <h2 className="font-sans text-2xl font-bold text-green mb-3 md:text-4xl">
         Spis treści
       </h2>
@@ -103,4 +121,4 @@ const ArticleNavigation = ({ titles }: { titles: Props[] }) => {
   );
 };
 
-export default ArticleNavigation;
+export default TableOfContents;
