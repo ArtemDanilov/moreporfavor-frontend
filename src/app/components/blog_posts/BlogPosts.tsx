@@ -7,12 +7,20 @@ type Direction = "vertical" | "horizontal";
 const BlogPosts = ({
   posts,
   direction = "vertical",
+  tagsCategory,
+  tagName,
 }: {
   posts: Article[];
   direction?: Direction;
+  tagsCategory?: string;
+  tagName?: string;
 }) => {
   const horizontal = direction === "horizontal";
-  console.log(posts);
+
+  const filteredPostsByCategory =
+    tagsCategory && tagName
+      ? posts.filter((post) => post[tagsCategory]?.slug === tagName)
+      : posts;
 
   return (
     <ul
@@ -20,7 +28,7 @@ const BlogPosts = ({
         horizontal ? "md:flex-nowrap md:flex-col" : "justify-center"
       }`}
     >
-      {posts.map((post) => {
+      {filteredPostsByCategory.map((post) => {
         const {
           id,
           title,
