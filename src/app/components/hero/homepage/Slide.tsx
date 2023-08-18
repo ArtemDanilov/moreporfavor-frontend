@@ -17,13 +17,13 @@ const Slide = ({ title, image, url }: typeSlide) => {
   return (
     <div className="relative w-full h-full bg-cover bg-center shadow-overlay flex flex-col justify-center p-4">
       <div className="absolute top-0 left-0 w-full h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden md:mb-12 xl:mb-24">
-        <Image
+        {/* <Image
           fill
           src={img.url}
           alt={img.alternativeText || "image"}
           priority={true}
           className="object-cover object-center brightness-[.6]"
-        ></Image>
+        ></Image> */}
       </div>
 
       <h2

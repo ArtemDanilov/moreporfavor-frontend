@@ -1,5 +1,5 @@
-import CategoryPage from "../components/CategoryPage";
-import { Category } from "../ts/enums";
+import CategoryPage from "../../components/CategoryPage";
+import { Category } from "../../ts/enums";
 
 const Polska = async ({
   searchParams,

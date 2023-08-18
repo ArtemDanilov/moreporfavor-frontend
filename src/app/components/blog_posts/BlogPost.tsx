@@ -55,14 +55,14 @@ const BlogPost = ({
           horizontal ? "md:h-auto md:max-h-72 md:flex-[40%] xl:h-56" : ""
         }`}
       >
-        <Image
+        {/* <Image
           src={imgPath}
           width={400}
           height={224}
           loading="lazy"
           alt={img.alternativeText || "Post image"}
           className="h-full object-cover object-center"
-        />
+        /> */}
       </Link>
 
       <div
