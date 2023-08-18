@@ -6,12 +6,11 @@ import Article from "@/app/components/blog_posts/Article";
 
 export const generateStaticParams = async () => {
   const entries = await getAllEntries("collections/articles");
+  const entriesByCategory = entries.filter(
+    (entry) => entry.category.slug === "europa"
+  );
 
-  if (!entries) {
-    return;
-  }
-
-  return entries.map((entry) => ({
+  return entriesByCategory.map((entry) => ({
     slug: entry.slug,
   }));
 };
