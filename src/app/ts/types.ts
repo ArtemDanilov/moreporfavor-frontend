@@ -1,5 +1,30 @@
 export type typeFrame = "oriental" | "vintage" | "polish-folklor" | "branches";
 
+export type Content = {
+  $$typeof: Symbol;
+  type: string;
+  key: null;
+  ref: null;
+  props: {
+    components?: [Object];
+    children?: string;
+  };
+  _owner: null;
+  _store: {};
+};
+
+export type Meta = {
+  id: string;
+  title: string;
+  slug: string;
+  [key: string]: any;
+};
+
+export type Entry = {
+  meta: Meta;
+  content: Content[];
+};
+
 export type Pagination = {
   pagination: {
     page: number;

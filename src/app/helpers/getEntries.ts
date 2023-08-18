@@ -3,14 +3,7 @@ import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import components from "../../../mdx-components";
 
-type Entry = {
-  meta: {
-    id: string;
-    title: string;
-    slug: string;
-  };
-  content: string;
-};
+import { Entry } from "../ts/types";
 
 export const getEntry = async (
   fileType: string,
