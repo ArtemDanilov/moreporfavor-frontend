@@ -6,8 +6,11 @@ import type { MDXComponents } from "mdx/types";
 // other libraries.
 
 // This file is required to use MDX in `app` directory
+import Link from "next/link";
 
-const components = {};
+const components = {
+  Link,
+};
 
 export const useMDXComponents = (components: MDXComponents): MDXComponents => {
   return {
