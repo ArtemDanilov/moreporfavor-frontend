@@ -46,7 +46,7 @@ module.exports = {
               },
             },
 
-            a: {
+            "a, a > p": {
               fontWeight: "bold",
               color: theme("colors.mocha"),
             },
