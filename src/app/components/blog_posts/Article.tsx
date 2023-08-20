@@ -19,18 +19,16 @@ const Article = ({ post }: { post: Entry }) => {
       <Hero image={meta.image} title={meta.title} />
 
       <div className="mt-40">
-        {content.length !== 0 && (
-          <Section className="lg:flex flex-row-reverse gap-x-8">
-            <div className="relative lg:flex-[30%] lg:max-w-xs-2">
-              <TableOfContents content={content} />
-            </div>
-            <div className="max-w-2xl lg:flex-[70%] lg:max-w-3xl">
-              <article className="prose mb-5 last:mb-0 md:prose-md">
-                {content}
-              </article>
-            </div>
-          </Section>
-        )}
+        <Section className="lg:flex flex-row-reverse gap-x-8">
+          <div className="relative lg:flex-[30%] lg:max-w-xs-2">
+            <TableOfContents content={content} />
+          </div>
+          <div className="max-w-2xl lg:flex-[70%] lg:max-w-3xl">
+            <article className="prose mb-5 last:mb-0 md:prose-md">
+              {content}
+            </article>
+          </div>
+        </Section>
 
         {/* <OtherPosts
           title="Zobacz inne artykuły"
