@@ -1,6 +1,6 @@
 import CategoryPage from "../../components/CategoryPage";
 
-const Azja = async ({
+const Azja = ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };

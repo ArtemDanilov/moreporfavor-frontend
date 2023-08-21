@@ -1,6 +1,6 @@
 import CategoryPage from "../../components/CategoryPage";
 
-const Europa = async ({
+const Europa = ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };

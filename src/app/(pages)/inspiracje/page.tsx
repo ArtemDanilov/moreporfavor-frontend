@@ -1,6 +1,6 @@
 import CategoryPage from "../../components/CategoryPage";
 
-const Inspiracje = async ({
+const Inspiracje = ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
