@@ -10,7 +10,7 @@ type Props = {
 const OtherPosts = ({ id, title, className }: Props) => {
   return (
     <>
-      {otherPosts.length !== 0 && (
+      {/* {otherPosts.length !== 0 && (
         <Section>
           <div className={className}>
             {title && (
@@ -21,7 +21,7 @@ const OtherPosts = ({ id, title, className }: Props) => {
             <BlogPosts posts={otherPosts} direction="horizontal" />
           </div>
         </Section>
-      )}
+      )} */}
     </>
   );
 };
