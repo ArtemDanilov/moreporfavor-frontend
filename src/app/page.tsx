@@ -1,7 +1,6 @@
 import "./style.scss";
 
-import { getAllEntries } from "./helpers/getEntries";
-import { fetchHomepage } from "./api/homepage";
+import { getAllEntries, getEntriesById, getEntry } from "./helpers/getEntries";
 
 import { Article } from "./ts/types";
 
@@ -12,11 +11,11 @@ import BlogPosts from "./components/blog_posts/BlogPosts";
 
 const Home = async () => {
   const allPosts = await getAllEntries("collections/articles");
-
-  // const homepage = await fetchHomepage();
-
-  // const homepageData = homepage.attributes;
-  // const heroEntries = homepageData.promo_travels.data;
+  const homepage = await getEntry("pages", "homepage");
+  const heroEntries = await getEntriesById(
+    "articles",
+    homepage?.meta.hero.entries
+  );
 
   // const sortedPosts = allPosts.sort(
   //   (a, b) =>
@@ -27,7 +26,7 @@ const Home = async () => {
 
   return (
     <>
-      {/* <Hero entries={heroEntries} /> */}
+      <Hero entries={heroEntries} />
 
       <div className="xl:container xl:flex xl:flex-row-reverse xl:justify-center xl:gap-x-4">
         <aside className="sidebar space-y-8 mb-8 md:mb-12 xl:flex-[30%] xl:mb-0 xl:max-w-xs-2">

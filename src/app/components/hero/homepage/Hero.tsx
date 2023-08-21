@@ -6,9 +6,13 @@ import { Pagination, Parallax, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Slide from "./Slide";
-import { typePromoTravel } from "@/app/ts/types";
+import { Entry } from "@/app/ts/types";
 
-const Hero = ({ entries }: { entries: typePromoTravel[] }) => {
+const Hero = ({ entries }: { entries: Entry[] }) => {
+  if (!entries.length) {
+    return;
+  }
+
   return (
     <Swiper
       className="h-[calc(100vh-5.625rem)] max-h-[52.5rem] mb-8 overflow-hidden md:mb-12 xl:mb-24"
@@ -23,16 +27,15 @@ const Hero = ({ entries }: { entries: typePromoTravel[] }) => {
       loop={true}
       pagination={{ clickable: true }}
     >
-      {entries.map(({ id, attributes }) => {
-        const { title, image, slug, travel_category } = attributes;
-        const categorySlug = travel_category.data.attributes.slug;
+      {entries.map(({ meta }) => {
+        const { id, title, image, category, slug } = meta;
 
         return (
           <SwiperSlide key={id}>
             <Slide
               title={title}
               image={image}
-              url={`${categorySlug}/${slug}`}
+              url={`${category.slug}/${slug}`}
             />
           </SwiperSlide>
         );
