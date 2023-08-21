@@ -12,7 +12,7 @@ type Props = {
   title: string;
   tagsCategory: string;
   tagName: string;
-  currentPage: string | string[] | undefined;
+  currentPage?: string | string[] | undefined;
   titleFrame?: typeFrame;
 };
 

@@ -1,16 +1,11 @@
 import CategoryPage from "../../components/CategoryPage";
 
-const Europa = ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
+const Europa = () => {
   return (
     <CategoryPage
       title="Europa"
       tagsCategory="category"
       tagName="europa"
-      currentPage={searchParams.page}
       titleFrame="vintage"
     />
   );
