@@ -1,20 +1,28 @@
-import { Article } from "@/app/ts/types";
+import { sortASC, sortDESC } from "@/app/helpers/sortUtilities";
+import { Article, Meta } from "@/app/ts/types";
 
 import BlogPost from "./BlogPost";
 
-type Direction = "vertical" | "horizontal";
+type Props = {
+  posts: Article[];
+  direction?: "vertical" | "horizontal";
+  tagsCategory?: string;
+  tagName?: string;
+  sort?: "asc" | "desc";
+  count?: {
+    from: number;
+    to?: number;
+  };
+};
 
 const BlogPosts = ({
   posts,
   direction = "vertical",
   tagsCategory,
   tagName,
-}: {
-  posts: Article[];
-  direction?: Direction;
-  tagsCategory?: string;
-  tagName?: string;
-}) => {
+  sort = "desc",
+  count = { from: 0 },
+}: Props) => {
   const horizontal = direction === "horizontal";
 
   const filteredPostsByCategory =
@@ -22,13 +30,23 @@ const BlogPosts = ({
       ? posts.filter((post) => post[tagsCategory]?.slug === tagName)
       : posts;
 
+  let filteredPosts: Meta[] = filteredPostsByCategory;
+
+  if (sort === "desc") {
+    filteredPosts = sortDESC(filteredPosts).slice(count.from, count.to);
+  } else if (sort === "asc") {
+    filteredPosts = sortASC(filteredPosts).slice(count.from, count.to);
+  } else if (count) {
+    filteredPosts = filteredPosts.slice(count.from, count.to);
+  }
+
   return (
     <ul
       className={`flex flex-wrap gap-6 ${
         horizontal ? "md:flex-nowrap md:flex-col" : "justify-center"
       }`}
     >
-      {filteredPostsByCategory.map((post) => {
+      {filteredPosts.map((post) => {
         const {
           id,
           title,
