@@ -12,7 +12,7 @@ type Props = {
   title: string;
   tagsCategory: string;
   tagName: string;
-  currentPage: string | string[] | undefined;
+  currentPage?: string | string[] | undefined;
   titleFrame?: typeFrame;
 };
 
@@ -23,7 +23,7 @@ const CategoryPage = async ({
   currentPage,
   titleFrame,
 }: Props) => {
-  const page = typeof currentPage === "string" ? Number(currentPage) : 1;
+  // const page = typeof currentPage === "string" ? Number(currentPage) : 1;
   const posts = await getAllEntries("collections/articles");
 
   return (
