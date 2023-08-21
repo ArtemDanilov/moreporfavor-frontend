@@ -23,13 +23,13 @@ const Home = async () => {
 
       <div className="xl:container xl:flex xl:flex-row-reverse xl:justify-center xl:gap-x-4">
         <aside className="sidebar space-y-8 mb-8 md:mb-12 xl:flex-[30%] xl:mb-0 xl:max-w-xs-2">
-          {/* <Section heading={homepageData.author_title}>
+          <Section heading="O mnie">
             <About
-              image={homepageData.author_image}
-              text={homepageData.bio}
+              image={homepage?.meta.profile_image}
+              text={homepage?.meta.bio}
               className="sm:flex sm:items-center sm:space-x-5 sm:max-w-[37.75rem] sm:text-left xl:block xl:space-x-0 xl:text-center"
             />
-          </Section> */}
+          </Section>
         </aside>
 
         <div className="main-content xl:flex-[70%]">
