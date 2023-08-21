@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import components from "../../../mdx-components";
@@ -12,8 +12,8 @@ export const getEntry = async (
   const realSlug = slug.replace(".mdx", "");
   const filePath = path.join("content", fileType, `${slug}.mdx`);
 
-  if (fs.existsSync(filePath)) {
-    const fileContent = fs.readFileSync(filePath, { encoding: "utf-8" });
+  try {
+    const fileContent = await fs.readFile(filePath, { encoding: "utf-8" });
 
     const { frontmatter, content }: any = await compileMDX({
       source: fileContent,
@@ -28,26 +28,76 @@ export const getEntry = async (
       },
       content,
     };
-  } else {
+  } catch {
     return null;
+  }
+};
+
+export const getEntriesById = async (
+  collection: string,
+  ids: string[]
+): Promise<Entry[]> => {
+  const entriesPath = path.join("content", "collections", collection);
+
+  try {
+    const entries = await fs.readdir(entriesPath);
+    let entryWithID: Entry[] | null = [];
+
+    await Promise.all(
+      entries.map(async (entry) => {
+        const realSlug = entry.replace(".mdx", "");
+        const filepath = path.join(entriesPath, entry);
+
+        try {
+          const fileContent = await fs.readFile(filepath, {
+            encoding: "utf-8",
+          });
+          const { frontmatter, content }: any = await compileMDX({
+            source: fileContent,
+            options: { parseFrontmatter: true },
+            components: components,
+          });
+
+          const entryData: Entry = {
+            meta: {
+              ...frontmatter,
+              slug: realSlug,
+            },
+            content,
+          };
+
+          if (ids.includes(frontmatter.id)) {
+            entryWithID?.push(entryData);
+          }
+        } catch (err) {
+          throw err;
+        }
+      })
+    );
+
+    return entryWithID;
+  } catch (err) {
+    throw err;
   }
 };
 
 export const getAllEntries = async (fileType: string) => {
   const entriesPath = path.join("content", fileType);
-  const entries = fs.readdirSync(entriesPath);
+  const entries = await fs.readdir(entriesPath);
 
   let arrayOfEntries: Entry["meta"][] = [];
 
-  for (const entry of entries) {
-    const entrySlug = entry.replace(".mdx", "");
-    const entryResult = await getEntry(fileType, entrySlug);
+  await Promise.all(
+    entries.map(async (entry) => {
+      const entrySlug = entry.replace(".mdx", "");
+      const entryResult = await getEntry(fileType, entrySlug);
 
-    if (entryResult) {
-      const { meta } = entryResult;
-      arrayOfEntries.push(meta);
-    }
-  }
+      if (entryResult) {
+        const { meta } = entryResult;
+        arrayOfEntries.push(meta);
+      }
+    })
+  );
 
   return arrayOfEntries;
 };
