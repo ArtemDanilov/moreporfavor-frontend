@@ -12,23 +12,30 @@ type Title = {
   text: string;
 };
 
-const TableOfContents = ({ content }: { content: Content[] }) => {
+export const extractTitles = (content: Content[]): Title[] => {
   if (!content) {
-    return;
+    return [];
   }
 
-  const titles: Title[] = content
-    .map((el) => {
-      if (el.type === "h2" || el.type === "h3") {
-        return {
-          tag: el.type,
-          text: el.props.children,
-        };
-      } else {
-        return null;
-      }
-    })
-    .filter((el): el is Title => el !== null);
+  const titles = content.reduce((accumulator: Title[], el) => {
+    if (el.type === "h2" || el.type === "h3") {
+      const children = el.props.children;
+      const text = typeof children === "string" ? children : "";
+
+      accumulator.push({
+        tag: el.type,
+        text: text,
+      });
+    }
+
+    return accumulator;
+  }, []);
+
+  return titles;
+};
+
+const TableOfContents = ({ content }: { content: Content[] }) => {
+  const titles = extractTitles(content);
 
   useEffect(() => {
     if (!titles.length) {
@@ -96,11 +103,11 @@ const TableOfContents = ({ content }: { content: Content[] }) => {
       observer.disconnect();
       nav.removeEventListener("click", clickHandler);
     };
-  }, []);
+  }, [titles]);
 
   return (
     <>
-      {titles.length && (
+      {titles.length !== 0 && (
         <nav
           id="tableOfContents"
           className="mb-15 lg:px-5 lg:py-6 lg:bg-gray-100 lg:rounded-lg lg:sticky lg:top-24 lg:mb-0"
