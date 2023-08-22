@@ -1,39 +1,41 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LongArrow } from "../svg/Icons";
 
 import "./style.scss";
 
 type Props = {
-  category: string;
+  pages: number;
   currentPage: number;
-  totalPages: number;
 };
 
-const Pagination = ({ category, currentPage, totalPages }: Props) => {
-  const pages = Array.from({ length: totalPages }).map((_, i) => i + 1);
+const Pagination = ({ pages, currentPage }: Props) => {
+  const pathname = usePathname();
 
-  const nextPage = currentPage === totalPages ? totalPages : currentPage + 1;
+  const pagesCount = Array.from({ length: pages }).map((_, i) => i + 1);
+
+  const nextPage = currentPage === pages ? pages : currentPage + 1;
   const prevPage = currentPage === 1 ? 1 : currentPage - 1;
 
   return (
     <div className="pagination mt-8 flex justify-center items-center lg:mt-20">
       <Link
-        href={`/${category}?page=${prevPage}`}
+        href={`${pathname}?page=${prevPage}`}
         className={`prev ${currentPage === 1 && "disabled"}`}
       >
         <LongArrow className="arrow rotate-180" />
       </Link>
       <div>
-        {pages.map((page) => (
+        {pagesCount.map((page) => (
           <Link
             key={page}
-            href={`/${category}?page=${page}`}
+            href={`${pathname}?page=${page}`}
             className={`font-display font-normal text-lg px-2 py-1 ${
               currentPage === page
-                ? "text-green pointer-events-none"
-                : "text-gray-200"
+                ? "text-gray-200 pointer-events-none"
+                : "text-green"
             }`}
           >
             {page}
@@ -41,8 +43,8 @@ const Pagination = ({ category, currentPage, totalPages }: Props) => {
         ))}
       </div>
       <Link
-        href={`/${category}?page=${nextPage}`}
-        className={`next ${currentPage === totalPages && "disabled"}`}
+        href={`${pathname}?page=${nextPage}`}
+        className={`next ${currentPage === pages && "disabled"}`}
       >
         <LongArrow className="arrow" />
       </Link>
