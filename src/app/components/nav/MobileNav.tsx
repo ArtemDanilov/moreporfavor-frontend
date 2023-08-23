@@ -56,7 +56,7 @@ const Nav = ({ links }: { links: TLink[] }) => {
 
       <nav
         ref={navMenu}
-        className={`fixed top-0 right-0 w-screen h-screen bg-white transition transition-prevent duration-300 ease-out md:w-1/2 ${menuClass}`}
+        className={`fixed top-0 right-0 w-screen h-[100dvh] bg-white transition transition-prevent duration-300 ease-out md:w-1/2 ${menuClass}`}
       >
         <CloseBtn onClick={closeMenu} />
 
