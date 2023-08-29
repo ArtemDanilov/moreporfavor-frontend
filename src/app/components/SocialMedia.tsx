@@ -8,14 +8,14 @@ const SocialMedia = ({ className }: { className?: string }): JSX.Element => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Tiktok className="w-[2em] h-[2.25em]" />
+        <Tiktok className="w-auto h-[2em]" />
       </a>
       <a
         href="https://www.instagram.com/more.porfavor/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Instagram className="w-[2em] h-[2em]" />
+        <Instagram className="w-auto h-[2em]" />
       </a>
     </div>
   );

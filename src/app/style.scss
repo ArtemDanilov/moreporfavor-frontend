@@ -7,6 +7,10 @@
       @apply xl:text-2xl xl:text-mocha xl:mb-4;
     }
   }
+
+  section:not(:first-child) {
+    @apply hidden xl:block;
+  }
 }
 
 .main-content {

@@ -8,6 +8,8 @@ import Hero from "./components/hero/homepage/Hero";
 import About from "./components/sections/About";
 import Section from "./components/Section";
 import BlogPosts from "./components/blog_posts/BlogPosts";
+import SocialMedia from "./components/SocialMedia";
+import InstagramPost from "./components/instagram/InstagramPost";
 
 const Home = async () => {
   const allPosts = await getAllEntries("collections/articles");
@@ -29,6 +31,12 @@ const Home = async () => {
               text={homepage?.meta.bio}
               className="sm:flex sm:items-center sm:space-x-5 sm:max-w-[37.75rem] sm:text-left xl:block xl:space-x-0 xl:text-center"
             />
+          </Section>
+          <Section heading="Social Media">
+            <SocialMedia className="flex justify-center items-center space-x-4 text-mocha text-base pb-2" />
+          </Section>
+          <Section heading="Ostatni post">
+            <InstagramPost />
           </Section>
         </aside>
 
