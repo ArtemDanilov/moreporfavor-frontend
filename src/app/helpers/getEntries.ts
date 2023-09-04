@@ -83,21 +83,26 @@ export const getEntriesById = async (
 
 export const getAllEntries = async (fileType: string) => {
   const entriesPath = path.join("content", fileType);
-  const entries = await fs.readdir(entriesPath);
 
-  let arrayOfEntries: Entry["meta"][] = [];
+  try {
+    const entries = await fs.readdir(entriesPath);
 
-  await Promise.all(
-    entries.map(async (entry) => {
-      const entrySlug = entry.replace(".mdx", "");
-      const entryResult = await getEntry(fileType, entrySlug);
+    let arrayOfEntries: Entry["meta"][] = [];
 
-      if (entryResult) {
-        const { meta } = entryResult;
-        arrayOfEntries.push(meta);
-      }
-    })
-  );
+    await Promise.all(
+      entries.map(async (entry) => {
+        const entrySlug = entry.replace(".mdx", "");
+        const entryResult = await getEntry(fileType, entrySlug);
 
-  return arrayOfEntries;
+        if (entryResult) {
+          const { meta } = entryResult;
+          arrayOfEntries.push(meta);
+        }
+      })
+    );
+
+    return arrayOfEntries;
+  } catch (err) {
+    throw err;
+  }
 };
