@@ -1,4 +1,4 @@
-import BlogPosts from "./BlogPosts";
+import BlogPosts from "../../helpers/collection";
 import Section from "../Section";
 
 type Props = {
@@ -18,7 +18,7 @@ const OtherPosts = ({ id, title, className }: Props) => {
                 {title}
               </h2>
             )}
-            <BlogPosts posts={otherPosts} direction="horizontal" />
+            <BlogPosts collection="articles" direction="horizontal" />
           </div>
         </Section>
       )} */}
