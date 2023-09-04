@@ -27,20 +27,7 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: "http",
-  //       hostname: "127.0.0.1",
-  //       pathname: "/upload/**",
-  //     },
-  //     {
-  //       protocol: "https",
-  //       hostname: "moreporfavor-images.s3.eu-central-1.amazonaws.com",
-  //       pathname: "/**",
-  //     },
-  //   ],
-  // },
+  output: "export",
 };
 
 export default mdx(withPlaiceholder(nextConfig));
