@@ -1,18 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { LongArrow } from "../svg/Icons";
 
 import "./style.scss";
 
 type Props = {
   pages: number;
-  currentPage: number;
 };
 
-const Pagination = ({ pages, currentPage }: Props) => {
+const Pagination = ({ pages }: Props) => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentPage = Number(searchParams.get("page"));
 
   const pagesCount = Array.from({ length: pages }).map((_, i) => i + 1);
 
