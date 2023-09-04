@@ -8,9 +8,17 @@ import Hero from "./components/hero/homepage/Hero";
 import About from "./components/sections/About";
 import Section from "./components/Section";
 import BlogPosts from "./components/blog_posts/BlogPosts";
+import Collection from "./helpers/collection";
 
 const Home = async () => {
-  const allPosts = await getAllEntries("collections/articles");
+  const lastPosts = await Collection({
+    collection: "articles",
+    count: { from: 0, to: 2 },
+  });
+  const restPosts = await Collection({
+    collection: "articles",
+    count: { from: 2 },
+  });
   const homepage = await getEntry("pages", "homepage");
   const heroEntries = await getEntriesById(
     "articles",
@@ -34,13 +42,10 @@ const Home = async () => {
 
         <div className="main-content xl:flex-[70%]">
           <Section heading="Ostatnio dodane artykuły">
-            <BlogPosts
-              posts={allPosts as Article[]}
-              count={{ from: 0, to: 2 }}
-            />
+            <BlogPosts entries={lastPosts.entries} />
           </Section>
           <Section heading="Pozostałe artykuły">
-            <BlogPosts posts={allPosts as Article[]} count={{ from: 2 }} />
+            <BlogPosts entries={restPosts.entries} />
           </Section>
         </div>
       </div>
