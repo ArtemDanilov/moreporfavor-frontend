@@ -9,10 +9,8 @@ type Post = {
   description: string;
   link: string;
   direction: "vertical" | "horizontal";
-  category: {
-    title: string;
-    slug: string;
-  };
+  category: string;
+  country: string;
 };
 
 const BlogPost = ({
@@ -22,6 +20,7 @@ const BlogPost = ({
   image,
   link,
   category,
+  country,
   direction = "vertical",
 }: Post) => {
   const date: Date = new Date(publishDate);
@@ -76,8 +75,9 @@ const BlogPost = ({
         <p className="font-sans text-sm font-normal text-gray-300 mb-4">
           {description}
         </p>
-        <p className="font-sans text-xs font-bold text-mocha">
-          <Link href={category.slug}>#{category.title}</Link>
+        <p className="font-sans text-xs font-bold text-mocha space-x-2">
+          <Link href={category}>#{category}</Link>
+          {country && <Link href={`/${category}/${country}`}>#{country}</Link>}
         </p>
       </div>
     </div>
