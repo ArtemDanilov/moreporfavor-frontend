@@ -28,15 +28,13 @@ const Hero = ({ entries }: { entries: Entry[] }) => {
       pagination={{ clickable: true }}
     >
       {entries.map(({ meta }) => {
-        const { id, title, image, category, slug } = meta;
+        const { id, title, image, category, countries, slug } = meta;
+        const countrySlug = countries ? "/" + countries : "";
+        const url = `/${category}${countrySlug}/${slug}`;
 
         return (
           <SwiperSlide key={id}>
-            <Slide
-              title={title}
-              image={image}
-              url={`${category.slug}/${slug}`}
-            />
+            <Slide title={title} image={image} url={url} />
           </SwiperSlide>
         );
       })}
