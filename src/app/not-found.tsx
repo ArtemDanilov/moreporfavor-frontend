@@ -1,7 +1,7 @@
 import Link from "next/link";
 import NotFound404 from "./components/svg/404";
 
-const notFound = () => {
+const NotFound = () => {
   return (
     <div className="flex justify-center items-center mt-40 mb-20 lg:mt-52">
       <div>
@@ -18,4 +18,4 @@ const notFound = () => {
   );
 };
 
-export default notFound;
+export default NotFound;
