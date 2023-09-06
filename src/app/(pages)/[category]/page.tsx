@@ -5,7 +5,6 @@ import { Metadata } from "next";
 
 type Props = {
   params: { category: string };
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export const generateStaticParams = async () => {
@@ -20,9 +19,8 @@ export const generateStaticParams = async () => {
   }));
 };
 
-const Category = async ({ params, searchParams }: Props) => {
+const Category = async ({ params }: Props) => {
   const category = await getEntry("tags/category", params.category);
-  const queryPage = searchParams["page"];
 
   if (!category) {
     return <NotFound />;
@@ -36,7 +34,6 @@ const Category = async ({ params, searchParams }: Props) => {
       tagsCategory="category"
       tagName={slug}
       titleFrame={frame}
-      currentPage={queryPage}
     />
   );
 };
