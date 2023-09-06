@@ -11,6 +11,10 @@ type Props = {
 const BlogPosts = ({ entries, direction }: Props) => {
   const horizontal = direction === "horizontal";
 
+  if (!entries) {
+    return <></>;
+  }
+
   return (
     <ul
       className={`flex flex-wrap gap-6 ${

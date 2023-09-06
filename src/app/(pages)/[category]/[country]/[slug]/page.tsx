@@ -14,6 +14,10 @@ type Props = {
 export const generateStaticParams = async () => {
   const entries = await getAllEntries("collections/articles");
 
+  if (!entries) {
+    return [];
+  }
+
   return entries.map((obj) => ({
     country: obj.countries,
     category: obj.category,

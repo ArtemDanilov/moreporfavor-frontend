@@ -10,7 +10,7 @@ import { Entry } from "@/app/ts/types";
 
 const Hero = ({ entries }: { entries: Entry[] }) => {
   if (!entries.length) {
-    return;
+    return <></>;
   }
 
   return (

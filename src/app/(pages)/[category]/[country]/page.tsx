@@ -9,14 +9,14 @@ type Props = {
   };
 };
 
-export const generateStaticParams = async () => {
-  const entries = await getAllEntries("collections/articles");
+// export const generateStaticParams = async () => {
+//   const entries = await getAllEntries("collections/articles");
 
-  return entries.map((obj) => ({
-    country: obj.countries,
-    category: obj.category,
-  }));
-};
+//   return entries.map((obj) => ({
+//     country: obj.countries,
+//     category: obj.category,
+//   }));
+// };
 
 const Country = async ({ params }: Props) => {
   const category = await getEntry("tags/countries", params.country);

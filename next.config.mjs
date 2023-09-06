@@ -27,7 +27,7 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
-  output: "export",
+  output: "auto",
 };
 
 export default mdx(withPlaiceholder(nextConfig));

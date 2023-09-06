@@ -3,14 +3,16 @@ import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import components from "../../../mdx-components";
 
-import { Entry } from "../ts/types";
+import { Entry, Meta } from "../ts/types";
+
+const workDirPath = process.cwd();
 
 export const getEntry = async (
   fileType: string,
   slug: string
-): Promise<Entry | null> => {
+): Promise<Entry | undefined> => {
   const realSlug = slug.replace(".mdx", "");
-  const filePath = path.join("content", fileType, `${slug}.mdx`);
+  const filePath = path.join(workDirPath, "content", fileType, `${slug}.mdx`);
 
   try {
     const fileContent = await fs.readFile(filePath, { encoding: "utf-8" });
@@ -29,15 +31,20 @@ export const getEntry = async (
       content,
     };
   } catch {
-    return null;
+    return undefined;
   }
 };
 
 export const getEntriesById = async (
   collection: string,
   ids: string[]
-): Promise<Entry[]> => {
-  const entriesPath = path.join("content", "collections", collection);
+): Promise<Entry[] | undefined> => {
+  const entriesPath = path.join(
+    workDirPath,
+    "content",
+    "collections",
+    collection
+  );
 
   try {
     const entries = await fs.readdir(entriesPath);
@@ -76,13 +83,15 @@ export const getEntriesById = async (
     );
 
     return entryWithID;
-  } catch (err) {
-    throw err;
+  } catch {
+    return undefined;
   }
 };
 
-export const getAllEntries = async (fileType: string) => {
-  const entriesPath = path.join("content", fileType);
+export const getAllEntries = async (
+  fileType: string
+): Promise<Meta[] | undefined> => {
+  const entriesPath = path.join(workDirPath, "content", fileType);
 
   try {
     const entries = await fs.readdir(entriesPath);
@@ -102,7 +111,7 @@ export const getAllEntries = async (fileType: string) => {
     );
 
     return arrayOfEntries;
-  } catch (err) {
-    throw err;
+  } catch {
+    return undefined;
   }
 };

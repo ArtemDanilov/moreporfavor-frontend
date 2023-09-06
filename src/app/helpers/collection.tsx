@@ -32,6 +32,10 @@ const Collection = async ({
 }: Props) => {
   const entries = await getAllEntries(`collections/${collection}`);
 
+  if (!entries) {
+    return undefined;
+  }
+
   const filteredPostsByCategory =
     tagsCategory && tagName
       ? entries.filter((post) => post[tagsCategory] === tagName)
