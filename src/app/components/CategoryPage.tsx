@@ -29,7 +29,17 @@ const CategoryPage = async ({
     entriesPerPage: 2,
     currentPage: Number(currentPage),
   });
-  const { totalPages } = collection.attributes;
+
+  if (!collection) {
+    return (
+      <>
+        <Hero title={title} frame={titleFrame} />
+        <p className="text-center">Coś poszło nie tak z pobraniem treści</p>
+      </>
+    );
+  }
+
+  const { totalPages } = collection?.attributes;
 
   return (
     <>

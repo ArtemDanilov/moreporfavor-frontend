@@ -1,6 +1,7 @@
 import { getAllEntries, getEntry } from "@/app/helpers/getEntries";
 import CategoryPage from "../../components/CategoryPage";
 import NotFound from "@/app/not-found";
+import { Metadata } from "next";
 
 type Props = {
   params: { category: string };
@@ -8,15 +9,20 @@ type Props = {
 };
 
 export const generateStaticParams = async () => {
-  const categories = await getAllEntries("tags/category");
+  const entries = await getAllEntries("tags/category");
 
-  return categories.map((obj) => ({
+  if (!entries) {
+    return [];
+  }
+
+  return entries.map((obj) => ({
     category: obj.slug,
   }));
 };
 
-const Category = async ({ params }: Props) => {
+const Category = async ({ params, searchParams }: Props) => {
   const category = await getEntry("tags/category", params.category);
+  const queryPage = searchParams["page"];
 
   if (!category) {
     return <NotFound />;
@@ -30,6 +36,7 @@ const Category = async ({ params }: Props) => {
       tagsCategory="category"
       tagName={slug}
       titleFrame={frame}
+      currentPage={queryPage}
     />
   );
 };

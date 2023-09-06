@@ -9,8 +9,8 @@ import Slide from "./Slide";
 import { Entry } from "@/app/ts/types";
 
 const Hero = ({ entries }: { entries: Entry[] }) => {
-  if (!entries.length) {
-    return;
+  if (!entries) {
+    return <></>;
   }
 
   return (
