@@ -1,7 +1,7 @@
 import { typeFrame } from "../ts/types";
 
-import Section from "../components/Section";
-import Hero from "../components/hero/category/Hero";
+import Section from "./Section";
+import Hero from "./hero/category/Hero";
 import Collection from "../helpers/collection";
 import Pagination from "./pagination/Pagination";
 import BlogPosts from "./blog_posts/BlogPosts";
@@ -14,19 +14,19 @@ type Props = {
   titleFrame?: typeFrame;
 };
 
-const CategoryPage = async ({
+const Category = async ({
   title,
   tagsCategory,
   tagName,
   titleFrame,
-  currentPage = "1",
+  currentPage,
 }: Props) => {
   const collection = await Collection({
     collection: "articles",
     tagsCategory: tagsCategory,
     tagName: tagName,
     pagination: true,
-    entriesPerPage: 2,
+    entriesPerPage: 9,
     currentPage: Number(currentPage),
   });
 
@@ -54,4 +54,4 @@ const CategoryPage = async ({
   );
 };
 
-export default CategoryPage;
+export default Category;
