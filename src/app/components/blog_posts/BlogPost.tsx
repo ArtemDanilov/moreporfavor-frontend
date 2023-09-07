@@ -76,7 +76,7 @@ const BlogPost = ({
           {description}
         </p>
         <p className="font-sans text-xs font-bold text-mocha space-x-2">
-          <Link href={category}>#{category}</Link>
+          <Link href={`/${category}`}>#{category}</Link>
           {country && <Link href={`/${category}/${country}`}>#{country}</Link>}
         </p>
       </div>
