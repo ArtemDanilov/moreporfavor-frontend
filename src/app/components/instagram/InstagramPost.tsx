@@ -2,34 +2,14 @@ import Image from "next/image";
 
 import Truncate from "@/app/components/truncate";
 
-const ID = process.env.NEXT_PUBLIC_INSTAGRAM_PROFILE_ID;
-const TOKEN = process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN;
+import { InstagramPost } from "@/app/ts/types";
 
-type InstaProps = {
-  data: {
-    id: string;
-    caption?: string | undefined;
-    media_type: "IMAGE" | "VIDEO";
-    media_url: string;
-    permalink: string;
-  }[];
-};
-
-const InstagramFeed: () => Promise<InstaProps> = async () => {
-  try {
-    const getData = await fetch(
-      `https://graph.instagram.com/${ID}/media?fields=caption,media_type,media_url,permalink&access_token=${TOKEN}`
-    );
-
-    return getData.json();
-  } catch (err) {
-    throw err;
+const InstagramPost = async ({ post }: { post: InstagramPost }) => {
+  if (!post) {
+    return;
   }
-};
 
-const InstagramPost = async () => {
-  const posts = await InstagramFeed();
-  const { caption, media_type, media_url, permalink } = posts.data[0];
+  const { caption, media_type, media_url, permalink } = post;
 
   const hashtagRegex = /#([^#\s]+)/g;
 

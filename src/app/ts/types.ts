@@ -182,3 +182,15 @@ export type typeHomepage = {
     };
   };
 };
+
+export type InstagramPost = {
+  id: string;
+  caption?: string | undefined;
+  media_type: "IMAGE" | "VIDEO";
+  media_url: string;
+  permalink: string;
+};
+
+export type InstagramPosts = {
+  data: InstagramPost[];
+};

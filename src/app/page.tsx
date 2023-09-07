@@ -1,6 +1,7 @@
 import "./style.scss";
 
 import { getEntriesById, getEntry } from "./helpers/getEntries";
+import InstagramFeed from "./helpers/fetchInstagram";
 
 import Hero from "./components/hero/homepage/Hero";
 import About from "./components/sections/About";
@@ -9,6 +10,22 @@ import BlogPosts from "./components/blog_posts/BlogPosts";
 import SocialMedia from "./components/SocialMedia";
 import InstagramPost from "./components/instagram/InstagramPost";
 import Collection from "./helpers/collection";
+
+const Instagram = async () => {
+  const instagramFeed = await InstagramFeed();
+
+  if (!instagramFeed) {
+    return <></>;
+  }
+
+  const instagramLastPost = instagramFeed.data[0];
+
+  return (
+    <Section heading="Ostatni post">
+      <InstagramPost post={instagramLastPost} />
+    </Section>
+  );
+};
 
 const Home = async () => {
   const lastPosts = await Collection({
@@ -41,9 +58,7 @@ const Home = async () => {
           <Section heading="Social Media">
             <SocialMedia className="flex justify-center items-center space-x-4 text-mocha text-base pb-2" />
           </Section>
-          <Section heading="Ostatni post">
-            <InstagramPost />
-          </Section>
+          <Instagram />
         </aside>
 
         <div className="main-content xl:flex-[70%]">
