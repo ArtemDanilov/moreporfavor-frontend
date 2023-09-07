@@ -1,7 +1,6 @@
 import { Meta } from "@/app/ts/types";
 
 import BlogPost from "./BlogPost";
-import path from "path";
 
 type Props = {
   entries: Meta[];
@@ -32,7 +31,8 @@ const BlogPosts = ({ entries, direction }: Props) => {
           category,
           countries,
         } = data;
-        const pathToArticle = `/${category}/${countries}/${slug}`;
+        const countrySlug = countries ? "/" + countries : "";
+        const pathToArticle = `/${category}${countrySlug}/${slug}`;
 
         return (
           <>
