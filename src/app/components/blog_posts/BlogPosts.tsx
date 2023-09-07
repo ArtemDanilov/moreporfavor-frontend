@@ -32,7 +32,8 @@ const BlogPosts = ({ entries, direction }: Props) => {
           category,
           countries,
         } = data;
-        const pathToArticle = `/${category}/${countries}/${slug}`;
+        const countrySlug = countries ? "/" + countries : "";
+        const pathToArticle = `/${category}${countrySlug}/${slug}`;
 
         return (
           <>

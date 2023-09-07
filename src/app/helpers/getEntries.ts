@@ -11,10 +11,10 @@ export const getEntry = async (
   fileType: string,
   slug: string
 ): Promise<Entry | undefined> => {
-  const realSlug = slug.replace(".mdx", "");
   const filePath = path.join(contentPath, fileType, `${slug}.mdx`);
 
   try {
+    const realSlug = slug.replace(".mdx", "");
     const fileContent = await fs.readFile(filePath, { encoding: "utf-8" });
 
     const { frontmatter, content }: any = await compileMDX({

@@ -1,19 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 import { LongArrow } from "../svg/Icons";
 
 import "./style.scss";
 
 type Props = {
+  path: string;
   pages: number;
 };
 
-const Pagination = ({ pages }: Props) => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get("page"));
+const Pagination = ({ path, pages }: Props) => {
+  const searchParams = useParams();
+  const currentPage = Number(searchParams["country"]);
 
   const pagesCount = Array.from({ length: pages }).map((_, i) => i + 1);
 
@@ -23,7 +23,7 @@ const Pagination = ({ pages }: Props) => {
   return (
     <div className="pagination mt-8 flex justify-center items-center lg:mt-20">
       <Link
-        href={`${pathname}?page=${prevPage}`}
+        href={`/${path}/${prevPage}`}
         className={`prev ${currentPage === 1 && "disabled"}`}
       >
         <LongArrow className="arrow rotate-180" />
@@ -32,7 +32,7 @@ const Pagination = ({ pages }: Props) => {
         {pagesCount.map((page) => (
           <Link
             key={page}
-            href={`${pathname}?page=${page}`}
+            href={`/${path}/${page}`}
             className={`font-display font-normal text-lg px-2 py-1 ${
               currentPage === page
                 ? "text-gray-200 pointer-events-none"
@@ -44,7 +44,7 @@ const Pagination = ({ pages }: Props) => {
         ))}
       </div>
       <Link
-        href={`${pathname}?page=${nextPage}`}
+        href={`/${path}/${nextPage}`}
         className={`next ${currentPage === pages && "disabled"}`}
       >
         <LongArrow className="arrow" />
