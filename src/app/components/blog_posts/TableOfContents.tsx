@@ -110,7 +110,7 @@ const TableOfContents = ({ content }: { content: Content[] }) => {
       {titles.length !== 0 && (
         <nav
           id="tableOfContents"
-          className="mb-15 lg:px-5 lg:py-6 lg:bg-gray-100 lg:rounded-lg lg:sticky lg:top-24 lg:mb-0"
+          className="max-h-[80vh] overflow-y-auto mb-15 lg:px-5 lg:py-6 lg:bg-gray-100 lg:rounded-lg lg:sticky lg:top-24 lg:mb-0"
         >
           <h2 className="font-sans text-2xl font-bold text-green mb-3 md:text-4xl">
             Spis treści

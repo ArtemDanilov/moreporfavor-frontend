@@ -9,8 +9,8 @@ import Slide from "./Slide";
 import { Entry } from "@/app/ts/types";
 
 const Hero = ({ entries }: { entries: Entry[] }) => {
-  if (!entries.length) {
-    return;
+  if (!entries) {
+    return <></>;
   }
 
   return (
@@ -28,15 +28,13 @@ const Hero = ({ entries }: { entries: Entry[] }) => {
       pagination={{ clickable: true }}
     >
       {entries.map(({ meta }) => {
-        const { id, title, image, category, slug } = meta;
+        const { id, title, image, category, countries, slug } = meta;
+        const countrySlug = countries ? "/" + countries : "";
+        const url = `/${category}${countrySlug}/${slug}`;
 
         return (
           <SwiperSlide key={id}>
-            <Slide
-              title={title}
-              image={image}
-              url={`${category.slug}/${slug}`}
-            />
+            <Slide title={title} image={image} url={url} />
           </SwiperSlide>
         );
       })}

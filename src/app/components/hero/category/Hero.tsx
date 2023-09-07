@@ -3,7 +3,7 @@ import { Vintage, Oriental, PolishFolklor, Branches } from "../../svg/Frames";
 import { typeFrame } from "@/app/ts/types";
 
 type Props = {
-  title: string;
+  title: string | undefined;
   frame?: typeFrame;
 };
 

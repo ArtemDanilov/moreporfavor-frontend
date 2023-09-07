@@ -3,16 +3,18 @@ import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import components from "../../../mdx-components";
 
-import { Entry } from "../ts/types";
+import { Entry, Meta } from "../ts/types";
+
+const contentPath = path.join(process.cwd(), "content");
 
 export const getEntry = async (
   fileType: string,
   slug: string
-): Promise<Entry | null> => {
-  const realSlug = slug.replace(".mdx", "");
-  const filePath = path.join("content", fileType, `${slug}.mdx`);
+): Promise<Entry | undefined> => {
+  const filePath = path.join(contentPath, fileType, `${slug}.mdx`);
 
   try {
+    const realSlug = slug.replace(".mdx", "");
     const fileContent = await fs.readFile(filePath, { encoding: "utf-8" });
 
     const { frontmatter, content }: any = await compileMDX({
@@ -29,15 +31,15 @@ export const getEntry = async (
       content,
     };
   } catch {
-    return null;
+    return undefined;
   }
 };
 
 export const getEntriesById = async (
   collection: string,
   ids: string[]
-): Promise<Entry[]> => {
-  const entriesPath = path.join("content", "collections", collection);
+): Promise<Entry[] | undefined> => {
+  const entriesPath = path.join(contentPath, "collections", collection);
 
   try {
     const entries = await fs.readdir(entriesPath);
@@ -76,28 +78,35 @@ export const getEntriesById = async (
     );
 
     return entryWithID;
-  } catch (err) {
-    throw err;
+  } catch {
+    return undefined;
   }
 };
 
-export const getAllEntries = async (fileType: string) => {
-  const entriesPath = path.join("content", fileType);
-  const entries = await fs.readdir(entriesPath);
+export const getAllEntries = async (
+  fileType: string
+): Promise<Meta[] | undefined> => {
+  const entriesPath = path.join(contentPath, fileType);
 
-  let arrayOfEntries: Entry["meta"][] = [];
+  try {
+    const entries = await fs.readdir(entriesPath);
 
-  await Promise.all(
-    entries.map(async (entry) => {
-      const entrySlug = entry.replace(".mdx", "");
-      const entryResult = await getEntry(fileType, entrySlug);
+    let arrayOfEntries: Entry["meta"][] = [];
 
-      if (entryResult) {
-        const { meta } = entryResult;
-        arrayOfEntries.push(meta);
-      }
-    })
-  );
+    await Promise.all(
+      entries.map(async (entry) => {
+        const entrySlug = entry.replace(".mdx", "");
+        const entryResult = await getEntry(fileType, entrySlug);
 
-  return arrayOfEntries;
+        if (entryResult) {
+          const { meta } = entryResult;
+          arrayOfEntries.push(meta);
+        }
+      })
+    );
+
+    return arrayOfEntries;
+  } catch {
+    return undefined;
+  }
 };

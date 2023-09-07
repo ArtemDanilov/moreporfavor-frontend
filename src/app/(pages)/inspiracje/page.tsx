@@ -1,14 +1,25 @@
-import CategoryPage from "../../components/CategoryPage";
+import Category from "@/app/components/Category";
 
-const Inspiracje = () => {
+// import { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
+
+const CategoryPage = ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) => {
+  const currentPage = searchParams["page"] ?? "1";
+
   return (
-    <CategoryPage
+    <Category
       title="Inspiracje"
       tagsCategory="category"
       tagName="inspiracje"
       titleFrame="branches"
+      currentPage={currentPage}
     />
   );
 };
 
-export default Inspiracje;
+export default CategoryPage;

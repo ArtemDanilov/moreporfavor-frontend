@@ -1,8 +1,6 @@
 import "./style.scss";
 
-import { getAllEntries, getEntriesById, getEntry } from "./helpers/getEntries";
-
-import { Article } from "./ts/types";
+import { getEntriesById, getEntry } from "./helpers/getEntries";
 
 import Hero from "./components/hero/homepage/Hero";
 import About from "./components/sections/About";
@@ -10,9 +8,17 @@ import Section from "./components/Section";
 import BlogPosts from "./components/blog_posts/BlogPosts";
 import SocialMedia from "./components/SocialMedia";
 import InstagramPost from "./components/instagram/InstagramPost";
+import Collection from "./helpers/collection";
 
 const Home = async () => {
-  const allPosts = await getAllEntries("collections/articles");
+  const lastPosts = await Collection({
+    collection: "articles",
+    count: { from: 0, to: 2 },
+  });
+  const restPosts = await Collection({
+    collection: "articles",
+    count: { from: 2 },
+  });
   const homepage = await getEntry("pages", "homepage");
   const heroEntries = await getEntriesById(
     "articles",
@@ -21,7 +27,7 @@ const Home = async () => {
 
   return (
     <>
-      <Hero entries={heroEntries} />
+      {heroEntries && <Hero entries={heroEntries} />}
 
       <div className="xl:container xl:flex xl:flex-row-reverse xl:justify-center xl:gap-x-4">
         <aside className="sidebar space-y-8 mb-8 md:mb-12 xl:flex-[30%] xl:mb-0 xl:max-w-xs-2">
@@ -41,15 +47,16 @@ const Home = async () => {
         </aside>
 
         <div className="main-content xl:flex-[70%]">
-          <Section heading="Ostatnio dodane artykuły">
-            <BlogPosts
-              posts={allPosts as Article[]}
-              count={{ from: 0, to: 2 }}
-            />
-          </Section>
-          <Section heading="Pozostałe artykuły">
-            <BlogPosts posts={allPosts as Article[]} count={{ from: 2 }} />
-          </Section>
+          {lastPosts && (
+            <Section heading="Ostatnio dodane artykuły">
+              <BlogPosts entries={lastPosts.entries} />
+            </Section>
+          )}
+          {restPosts && (
+            <Section heading="Pozostałe artykuły">
+              <BlogPosts entries={restPosts.entries} />
+            </Section>
+          )}
         </div>
       </div>
     </>

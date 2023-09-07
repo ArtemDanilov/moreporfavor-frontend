@@ -36,6 +36,7 @@ const nextConfig = {
       },
     ],
   },
+  // output: "export",
 };
 
 export default mdx(withPlaiceholder(nextConfig));

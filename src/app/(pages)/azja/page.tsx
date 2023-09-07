@@ -1,14 +1,25 @@
-import CategoryPage from "../../components/CategoryPage";
+import Category from "@/app/components/Category";
 
-const Azja = () => {
+// import { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
+
+const CategoryPage = ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) => {
+  const currentPage = searchParams["page"] ?? "1";
+
   return (
-    <CategoryPage
+    <Category
       title="Azja"
       tagsCategory="category"
       tagName="azja"
       titleFrame="oriental"
+      currentPage={currentPage}
     />
   );
 };
 
-export default Azja;
+export default CategoryPage;
