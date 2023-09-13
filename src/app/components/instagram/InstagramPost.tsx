@@ -44,17 +44,17 @@ const InstagramPost = async ({ post }: { post: InstagramPost }) => {
         rel="noopener noreferrer"
         className="block"
       >
-        {media_type === "IMAGE" ? (
+        {media_type === "VIDEO" ? (
+          <video width="320" height="568" autoPlay loop muted>
+            <source src={media_url} type="video/mp4"></source>
+          </video>
+        ) : (
           <Image
             width="320"
             height="320"
             src={media_url}
             alt="Instagram post image"
           />
-        ) : (
-          <video width="320" height="568" autoPlay loop muted>
-            <source src={media_url} type="video/mp4"></source>
-          </video>
         )}
       </a>
       {text && <Truncate text={text} length={100} />}
