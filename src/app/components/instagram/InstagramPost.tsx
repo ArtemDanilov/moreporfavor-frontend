@@ -4,7 +4,7 @@ import Truncate from "@/app/components/truncate";
 
 import { InstagramPost } from "@/app/ts/types";
 
-const InstagramPost = async ({ post }: { post: InstagramPost }) => {
+const InstagramPost = ({ post }: { post: InstagramPost }) => {
   if (!post) {
     return;
   }
