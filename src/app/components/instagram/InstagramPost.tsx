@@ -11,6 +11,10 @@ const InstagramPost = ({ post }: { post: InstagramPost }) => {
 
   const { caption, media_type, media_url, permalink } = post;
 
+  const convertedMediaUrl = media_url.replace(
+    /scontent-.*?\.cdninstagram\.com/,
+    "scontent-waw1-1.cdninstagram.com"
+  );
   const hashtagRegex = /#([^#\s]+)/g;
 
   const hashtags: string[] | null = caption
@@ -51,7 +55,7 @@ const InstagramPost = ({ post }: { post: InstagramPost }) => {
         ) : (
           <div className="relative w-80 h-96">
             <Image
-              src={media_url}
+              src={convertedMediaUrl}
               alt="Instagram post image"
               fill={true}
               sizes="(max-width: 1280px) 50vw, 25vw"
