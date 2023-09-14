@@ -84,7 +84,9 @@ const Nav = ({ links }: { links: TLink[] }) => {
                     onClick={closeMenu}
                   />
                 ) : (
-                  <Link href={`/${parentSlug}`}>{title}</Link>
+                  <Link href={`/${parentSlug}`} onClick={closeMenu}>
+                    {title}
+                  </Link>
                 )}
               </li>
             );
