@@ -13,8 +13,6 @@ import SocialMedia from "../../SocialMedia";
 import CloseBtn from "../../CloseBtn";
 import Children from "./Children";
 
-import "../style.scss";
-
 const Nav = ({ links }: { links: TLink[] }) => {
   const pathname = usePathname();
 
