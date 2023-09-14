@@ -14,7 +14,7 @@ const Nav = ({ links }: { links: TLink[] }) => {
       <nav className="relative">
         <ul className="flex">
           {links.map(({ id, title, slug, children }) => {
-            const isActive = pathname.startsWith(slug);
+            const isActive = pathname.startsWith(`/${slug}`);
             const activeLink = isActive ? "text-green" : "text-black";
             const parentSlug = slug;
 

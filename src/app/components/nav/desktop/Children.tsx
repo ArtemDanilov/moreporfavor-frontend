@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { useEffect, useRef, useState } from "react";
 import { Chevron } from "../../svg/Icons";
+import { usePathname } from "next/navigation";
 
 type Props = {
   links: {
@@ -14,6 +15,8 @@ type Props = {
 };
 
 const Children = ({ links, activeLink, parentSlug, title }: Props) => {
+  const pathname = usePathname();
+
   const [isNavigate, setIsNavigate] = useState<boolean>(false);
   const listWrapper = useRef<HTMLDivElement>(null!);
 
@@ -51,19 +54,24 @@ const Children = ({ links, activeLink, parentSlug, title }: Props) => {
           }`}
         >
           <ul className={`py-2 w-max bg-white shadow-default rounded-md`}>
-            {links.map(({ title, slug }) => (
-              <li
-                key={slug}
-                className={`${activeLink} font-sans font-normal text-base`}
-              >
-                <Link
-                  href={`/${parentSlug}/${slug}`}
-                  className="inline-block py-1.5 px-6 link-hover"
+            {links.map(({ title, slug }) => {
+              const isActive = pathname === `/${parentSlug}/${slug}`;
+              const activeLink = isActive ? "text-green" : "text-black";
+
+              return (
+                <li
+                  key={slug}
+                  className={`${activeLink} font-sans font-normal text-base`}
                 >
-                  {title}
-                </Link>
-              </li>
-            ))}
+                  <Link
+                    href={`/${parentSlug}/${slug}`}
+                    className="inline-block py-1.5 px-6 link-hover"
+                  >
+                    {title}
+                  </Link>
+                </li>
+              );
+            })}
 
             <li
               key="wszystkie"
@@ -71,7 +79,9 @@ const Children = ({ links, activeLink, parentSlug, title }: Props) => {
             >
               <Link
                 href={`/${parentSlug}`}
-                className="inline-block py-1.5 px-6 link-hover"
+                className={`inline-block py-1.5 px-6 link-hover ${
+                  pathname === `/${parentSlug}` ? "text-green" : "text-black"
+                }`}
               >
                 Wszystkie
               </Link>

@@ -66,15 +66,12 @@ const Nav = ({ links }: { links: TLink[] }) => {
 
         <ul className="mt-32 w-full px-5 space-y-4 overflow-y-auto h-[calc(100dvh-4rem-8rem)]">
           {links.map(({ id, title, slug, children }) => {
-            const isActive = pathname.startsWith(slug);
+            const isActive = pathname.startsWith(`/${slug}`);
             const activeLink = isActive ? "text-green" : "text-black";
             const parentSlug = slug;
 
             return (
-              <li
-                key={id}
-                className={`${activeLink} font-sans font-bold text-5xl text-right`}
-              >
+              <li key={id} className="font-sans font-bold text-5xl text-right">
                 {children ? (
                   <Children
                     links={children}
@@ -84,7 +81,11 @@ const Nav = ({ links }: { links: TLink[] }) => {
                     onClick={closeMenu}
                   />
                 ) : (
-                  <Link href={`/${parentSlug}`} onClick={closeMenu}>
+                  <Link
+                    href={`/${parentSlug}`}
+                    className={activeLink}
+                    onClick={closeMenu}
+                  >
                     {title}
                   </Link>
                 )}

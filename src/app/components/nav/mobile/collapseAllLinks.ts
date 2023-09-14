@@ -5,7 +5,6 @@ const collapseAllLinks = () => {
     const listOfLinks = btn.nextElementSibling as HTMLUListElement;
 
     btn.ariaExpanded = "false";
-    btn.classList.remove("text-green");
     listOfLinks.style.height = "0px";
   });
 };
