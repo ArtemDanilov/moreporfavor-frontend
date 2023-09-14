@@ -21,7 +21,7 @@ const Nav = ({ links }: { links: TLink[] }) => {
             return (
               <li
                 key={id}
-                className={`${activeLink} font-sans text-base font-normal py-1 px-2 hover:text-green transition duration-300`}
+                className={`${activeLink} font-sans text-base font-normal py-1 px-2`}
               >
                 {children ? (
                   <Children
@@ -31,7 +31,9 @@ const Nav = ({ links }: { links: TLink[] }) => {
                     activeLink={activeLink}
                   />
                 ) : (
-                  <Link href={`/${slug}`}>{title}</Link>
+                  <Link href={`/${slug}`} className="link-hover">
+                    {title}
+                  </Link>
                 )}
               </li>
             );

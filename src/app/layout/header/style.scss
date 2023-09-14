@@ -52,6 +52,10 @@
   }
 }
 
+.link-hover {
+  @apply hover:text-green transition duration-300;
+}
+
 div.active {
   animation: increase 0.3s forwards;
 }

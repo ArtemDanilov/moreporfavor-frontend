@@ -31,7 +31,7 @@ const Children = ({ links, activeLink, parentSlug, title }: Props) => {
   return (
     <>
       <div
-        className="relative w-full h-full"
+        className="relative w-full h-full link-hover"
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
       >
@@ -46,11 +46,11 @@ const Children = ({ links, activeLink, parentSlug, title }: Props) => {
 
         <div
           ref={listWrapper}
-          className={`absolute top-0 pt-10 invisible ${
+          className={`absolute top-0 w-full mt-6 pt-4 invisible ${
             isNavigate ? "active" : "no-active"
           }`}
         >
-          <ul className={`py-2 bg-white shadow-default rounded-md`}>
+          <ul className={`py-2 w-max bg-white shadow-default rounded-md`}>
             {links.map(({ title, slug }) => (
               <li
                 key={slug}
@@ -58,7 +58,7 @@ const Children = ({ links, activeLink, parentSlug, title }: Props) => {
               >
                 <Link
                   href={`/${parentSlug}/${slug}`}
-                  className="inline-block py-1.5 px-6"
+                  className="inline-block py-1.5 px-6 link-hover"
                 >
                   {title}
                 </Link>
@@ -67,11 +67,11 @@ const Children = ({ links, activeLink, parentSlug, title }: Props) => {
 
             <li
               key="wszystkie"
-              className={`${activeLink} font-sans font-bold text-base hover:text-green transition duration-300`}
+              className={`${activeLink} font-sans font-bold text-base`}
             >
               <Link
                 href={`/${parentSlug}`}
-                className="inline-block py-1.5 px-6"
+                className="inline-block py-1.5 px-6 link-hover"
               >
                 Wszystkie
               </Link>
