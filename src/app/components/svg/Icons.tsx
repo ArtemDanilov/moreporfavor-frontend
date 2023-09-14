@@ -6,6 +6,7 @@ import Tiktok from "./icons/Tiktok";
 import Instagram from "./icons/Instagram";
 import Arrow from "./icons/Arrow";
 import LongArrow from "./icons/LongArrow";
+import Chevron from "./icons/Chevron";
 
 export {
   Sun,
@@ -16,4 +17,5 @@ export {
   Instagram,
   Arrow,
   LongArrow,
+  Chevron,
 };

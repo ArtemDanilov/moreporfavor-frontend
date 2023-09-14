@@ -1,22 +1,27 @@
 "use client";
 
-import "./style.scss";
-
-import { TLink } from "../../ts/types";
-
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { MenuButton } from "../svg/Icons";
-import SocialMedia from "../SocialMedia";
-import CloseBtn from "../CloseBtn";
+import { TLink } from "@/app/ts/types";
+
+import collapseAllLinks from "./collapseAllLinks";
+
+import { MenuButton } from "../../svg/Icons";
+import SocialMedia from "../../SocialMedia";
+import CloseBtn from "../../CloseBtn";
+import Children from "./Children";
+
+import "../style.scss";
 
 const Nav = ({ links }: { links: TLink[] }) => {
+  const pathname = usePathname();
+
   const [menu, setMenu] = useState<boolean>(false);
+
   const overlay = useRef<HTMLDivElement>(null!);
   const navMenu = useRef<HTMLDivElement>(null!);
-  const pathname = usePathname();
 
   const openMenu = () => {
     setMenu(true);
@@ -28,6 +33,7 @@ const Nav = ({ links }: { links: TLink[] }) => {
 
   const closeMenu = () => {
     setMenu(false);
+    collapseAllLinks();
 
     document.body.classList.remove("overflow-hidden");
     overlay.current.classList.add("overlay-hidden");
@@ -60,19 +66,28 @@ const Nav = ({ links }: { links: TLink[] }) => {
       >
         <CloseBtn onClick={closeMenu} />
 
-        <ul className="absolute absolute-y-centered right-0 w-full p-5 space-y-4">
-          {links.map(({ id, title, slug }) => {
+        <ul className="mt-32 w-full px-5 space-y-4 overflow-y-auto h-[calc(100dvh-4rem-8rem)]">
+          {links.map(({ id, title, slug, children }) => {
             const isActive = pathname.startsWith(slug);
             const activeLink = isActive ? "text-green" : "text-black";
+            const parentSlug = slug;
 
             return (
               <li
                 key={id}
                 className={`${activeLink} font-sans font-bold text-5xl text-right`}
               >
-                <Link href={`/${slug}`} onClick={closeMenu}>
-                  {title}
-                </Link>
+                {children ? (
+                  <Children
+                    links={children}
+                    parentSlug={parentSlug}
+                    activeLink={activeLink}
+                    buttonLabel={title}
+                    onClick={closeMenu}
+                  />
+                ) : (
+                  <Link href={`/${parentSlug}`}>{title}</Link>
+                )}
               </li>
             );
           })}

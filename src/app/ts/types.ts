@@ -54,6 +54,10 @@ export type TLink = {
   id: string;
   title: string;
   slug: string;
+  children?: {
+    title: string;
+    slug: string;
+  }[];
 };
 
 export type ImageFormat = {

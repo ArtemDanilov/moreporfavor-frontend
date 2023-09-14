@@ -9,3 +9,11 @@
 .transition-prevent {
   @apply transition-none #{!important};
 }
+
+[aria-expanded="true"] {
+  @apply text-green;
+
+  svg {
+    @apply rotate-180;
+  }
+}

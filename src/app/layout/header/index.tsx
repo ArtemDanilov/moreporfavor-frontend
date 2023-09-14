@@ -4,7 +4,7 @@ import { getAllEntries } from "@/app/helpers/getEntries";
 
 import { Magnifier, Sun } from "@/app/components/svg/Icons";
 import Logo from "@/app/components/Logo";
-import MobileNav from "@/app/components/nav/MobileNav";
+import MobileNav from "@/app/components/nav/mobile/Index";
 import DesktopNav from "@/app/components/nav/DesktopNav";
 
 const Header = async () => {
