@@ -49,12 +49,17 @@ const InstagramPost = ({ post }: { post: InstagramPost }) => {
             <source src={media_url} type="video/mp4"></source>
           </video>
         ) : (
-          <Image
-            width="320"
-            height="320"
-            src={media_url}
-            alt="Instagram post image"
-          />
+          <div className="relative w-80 h-96">
+            <Image
+              src={media_url}
+              alt="Instagram post image"
+              fill={true}
+              sizes="(max-width: 1280px) 50vw, 25vw"
+              className="absolute w-auto h-full"
+              priority={false}
+              loading="lazy"
+            />
+          </div>
         )}
       </a>
       {text && <Truncate text={text} length={100} />}
