@@ -45,11 +45,13 @@ const Category = async ({
     <>
       <Hero title={title} frame={titleFrame} />
 
-      <Section>
-        <BlogPosts entries={collection.entries} />
+      {collection.entries.length > 0 && (
+        <Section>
+          <BlogPosts entries={collection.entries} />
 
-        {totalPages > 1 && <Pagination pages={totalPages} />}
-      </Section>
+          {totalPages > 1 && <Pagination pages={totalPages} />}
+        </Section>
+      )}
     </>
   );
 };
