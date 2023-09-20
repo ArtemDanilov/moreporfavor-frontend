@@ -10,11 +10,13 @@ import DesktopNav from "@/app/components/nav/desktop/DesktopNav";
 import "./style.scss";
 
 const Header = async () => {
-  const navigation = await getAllEntries("navigation");
+  const navLinks = await getAllEntries("navigation");
 
-  if (!navigation) {
+  if (!navLinks) {
     return;
   }
+
+  const navLinksSorted = navLinks?.sort((a, b) => a.order - b.order);
 
   return (
     <header className="fixed left-0 top-0 z-[999] w-full bg-white shadow-default">
@@ -26,12 +28,12 @@ const Header = async () => {
           </Link>
         </h1>
 
-        <DesktopNav links={navigation} />
+        <DesktopNav links={navLinksSorted} />
 
         <div className="flex items-center space-x-4 lg:w-[8.75rem]">
           {/* <Magnifier className="w-6 h-6" />
           <Sun className="w-6 h-6" /> */}
-          <MobileNav links={navigation} />
+          <MobileNav links={navLinksSorted} />
         </div>
       </div>
     </header>

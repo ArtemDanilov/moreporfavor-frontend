@@ -7,11 +7,13 @@ import SocialMedia from "@/app/components/SocialMedia";
 import Logo from "@/app/components/Logo";
 
 const Footer = async () => {
-  const navigation = await getAllEntries("navigation");
+  const navLinks = await getAllEntries("navigation");
 
-  if (!navigation) {
+  if (!navLinks) {
     return;
   }
+
+  const navLinksSorted = navLinks.sort((a, b) => a.order - b.order);
 
   return (
     <footer className="prlx-container relative max-w-8xl mx-auto overflow-hidden">
@@ -22,7 +24,7 @@ const Footer = async () => {
 
         <div className="flex items-end justify-between mb-9 md:flex-col md:justify-center">
           <ul className="md:space-x-4 md:mx-auto md:mb-4 lg:mb-8">
-            {navigation.map(({ id, title, slug }) => (
+            {navLinksSorted.map(({ id, title, slug }) => (
               <li
                 key={id}
                 className="font-sans font-bold text-base text-white text-left md:text-xl md:inline"
