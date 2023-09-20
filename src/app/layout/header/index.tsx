@@ -17,7 +17,7 @@ const Header = async () => {
   }
 
   return (
-    <header className="fixed left-0 top-0 z-[9999] w-full bg-white shadow-default">
+    <header className="fixed left-0 top-0 z-[999] w-full bg-white shadow-default">
       <div className="max-w-8xl mx-auto py-4 px-5 flex items-center justify-between xl:px-20">
         <h1>
           <Link href="/">
