@@ -28,7 +28,7 @@ const Header = async () => {
 
         <DesktopNav links={navigation} />
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 lg:w-[8.75rem]">
           {/* <Magnifier className="w-6 h-6" />
           <Sun className="w-6 h-6" /> */}
           <MobileNav links={navigation} />
