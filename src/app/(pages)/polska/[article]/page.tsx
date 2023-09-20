@@ -3,6 +3,7 @@ import Collection from "@/app/helpers/collection";
 
 import Article from "@/app/components/blog_posts/Article";
 import NotFound from "@/app/not-found";
+import Wrapper from "@/app/Wrapper";
 
 // import { Metadata } from "next";
 
@@ -46,7 +47,11 @@ const Page = async ({ params }: Props) => {
     return <NotFound />;
   }
 
-  return <Article post={article} />;
+  return (
+    <Wrapper>
+      <Article post={article} />
+    </Wrapper>
+  );
 };
 
 export default Page;

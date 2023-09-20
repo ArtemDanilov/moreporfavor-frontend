@@ -3,6 +3,7 @@ import Collection from "@/app/helpers/collection";
 
 import Category from "@/app/components/Category";
 import NotFound from "@/app/not-found";
+import Wrapper from "@/app/Wrapper";
 
 // import { Metadata } from "next";
 
@@ -48,12 +49,14 @@ const Country = async ({ params, searchParams }: Props) => {
   }
 
   return (
-    <Category
-      title={entry.meta.title}
-      tagsCategory="countries"
-      tagName={entry.meta.slug}
-      currentPage={currentPage}
-    />
+    <Wrapper>
+      <Category
+        title={entry.meta.title}
+        tagsCategory="countries"
+        tagName={entry.meta.slug}
+        currentPage={currentPage}
+      />
+    </Wrapper>
   );
 };
 

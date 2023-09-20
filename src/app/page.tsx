@@ -10,6 +10,8 @@ import BlogPosts from "./components/blog_posts/BlogPosts";
 import SocialMedia from "./components/SocialMedia";
 import InstagramPost from "./components/instagram/InstagramPost";
 import Collection from "./helpers/collection";
+import Template from "./Wrapper";
+import Wrapper from "./Wrapper";
 
 const Instagram = async () => {
   const instagramFeed = await InstagramFeed();
@@ -43,38 +45,40 @@ const Home = async () => {
   );
 
   return (
-    <>
-      {heroEntries && <Hero entries={heroEntries} />}
+    <Wrapper>
+      <>
+        {heroEntries && <Hero entries={heroEntries} />}
 
-      <div className="xl:container xl:flex xl:flex-row-reverse xl:justify-center xl:gap-x-4">
-        <aside className="sidebar space-y-8 mb-8 md:mb-12 xl:flex-[30%] xl:mb-0 xl:max-w-xs-2">
-          <Section heading="O mnie">
-            <About
-              image={homepage?.meta.profile_image}
-              text={homepage?.meta.bio}
-              className="sm:flex sm:items-center sm:space-x-5 sm:max-w-[37.75rem] sm:text-left xl:block xl:space-x-0 xl:text-center"
-            />
-          </Section>
-          <Section heading="Social Media">
-            <SocialMedia className="flex justify-center items-center space-x-4 text-mocha text-base pb-2" />
-          </Section>
-          <Instagram />
-        </aside>
+        <div className="xl:container xl:flex xl:flex-row-reverse xl:justify-center xl:gap-x-4">
+          <aside className="sidebar space-y-8 mb-8 md:mb-12 xl:flex-[30%] xl:mb-0 xl:max-w-xs-2">
+            <Section heading="O mnie">
+              <About
+                image={homepage?.meta.profile_image}
+                text={homepage?.meta.bio}
+                className="sm:flex sm:items-center sm:space-x-5 sm:max-w-[37.75rem] sm:text-left xl:block xl:space-x-0 xl:text-center"
+              />
+            </Section>
+            <Section heading="Social Media">
+              <SocialMedia className="flex justify-center items-center space-x-4 text-mocha text-base pb-2" />
+            </Section>
+            <Instagram />
+          </aside>
 
-        <div className="main-content xl:flex-[70%]">
-          {lastPosts && (
-            <Section heading="Ostatnio dodane artykuły">
-              <BlogPosts entries={lastPosts.entries} />
-            </Section>
-          )}
-          {restPosts && (
-            <Section heading="Pozostałe artykuły">
-              <BlogPosts entries={restPosts.entries} />
-            </Section>
-          )}
+          <div className="main-content xl:flex-[70%]">
+            {lastPosts && (
+              <Section heading="Ostatnio dodane artykuły">
+                <BlogPosts entries={lastPosts.entries} />
+              </Section>
+            )}
+            {restPosts && (
+              <Section heading="Pozostałe artykuły">
+                <BlogPosts entries={restPosts.entries} />
+              </Section>
+            )}
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    </Wrapper>
   );
 };
 

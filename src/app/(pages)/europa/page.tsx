@@ -1,3 +1,4 @@
+import Wrapper from "@/app/Wrapper";
 import Category from "@/app/components/Category";
 
 // import { Metadata } from "next";
@@ -12,13 +13,15 @@ const CategoryPage = ({
   const currentPage = searchParams["page"] ?? "1";
 
   return (
-    <Category
-      title="Europa"
-      tagsCategory="category"
-      tagName="europa"
-      titleFrame="vintage"
-      currentPage={currentPage}
-    />
+    <Wrapper>
+      <Category
+        title="Europa"
+        tagsCategory="category"
+        tagName="europa"
+        titleFrame="vintage"
+        currentPage={currentPage}
+      />
+    </Wrapper>
   );
 };
 
