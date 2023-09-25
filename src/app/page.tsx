@@ -10,7 +10,6 @@ import BlogPosts from "./components/blog_posts/BlogPosts";
 import SocialMedia from "./components/SocialMedia";
 import InstagramPost from "./components/instagram/InstagramPost";
 import Collection from "./helpers/collection";
-import Template from "./Wrapper";
 import Wrapper from "./Wrapper";
 
 const Instagram = async () => {
