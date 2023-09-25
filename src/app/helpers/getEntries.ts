@@ -30,7 +30,9 @@ export const getEntry = async (
       },
       content,
     };
-  } catch {
+  } catch (err) {
+    console.log(err);
+
     return undefined;
   }
 };
@@ -50,35 +52,32 @@ export const getEntriesById = async (
         const realSlug = entry.replace(".mdx", "");
         const filepath = path.join(entriesPath, entry);
 
-        try {
-          const fileContent = await fs.readFile(filepath, {
-            encoding: "utf-8",
-          });
-          const { frontmatter, content }: any = await compileMDX({
-            source: fileContent,
-            options: { parseFrontmatter: true },
-            components: components,
-          });
+        const fileContent = await fs.readFile(filepath, {
+          encoding: "utf-8",
+        });
+        const { frontmatter, content }: any = await compileMDX({
+          source: fileContent,
+          options: { parseFrontmatter: true },
+          components: components,
+        });
 
-          const entryData: Entry = {
-            meta: {
-              ...frontmatter,
-              slug: realSlug,
-            },
-            content,
-          };
+        const entryData: Entry = {
+          meta: {
+            ...frontmatter,
+            slug: realSlug,
+          },
+          content,
+        };
 
-          if (ids.includes(frontmatter.id)) {
-            entryWithID?.push(entryData);
-          }
-        } catch (err) {
-          throw err;
+        if (ids.includes(frontmatter.id)) {
+          entryWithID?.push(entryData);
         }
       })
     );
 
     return entryWithID;
-  } catch {
+  } catch (err) {
+    console.log(err);
     return undefined;
   }
 };
@@ -106,7 +105,8 @@ export const getAllEntries = async (
     );
 
     return arrayOfEntries;
-  } catch {
+  } catch (err) {
+    console.log(err);
     return undefined;
   }
 };
