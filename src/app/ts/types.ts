@@ -7,7 +7,7 @@ export type Content = {
   ref: null;
   props: {
     components?: [Object];
-    children?: string;
+    children?: any;
   };
   _owner: null;
   _store: {};
