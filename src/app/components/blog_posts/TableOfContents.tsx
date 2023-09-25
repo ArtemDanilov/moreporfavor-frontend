@@ -12,21 +12,53 @@ type Title = {
   text: string;
 };
 
+const findObjectsWithHeadings = (obj: Content[]) => {
+  let result: Content[] = [];
+
+  const traverse = (obj: any) => {
+    if (obj instanceof Array) {
+      for (let i = 0; i < obj.length; i++) {
+        traverse(obj[i]);
+      }
+    } else if (obj && typeof obj === "object") {
+      if (obj.type === "h2" || obj.type === "h3") {
+        result.push(obj);
+      }
+      for (let key in obj) {
+        traverse(obj[key]);
+      }
+    }
+  };
+
+  traverse(obj);
+
+  return result;
+};
+
 export const extractTitles = (content: Content[]): Title[] => {
   if (!content) {
     return [];
   }
 
-  const titles = content.reduce((accumulator: Title[], el) => {
-    if (el.type === "h2" || el.type === "h3") {
-      const children = el.props.children;
-      const text = typeof children === "string" ? children : "";
+  const headingObjects = findObjectsWithHeadings(content);
 
-      accumulator.push({
-        tag: el.type,
-        text: text,
-      });
+  const titles = headingObjects.reduce((accumulator: Title[], el) => {
+    const children = el.props.children;
+
+    let text: string;
+
+    if (typeof children === "object") {
+      text = children.props.children;
+    } else if (typeof children === "string") {
+      text = children;
+    } else {
+      text = "";
     }
+
+    accumulator.push({
+      tag: el.type,
+      text: text,
+    });
 
     return accumulator;
   }, []);
