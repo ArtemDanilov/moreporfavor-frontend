@@ -1,0 +1,18 @@
+.button-transition {
+  @apply relative overflow-hidden;
+  @apply before:content-[''] before:w-8 before:h-8 before:absolute before:z-0 before:-top-8 before:-left-8 before:rounded-full before:bg-green before:transition-all before:duration-500 ease-linear;
+
+  span {
+    @apply relative z-10 transition-all duration-500;
+  }
+
+  &:hover {
+    span {
+      @apply text-white;
+    }
+
+    &:before {
+      @apply scale-[20];
+    }
+  }
+}

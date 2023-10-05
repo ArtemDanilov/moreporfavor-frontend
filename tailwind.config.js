@@ -55,6 +55,7 @@ module.exports = {
       },
       boxShadow: {
         default: "2px 2px 25px rgba(0, 0, 0, 0.1)",
+        small: "0px 5px 20px rgba(0, 0, 0, 0.05)",
         overlay: "inset 0 0 0 2000px rgba(0, 0, 0, 0.5)",
       },
     },
