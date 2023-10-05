@@ -11,6 +11,7 @@ import SocialMedia from "./components/SocialMedia";
 import InstagramPost from "./components/instagram/InstagramPost";
 import Collection from "./helpers/collection";
 import Wrapper from "./Wrapper";
+import Button from "./components/Button/Button";
 
 const Instagram = async () => {
   const instagramFeed = await InstagramFeed();
@@ -35,7 +36,7 @@ const Home = async () => {
   });
   const restPosts = await Collection({
     collection: "articles",
-    count: { from: 2 },
+    count: { from: 2, to: 8 },
   });
   const homepage = await getEntry("pages", "homepage");
   const heroEntries = await getEntriesById(
@@ -72,6 +73,11 @@ const Home = async () => {
             {restPosts && (
               <Section heading="Pozostałe artykuły">
                 <BlogPosts entries={restPosts.entries} />
+                <Button
+                  href="/wszystkie-artykuly"
+                  label="Zobacz wszystkie"
+                  className="mt-8 mx-auto"
+                />
               </Section>
             )}
           </div>
