@@ -1,17 +1,24 @@
+import { Metadata } from "next";
+import countryMetadata from "@/app/helpers/metadata/countryMetadata";
+
 import { getEntry } from "@/app/helpers/getEntries";
 import Collection from "@/app/helpers/collection";
 
 import Category from "@/app/components/Category";
-import NotFound from "@/app/not-found";
+import NotFound from "@/app/(pages)/not-found";
 import Wrapper from "@/app/Wrapper";
-
-// import { Metadata } from "next";
 
 type Props = {
   params: {
     country: string;
   };
   searchParams: { [key: string]: string | undefined };
+};
+
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  return countryMetadata(params.country);
 };
 
 export const generateStaticParams = async () => {

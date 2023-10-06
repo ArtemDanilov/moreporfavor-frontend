@@ -1,9 +1,14 @@
+import { Metadata } from "next";
+import categoryMetadata from "@/app/helpers/metadata/categoryMetadata";
+
 import Wrapper from "@/app/Wrapper";
 import Category from "@/app/components/Category";
 
-// import { Metadata } from "next";
-
 export const dynamic = "force-dynamic";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  return categoryMetadata("azja");
+};
 
 const CategoryPage = ({
   searchParams,

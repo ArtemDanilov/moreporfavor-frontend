@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import Section from "../../components/Section";
 import Hero from "../../components/hero/category/Hero";
 import Collection from "../../helpers/collection";
@@ -5,9 +7,12 @@ import Pagination from "../../components/pagination/Pagination";
 import BlogPosts from "../../components/blog_posts/BlogPosts";
 import Wrapper from "@/app/Wrapper";
 
-// import { Metadata } from "next";
-
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Wszystkie artykuły",
+  description: "Artykuły wszystkich podkategorii",
+};
 
 const CategoryPage = async ({
   searchParams,

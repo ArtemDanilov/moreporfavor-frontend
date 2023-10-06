@@ -1,11 +1,12 @@
+import { Metadata } from "next";
+import articleMetadata from "@/app/helpers/metadata/articleMetadata";
+
 import { getEntry } from "@/app/helpers/getEntries";
 import Collection from "@/app/helpers/collection";
 
 import Article from "@/app/components/blog_posts/Article";
-import NotFound from "@/app/not-found";
+import NotFound from "@/app/(pages)/not-found";
 import Wrapper from "@/app/Wrapper";
-
-// import { Metadata } from "next";
 
 type Props = {
   params: {
@@ -13,6 +14,12 @@ type Props = {
     country: string;
     article: string;
   };
+};
+
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  return articleMetadata(params.article);
 };
 
 export const generateStaticParams = async () => {
