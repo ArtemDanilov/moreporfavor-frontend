@@ -1,4 +1,10 @@
-import NotFound404 from "./components/svg/404";
+import { Metadata } from "next";
+import NotFound404 from "../components/svg/404";
+
+export const metadata: Metadata = {
+  title: "Error 404",
+  description: "Page not found",
+};
 
 const NotFound = () => {
   return (

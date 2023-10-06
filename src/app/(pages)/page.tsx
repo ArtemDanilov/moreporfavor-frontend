@@ -1,17 +1,25 @@
+import { Metadata } from "next";
+
+import { getEntriesById, getEntry } from "../helpers/getEntries";
+import InstagramFeed from "../helpers/fetchInstagram";
+
+import Hero from "../components/hero/homepage/Hero";
+import About from "../components/sections/About";
+import Section from "../components/Section";
+import BlogPosts from "../components/blog_posts/BlogPosts";
+import SocialMedia from "../components/SocialMedia";
+import InstagramPost from "../components/instagram/InstagramPost";
+import Collection from "../helpers/collection";
+import Wrapper from "../Wrapper";
+import Button from "../components/Button/Button";
+
 import "./style.scss";
 
-import { getEntriesById, getEntry } from "./helpers/getEntries";
-import InstagramFeed from "./helpers/fetchInstagram";
-
-import Hero from "./components/hero/homepage/Hero";
-import About from "./components/sections/About";
-import Section from "./components/Section";
-import BlogPosts from "./components/blog_posts/BlogPosts";
-import SocialMedia from "./components/SocialMedia";
-import InstagramPost from "./components/instagram/InstagramPost";
-import Collection from "./helpers/collection";
-import Wrapper from "./Wrapper";
-import Button from "./components/Button/Button";
+export const metadata: Metadata = {
+  title: "Moreporfavor",
+  description:
+    "Blog, w którym znajdziesz ciekawe miejsca do odwiedzenia, dobre restauracje, porady i wiele innych rzeczy",
+};
 
 const Instagram = async () => {
   const instagramFeed = await InstagramFeed();
