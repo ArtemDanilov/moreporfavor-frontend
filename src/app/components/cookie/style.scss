@@ -1,0 +1,28 @@
+.cookie-container {
+  &.show {
+    animation: show 0.5s both ease-out;
+    animation-delay: 2s;
+  }
+
+  &.hide {
+    animation: hide 0.3s both ease-in;
+  }
+}
+
+@keyframes show {
+  0% {
+    translate: 0px 100%;
+  }
+  100% {
+    translate: 0;
+  }
+}
+
+@keyframes hide {
+  0% {
+    translate: 0;
+  }
+  100% {
+    translate: 0px 100%;
+  }
+}
