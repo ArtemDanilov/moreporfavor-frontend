@@ -37,7 +37,7 @@ export default function RootLayout({
         <main className="mb-12 md:mb-0">{children}</main>
         <Footer />
 
-        {!isProduction && <CookieWindow />}
+        {isProduction && <CookieWindow />}
       </body>
     </html>
   );
