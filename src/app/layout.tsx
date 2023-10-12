@@ -21,9 +21,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${abril.variable} ${nunito.variable}`}
     >
-      {isProduction && <CookieConsent />}
-
       <body>
+        {isProduction && <CookieConsent />}
+
         <NextTopLoader
           color="#FF8B5C"
           initialPosition={0.08}
