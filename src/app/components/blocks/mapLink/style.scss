@@ -1,0 +1,13 @@
+@media (hover: hover) {
+  .map-link {
+    svg {
+      @apply transition-transform duration-150;
+    }
+
+    &:hover {
+      svg {
+        @apply -rotate-12;
+      }
+    }
+  }
+}

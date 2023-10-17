@@ -7,6 +7,7 @@ import Instagram from "./icons/Instagram";
 import Arrow from "./icons/Arrow";
 import LongArrow from "./icons/LongArrow";
 import Chevron from "./icons/Chevron";
+import Map from "./icons/Map";
 
 export {
   Sun,
@@ -18,4 +19,5 @@ export {
   Arrow,
   LongArrow,
   Chevron,
+  Map,
 };

@@ -8,10 +8,12 @@ import type { MDXComponents } from "mdx/types";
 // This file is required to use MDX in `app` directory
 import Link from "next/link";
 import ImagesWithLighbox from "@/app/components/blocks/ImagesWithLighbox";
+import MapLink from "@/app/components/blocks/mapLink/MapLink";
 
 const components = {
   Link,
   ImagesWithLighbox,
+  MapLink,
 };
 
 export const useMDXComponents = (components: MDXComponents): MDXComponents => {
