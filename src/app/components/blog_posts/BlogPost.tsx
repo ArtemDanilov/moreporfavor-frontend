@@ -40,24 +40,24 @@ const BlogPost = ({
   if (vertical) {
     postClasses = `max-w-[21.25rem] rounded-md overflow-hidden shadow-default lg:max-w-[25rem]`;
   } else if (horizontal) {
-    postClasses = `max-w-[25rem] rounded-md overflow-hidden shadow-default sm:flex sm:block sm:max-w-none sm:w-full`;
+    postClasses = `max-w-[25rem] rounded-md overflow-hidden shadow-default sm:flex sm:max-w-none`;
   }
 
   return (
     <div className={postClasses}>
       <Link
         href={link}
-        className={`block w-full overflow-hidden h-56 bg-gray-100 ${
+        className={`relative block w-full overflow-hidden h-56 bg-gray-100 ${
           horizontal ? "h-auto sm:flex-[40%]" : ""
         }`}
       >
         <Image
           src={image.url}
-          width={400}
-          height={224}
+          width={horizontal ? 307 : 400}
+          height={horizontal ? 232 : 224}
           loading="lazy"
           alt={image.alt || "Post image"}
-          className="h-full object-cover object-center"
+          className="absolute top-0 left-0 h-full object-cover object-center"
         />
       </Link>
 
