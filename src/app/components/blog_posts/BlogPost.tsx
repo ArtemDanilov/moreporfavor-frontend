@@ -40,7 +40,7 @@ const BlogPost = ({
   if (vertical) {
     postClasses = `max-w-[21.25rem] rounded-md overflow-hidden shadow-default lg:max-w-[25rem]`;
   } else if (horizontal) {
-    postClasses = `max-w-[25rem] rounded-md overflow-hidden shadow-default md:flex md:block md:max-w-none md:w-full`;
+    postClasses = `max-w-[25rem] rounded-md overflow-hidden shadow-default sm:flex sm:block sm:max-w-none sm:w-full`;
   }
 
   return (
@@ -48,7 +48,7 @@ const BlogPost = ({
       <Link
         href={link}
         className={`block w-full overflow-hidden h-56 bg-gray-100 ${
-          horizontal ? "md:h-auto md:max-h-72 md:flex-[40%] xl:h-56" : ""
+          horizontal ? "h-auto sm:flex-[40%]" : ""
         }`}
       >
         <Image
@@ -63,7 +63,7 @@ const BlogPost = ({
 
       <div
         className={`p-4 text-center ${
-          horizontal ? "md:flex-[60%] md:text-left" : ""
+          horizontal ? "sm:flex-[60%] sm:text-left" : ""
         }`}
       >
         <p className="font-sans text-xs font-bold text-green mb-1">
