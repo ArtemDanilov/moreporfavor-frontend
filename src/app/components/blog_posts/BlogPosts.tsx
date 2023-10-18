@@ -3,11 +3,11 @@ import { Meta } from "@/app/ts/types";
 import BlogPost from "./BlogPost";
 
 type Props = {
-  entries: Meta[];
+  entries: Meta[] | undefined;
   direction?: "horizontal" | "vertical";
 };
 
-const BlogPosts = ({ entries, direction }: Props) => {
+const BlogPosts = ({ entries, direction = "vertical" }: Props) => {
   const horizontal = direction === "horizontal";
 
   if (!entries) {
@@ -45,7 +45,7 @@ const BlogPosts = ({ entries, direction }: Props) => {
                 country={countries}
                 publishDate={publishedAt}
                 description={short_description}
-                direction={"vertical"}
+                direction={direction}
               />
             </li>
           </>

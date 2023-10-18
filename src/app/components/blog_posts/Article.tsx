@@ -30,11 +30,11 @@ const Article = ({ post }: { post: Entry }) => {
           </div>
         </Section>
 
-        {/* <OtherPosts
+        <OtherPosts
           title="Zobacz inne artykuły"
-          id={21}
+          currentPost={meta}
           className="lg:max-w-3xl lg:mr-[32%] lg:ml-auto 2xl:mr-[28%]"
-        /> */}
+        />
 
         <Lightbox />
       </div>
