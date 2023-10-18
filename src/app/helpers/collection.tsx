@@ -61,13 +61,22 @@ const Collection = async ({
 
   const finalPosts = pagination ? paginatedPosts : filteredPosts;
 
-  return {
-    entries: finalPosts,
-    attributes: {
-      count: finalPosts.length,
-      totalPages: totalPages,
-    },
-  };
+  if (pagination) {
+    return {
+      entries: finalPosts,
+      attributes: {
+        count: finalPosts.length,
+        totalPages: totalPages,
+      },
+    };
+  } else {
+    return {
+      entries: finalPosts,
+      attributes: {
+        count: finalPosts.length,
+      },
+    };
+  }
 };
 
 export default Collection;
