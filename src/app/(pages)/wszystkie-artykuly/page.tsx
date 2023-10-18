@@ -48,7 +48,7 @@ const CategoryPage = async ({
           <Section>
             <BlogPosts entries={collection.entries} />
 
-            {totalPages > 1 && <Pagination pages={totalPages} />}
+            {totalPages && totalPages > 1 && <Pagination pages={totalPages} />}
           </Section>
         )}
       </>
