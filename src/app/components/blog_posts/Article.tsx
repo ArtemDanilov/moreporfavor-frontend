@@ -18,7 +18,7 @@ const Article = ({ post }: { post: Entry }) => {
     <>
       <Hero image={meta.image} title={meta.title} />
 
-      <div className="mt-40">
+      <div className="mt-8 sm:mt-12">
         <Section className="lg:flex flex-row-reverse gap-x-8">
           <div className="relative lg:flex-[30%] lg:max-w-xs-2">
             <TableOfContents content={content} />
