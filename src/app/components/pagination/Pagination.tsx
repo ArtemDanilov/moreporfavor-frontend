@@ -25,7 +25,10 @@ const Pagination = ({ pages }: Props) => {
   return (
     <div className="pagination mt-8 flex justify-center items-center lg:mt-20">
       <Link
-        href={`${pathname}?page=${prevPage}`}
+        href={{
+          pathname: pathname,
+          query: { page: prevPage },
+        }}
         className={`prev ${isPrevActive ? "disabled" : ""}`}
       >
         <LongArrow className="arrow rotate-180" />
@@ -50,7 +53,10 @@ const Pagination = ({ pages }: Props) => {
         })}
       </div>
       <Link
-        href={`${pathname}?page=${nextPage}`}
+        href={{
+          pathname: pathname,
+          query: { page: nextPage },
+        }}
         className={`next ${isNextActive ? "disabled" : ""}`}
       >
         <LongArrow className="arrow" />
