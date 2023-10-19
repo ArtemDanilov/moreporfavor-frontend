@@ -48,7 +48,7 @@ const BlogPost = ({
       <Link
         href={link}
         className={`relative block w-full overflow-hidden h-56 bg-gray-100 ${
-          horizontal ? "h-auto sm:flex-[40%]" : ""
+          horizontal ? "sm:h-auto sm:flex-[40%]" : ""
         }`}
       >
         <Image
@@ -57,7 +57,7 @@ const BlogPost = ({
           height={horizontal ? 232 : 224}
           loading="lazy"
           alt={image.alt || "Post image"}
-          className="absolute top-0 left-0 h-full object-cover object-center"
+          className="absolute top-0 left-0 w-full h-full object-cover object-center"
         />
       </Link>
 
