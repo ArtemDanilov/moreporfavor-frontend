@@ -41,7 +41,11 @@ const Pagination = ({ pages }: Props) => {
           return (
             <Link
               key={page}
-              href={`${pathname}?page=${page}`}
+              href={{
+                pathname: pathname,
+                query: { page: page },
+              }}
+              prefetch={false}
               className={`font-display font-normal text-lg px-2 py-1 ${
                 isPageActive
                   ? "text-gray-200 pointer-events-none"
