@@ -29,6 +29,7 @@ const Pagination = ({ pages }: Props) => {
           pathname: pathname,
           query: { page: prevPage },
         }}
+        prefetch={false}
         className={`prev ${isPrevActive ? "disabled" : ""}`}
       >
         <LongArrow className="arrow rotate-180" />
@@ -57,6 +58,7 @@ const Pagination = ({ pages }: Props) => {
           pathname: pathname,
           query: { page: nextPage },
         }}
+        prefetch={false}
         className={`next ${isNextActive ? "disabled" : ""}`}
       >
         <LongArrow className="arrow" />
