@@ -26,7 +26,7 @@ const Slide = ({ title, image, url }: typeSlide) => {
 
       <h2
         data-swiper-parallax="-300"
-        className="font-display text-5xl leading-tight text-center text-white mb-6 z-10"
+        className="w-full max-w-2xl mx-auto px-5 font-display text-4xl leading-tight text-center text-white mb-6 z-10 sm:text-5xl sm:leading-tight"
       >
         {title}
       </h2>
