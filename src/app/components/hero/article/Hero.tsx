@@ -18,7 +18,7 @@ const imageStyle = {
 const Hero = ({ image, title }: typeHero) => {
   return (
     <div className="relative h-[calc(100vh-5.625rem)] max-h-[52.5rem] bg-gray-200 mb-8 overflow-hidden md:mb-12 xl:mb-24">
-      <h1 className="absolute absolute-centered z-30 font-display font-normal text-5xl leading-tight text-white text-center">
+      <h1 className="absolute absolute-centered z-30 w-full max-w-2xl px-5 font-display text-4xl leading-tight font-normal text-white text-center sm:text-5xl sm:leading-tight">
         {title}
       </h1>
       <Image
