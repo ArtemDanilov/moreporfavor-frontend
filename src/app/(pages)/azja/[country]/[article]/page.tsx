@@ -6,7 +6,6 @@ import Collection from "@/app/helpers/collection";
 
 import Article from "@/app/components/blog_posts/Article";
 import NotFound from "@/app/(pages)/not-found";
-import Wrapper from "@/app/Wrapper";
 
 type Props = {
   params: {
@@ -53,11 +52,7 @@ const Page = async ({ params }: Props) => {
     return <NotFound />;
   }
 
-  return (
-    <Wrapper>
-      <Article post={article} />
-    </Wrapper>
-  );
+  return <Article post={article} />;
 };
 
 export default Page;

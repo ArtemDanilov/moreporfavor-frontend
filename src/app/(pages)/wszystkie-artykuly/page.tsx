@@ -5,7 +5,6 @@ import Hero from "../../components/hero/category/Hero";
 import Collection from "../../helpers/collection";
 import Pagination from "../../components/pagination/Pagination";
 import BlogPosts from "../../components/blog_posts/BlogPosts";
-import Wrapper from "@/app/Wrapper";
 
 export const dynamic = "force-dynamic";
 
@@ -40,19 +39,17 @@ const CategoryPage = async ({
   const { totalPages } = collection?.attributes;
 
   return (
-    <Wrapper>
-      <>
-        <Hero title="Wszystkie artykuły" />
+    <>
+      <Hero title="Wszystkie artykuły" />
 
-        {collection.entries.length > 0 && (
-          <Section>
-            <BlogPosts entries={collection.entries} />
+      {collection.entries.length > 0 && (
+        <Section>
+          <BlogPosts entries={collection.entries} />
 
-            {totalPages && totalPages > 1 && <Pagination pages={totalPages} />}
-          </Section>
-        )}
-      </>
-    </Wrapper>
+          {totalPages && totalPages > 1 && <Pagination pages={totalPages} />}
+        </Section>
+      )}
+    </>
   );
 };
 

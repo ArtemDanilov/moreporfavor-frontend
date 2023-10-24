@@ -8,6 +8,7 @@ const SocialMedia = ({ className }: { className?: string }): JSX.Element => {
         target="_blank"
         rel="noopener noreferrer"
       >
+        <span className="sr-only">Tiktok</span>
         <Tiktok className="w-auto h-[2em]" />
       </a>
       <a
@@ -15,6 +16,7 @@ const SocialMedia = ({ className }: { className?: string }): JSX.Element => {
         target="_blank"
         rel="noopener noreferrer"
       >
+        <span className="sr-only">Instagram</span>
         <Instagram className="w-auto h-[2em]" />
       </a>
     </div>

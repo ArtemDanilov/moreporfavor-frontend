@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Wrapper from "@/app/Wrapper";
 
 export const metadata: Metadata = {
   title: "O mnie",
@@ -8,11 +7,7 @@ export const metadata: Metadata = {
 };
 
 const About: React.FC = () => {
-  return (
-    <Wrapper>
-      <h1>O mnie</h1>
-    </Wrapper>
-  );
+  return <h1>O mnie</h1>;
 };
 
 export default About;
