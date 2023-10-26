@@ -6,7 +6,6 @@ import Collection from "@/app/helpers/collection";
 
 import Category from "@/app/components/Category";
 import NotFound from "@/app/(pages)/not-found";
-import Wrapper from "@/app/Wrapper";
 
 type Props = {
   params: {
@@ -56,14 +55,12 @@ const Country = async ({ params, searchParams }: Props) => {
   }
 
   return (
-    <Wrapper>
-      <Category
-        title={entry.meta.title}
-        tagsCategory="countries"
-        tagName={entry.meta.slug}
-        currentPage={currentPage}
-      />
-    </Wrapper>
+    <Category
+      title={entry.meta.title}
+      tagsCategory="countries"
+      tagName={entry.meta.slug}
+      currentPage={currentPage}
+    />
   );
 };
 

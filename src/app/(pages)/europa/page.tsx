@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import categoryMetadata from "@/app/helpers/metadata/categoryMetadata";
 
-import Wrapper from "@/app/Wrapper";
 import Category from "@/app/components/Category";
 
 export const dynamic = "force-dynamic";
@@ -18,15 +17,13 @@ const CategoryPage = ({
   const currentPage = searchParams["page"] ?? "1";
 
   return (
-    <Wrapper>
-      <Category
-        title="Europa"
-        tagsCategory="category"
-        tagName="europa"
-        titleFrame="vintage"
-        currentPage={currentPage}
-      />
-    </Wrapper>
+    <Category
+      title="Europa"
+      tagsCategory="category"
+      tagName="europa"
+      titleFrame="vintage"
+      currentPage={currentPage}
+    />
   );
 };
 
