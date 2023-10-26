@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
+
+import convertToBase64 from "@/app/helpers/base64";
 import Section from "@/app/components/Section";
 import Hero from "@/app/components/hero/category/Hero";
 import Shapes from "@/app/components/svg/shapes";
@@ -10,19 +12,24 @@ export const metadata: Metadata = {
     "Hej, jestem Kaja! Kocham słońce, dobre jedzenie, ładne budynki i odkrywanie nowych miejsc.",
 };
 
-const About: React.FC = () => {
+const About = async () => {
+  const base64 = await convertToBase64("/assets/Kaja.jpg");
+
   return (
     <>
       <Hero title="O mnie" />
 
-      <Section className="relative max-w-3xl overflow-x-hidden md:overflow-visible xl:max-w-4xl">
+      <Section className="relative max-w-lg overflow-x-hidden md:overflow-visible md:max-w-3xl xl:max-w-4xl">
         <div className="flex gap-4 flex-col items-center md:flex-row">
           <Image
             src="/assets/Kaja.jpg"
             alt="zdjęcie autora"
             width={300}
             height={480}
-            className="w-full h-full max-w-md object-cover rounded-xl"
+            loading="eager"
+            placeholder="blur"
+            blurDataURL={base64}
+            className="w-full h-full object-cover rounded-xl"
           />
           <Shapes className="absolute bottom-0 -z-10 w-[34rem] h-[43.5rem] text-[#FFCD60] md:-bottom-24 md:left-32" />
           <p className="font-sans font-normal text-base md:text-lg">

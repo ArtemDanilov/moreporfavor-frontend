@@ -37,8 +37,8 @@ export type Article = Meta & {
 
 export type SingleImage = {
   url: string;
-  alt?: string | null | undefined;
-  caption?: string | null | undefined;
+  alt?: string | undefined;
+  caption?: string | undefined;
 };
 
 export type Pagination = {
