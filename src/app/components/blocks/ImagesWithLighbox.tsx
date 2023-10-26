@@ -1,38 +1,31 @@
 import Image from "next/image";
-import fs from "node:fs/promises";
-import path from "node:path";
-import { getPlaiceholder } from "plaiceholder";
 
+import convertToBase64 from "@/app/helpers/base64";
 import { SingleImage } from "@/app/ts/types";
 
 type SingleImageWithBase = SingleImage & {
   base64: string;
 };
 
-const getImagesWithBase64 = async (images: SingleImage[]) =>
-  Promise.all(
-    images.map(async (image) => {
-      const { url } = image;
+const imagesList = async (images: SingleImage[]) => {
+  try {
+    const imagesWithBase = await Promise.all(
+      images.map(async (img) => {
+        const base64 = await convertToBase64(img.url);
+        return { ...img, base64 };
+      })
+    );
 
-      try {
-        const buffer = await fs.readFile(path.join("public", url));
-
-        const { base64 } = await getPlaiceholder(buffer);
-
-        return { ...image, base64 } as SingleImageWithBase;
-      } catch {
-        return {} as SingleImageWithBase;
-      }
-    })
-  );
+    return imagesWithBase as SingleImageWithBase[];
+  } catch {
+    return [];
+  }
+};
 
 const ImagesWithLighbox = async ({ images }: { images: SingleImage[] }) => {
-  const imagesWithBase = await getImagesWithBase64(images);
-  const filteredImages = imagesWithBase.filter(
-    (el) => Object.keys(el).length > 0
-  );
+  const arrayOfImages = await imagesList(images);
 
-  const count = filteredImages.length;
+  const count = arrayOfImages.length;
 
   return (
     <figure
@@ -40,7 +33,8 @@ const ImagesWithLighbox = async ({ images }: { images: SingleImage[] }) => {
         count >= 2 && "grid gap-2.5 md:grid-cols-2"
       }`}
     >
-      {filteredImages.map(({ url, alt, caption, base64 }, index) => {
+      {arrayOfImages.map((img, index) => {
+        const { url, alt, caption, base64 } = img;
         const imgCaption = caption ? `description: ${caption}` : "";
 
         return (
