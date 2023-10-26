@@ -3,8 +3,10 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { TLink } from "../../../ts/types";
 import Children from "./Children";
+import { Chevron } from "../../svg/Icons";
+
+import { TLink } from "../../../ts/types";
 
 const Nav = ({ links }: { links: TLink[] }) => {
   const pathname = usePathname();
@@ -21,15 +23,21 @@ const Nav = ({ links }: { links: TLink[] }) => {
             return (
               <li
                 key={id}
-                className={`${activeLink} font-sans text-base font-normal py-1 px-2`}
+                className={`${activeLink} relative parent-link link-hover font-sans text-base font-normal py-1 px-2`}
               >
                 {children ? (
-                  <Children
-                    title={title}
-                    parentSlug={parentSlug}
-                    links={children}
-                    activeLink={activeLink}
-                  />
+                  <>
+                    <p className="relative flex items-center cursor-default">
+                      <Chevron className="chevron w-5 h-5 transition-all duration-300" />
+                      {title}
+                    </p>
+
+                    <Children
+                      parentSlug={parentSlug}
+                      links={children}
+                      activeLink={activeLink}
+                    />
+                  </>
                 ) : (
                   <Link href={`/${slug}`} className="link-hover">
                     {title}
