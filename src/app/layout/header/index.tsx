@@ -21,12 +21,10 @@ const Header = async () => {
   return (
     <header className="fixed left-0 top-0 z-[999] w-full bg-white shadow-default">
       <div className="max-w-8xl mx-auto py-4 px-5 flex items-center justify-between xl:px-20">
-        <h1>
-          <Link href="/">
-            <span className="sr-only">Moreporfavor Logo</span>
-            <Logo className="w-[7.25rem] h-12 md:w-[8.75rem] md:h-[3.625rem]" />
-          </Link>
-        </h1>
+        <Link href="/">
+          <span className="sr-only">Moreporfavor Logo</span>
+          <Logo className="w-[7.25rem] h-12 md:w-[8.75rem] md:h-[3.625rem]" />
+        </Link>
 
         <DesktopNav links={navLinksSorted} />
 

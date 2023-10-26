@@ -14,10 +14,12 @@ import Button from "../components/Button/Button";
 
 import "./style.scss";
 
+const description =
+  "Blog, w którym znajdziesz ciekawe miejsca do odwiedzenia, dobre restauracje, porady i wiele innych rzeczy";
+
 export const metadata: Metadata = {
   title: "Moreporfavor",
-  description:
-    "Blog, w którym znajdziesz ciekawe miejsca do odwiedzenia, dobre restauracje, porady i wiele innych rzeczy",
+  description: description,
 };
 
 const Instagram = async () => {
@@ -54,6 +56,7 @@ const Home = async () => {
   return (
     <>
       {heroEntries && <Hero entries={heroEntries} />}
+      <h1 className="sr-only">{description}</h1>
 
       <div className="xl:container xl:flex xl:flex-row-reverse xl:justify-center xl:gap-x-4">
         <aside className="sidebar space-y-8 mb-8 md:mb-12 xl:flex-[30%] xl:mb-0 xl:max-w-xs-2">
