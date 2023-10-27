@@ -15,7 +15,7 @@ const NotFound = () => {
         <p className="font-sans font-normal text-base text-black text-center px-8 xl:text-xl">
           Ups...wygląda na to że ta strona nie istnieje, <br />
           wróć na
-          <Link href="/" className="text-mocha">
+          <Link href="/" className="text-mocha px-2">
             główną stronę
           </Link>
         </p>
