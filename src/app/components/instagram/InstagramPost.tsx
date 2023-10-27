@@ -1,12 +1,34 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 import Truncate from "@/app/components/truncate";
+import InstagramFeed from "@/app/helpers/fetchInstagram";
 
 import { InstagramPost } from "@/app/ts/types";
+import Loading from "./Loading";
 
-const InstagramPost = ({ post }: { post: InstagramPost }) => {
-  if (!post) {
-    return;
+const InstagramPost = () => {
+  const [post, setPost] = useState<InstagramPost | undefined>(undefined);
+
+  useEffect(() => {
+    const fetchInstagramFeed = async () => {
+      try {
+        const data = await InstagramFeed();
+        const instagramLastPost = data.data[0];
+
+        setPost(instagramLastPost);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchInstagramFeed();
+  }, []);
+
+  if (post === undefined) {
+    return <Loading />;
   }
 
   const { caption, media_type, media_url, permalink } = post;

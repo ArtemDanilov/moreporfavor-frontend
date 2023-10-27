@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
 import { getEntriesById, getEntry } from "../helpers/getEntries";
-import InstagramFeed from "../helpers/fetchInstagram";
 
 import Hero from "../components/hero/homepage/Hero";
 import About from "../components/sections/About";
@@ -20,22 +19,6 @@ const description =
 export const metadata: Metadata = {
   title: "Moreporfavor",
   description: description,
-};
-
-const Instagram = async () => {
-  const instagramFeed = await InstagramFeed();
-
-  if (!instagramFeed) {
-    return <></>;
-  }
-
-  const instagramLastPost = instagramFeed.data[0];
-
-  return (
-    <Section heading="Ostatni post">
-      <InstagramPost post={instagramLastPost} />
-    </Section>
-  );
 };
 
 const Home = async () => {
@@ -70,7 +53,9 @@ const Home = async () => {
           <Section heading="Social Media">
             <SocialMedia className="flex justify-center items-center space-x-4 text-mocha text-base pb-2" />
           </Section>
-          <Instagram />
+          <Section heading="Ostatni post">
+            <InstagramPost />
+          </Section>
         </aside>
 
         <div className="main-content xl:flex-[70%]">

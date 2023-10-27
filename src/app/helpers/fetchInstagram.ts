@@ -1,7 +1,11 @@
-import { InstagramPosts } from "../ts/types";
+import { InstagramPost } from "../ts/types";
 
 const ID = process.env.NEXT_PUBLIC_INSTAGRAM_PROFILE_ID;
 const TOKEN = process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN;
+
+type InstagramPosts = {
+  data: InstagramPost[];
+};
 
 const InstagramFeed: () => Promise<InstagramPosts> = async () => {
   const getData = await fetch(

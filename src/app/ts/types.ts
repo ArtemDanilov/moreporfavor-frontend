@@ -194,7 +194,3 @@ export type InstagramPost = {
   media_url: string;
   permalink: string;
 };
-
-export type InstagramPosts = {
-  data: InstagramPost[];
-};
