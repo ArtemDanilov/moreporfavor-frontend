@@ -5,7 +5,7 @@ import { getEntry } from "@/app/helpers/getEntries";
 import Collection from "@/app/helpers/collection";
 
 import Article from "@/app/components/blog_posts/Article";
-import NotFound from "@/app/(pages)/not-found";
+import NotFound from "@/app/not-found";
 
 type Props = {
   params: {
